@@ -3,13 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
+
 /*
 
     https://www.youtube.com/watch?v=UCwwn2q4Vys
 */
 
+
 public class PlayerController : MonoBehaviour
 {
+
+    public static PlayerController Instance {get; private set;}
+
+    public static Vector2 movementInput;
+    // public static bool jumpInput;
+    // public static bool shootInput;
+
+
+
 
     [Header("Movement")]
     [SerializeField] float movementSpeed = 5f;
@@ -28,26 +40,44 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float playerHeight = 1f;
 
 
+    readonly Collider[] _groundHits = new Collider[1];
+    float groundMargin = 0.2f;
+    Vector3 groundPos => transform.position + Vector3.down* playerHeight*0.5f;
+    bool isGrounded => Physics.OverlapSphereNonAlloc(groundPos, groundMargin, _groundHits, groundMask) > 0;
 
     
-    
-    Rigidbody rb;
 
-    Vector2 movementInput;
     Vector3 movementDir;
     float jumpCooldown = 0.1f;
-    bool readyToJump = true;
-    public bool isGrounded;
+    [SerializeField] bool readyToJump = true;
 
+    
+
+    Rigidbody rb;
     PlayerInput input;
 
 
+
+
+
+
+
+    // -------- START ----------
+
     void Awake() {
+
+        if (Instance != null && Instance != this) Destroy(this); 
+        else Instance = this; 
+
         input = new PlayerInput();
         rb = GetComponent<Rigidbody>();
     }
 
-
+    void Update() {
+        #if UNITY_EDITOR
+        DrawDebugger();
+        #endif
+    }
 
 
     void FixedUpdate() {
@@ -57,14 +87,6 @@ public class PlayerController : MonoBehaviour
         }
         CheckGrounded();
     }
-
-
-
-
-
-
-
-
 
 
 
@@ -92,9 +114,13 @@ public class PlayerController : MonoBehaviour
 
 
     void CheckGrounded() {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight*0.5f + 0.2f, groundMask);
+        // isGrounded = Physics.Raycast(groundPos, Vector3.down, groundMargin, groundMask);
         rb.drag = isGrounded ? groundDrag : 0;
     }
+
+
+
+
 
 
     // ---------- HANDLERS ------------
@@ -103,7 +129,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void HandleMovementCanceled(InputAction.CallbackContext value) {
-        movementInput = Vector3.zero;
+        movementInput = Vector2.zero;
     }
 
     void HandleJumpInput(InputAction.CallbackContext value) {
@@ -117,11 +143,10 @@ public class PlayerController : MonoBehaviour
 
 
     void Move() {
+
         movementDir = transform.forward * movementInput.y + transform.right * movementInput.x;
-        // Vector3 newPos = transform.position + (movementDir * movementSpeed * Time.deltaTime);
-        // rb.MovePosition(newPos);
-        float multiplier = isGrounded ? 10f : airSpeed;
-        rb.AddForce(movementDir*movementSpeed*multiplier, ForceMode.Force);
+        float speed = isGrounded ? movementSpeed * 10f : airSpeed * 10f;
+        rb.AddForce(movementDir*speed, ForceMode.Force);
         SpeedControl();
     }
 
@@ -133,10 +158,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     void Rotate() {
-    
-            // Vector3 movement = transform.forward * movementInput.y + transform.right * movementInput.x;
-            // Quaternion targetRotation = Quaternion.LookRotation(new Vector3(movementInput.x, 0f, movementInput.y));
+
         Quaternion targetRotation = Quaternion.LookRotation(movementDir);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
         
@@ -161,8 +185,26 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    // ----------- DEBUG -------------
+
+    public void Test() { // called via Editor_PlayerController
+        Debug.LogWarning("Debug!");
+    }
+
+    void DrawDebugger() {
+        Vector3 start = projectileSpawnPoint.position;
+        Vector3 end = start + projectileSpawnPoint.forward *50f;
+
+        Debug.DrawLine(start, end, Color.red);
+    }
+
+    void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(groundPos, groundMargin);
+    }
 
 
+    
 }
 
 

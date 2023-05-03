@@ -5,66 +5,81 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [Header("References")]
-    public Transform orientation;
-    public Transform player;
-    public Transform playerObj;
-    public Rigidbody rb;
+    [SerializeField] Transform orientation;
+    [SerializeField] Transform player;
+    [SerializeField] Transform playerObj;
+    [SerializeField] Rigidbody rb;
 
-    public float rotationSpeed;
+    [SerializeField] float rotationSpeed;
 
-    public Transform combatLookAt;
+    [SerializeField] Transform combatLookAt;
 
-    public GameObject thirdPersonCam;
-    public GameObject combatCam;
-    public GameObject topDownCam;
+    [SerializeField] GameObject thirdPersonCam;
+    [SerializeField] GameObject combatCam;
+    [SerializeField] GameObject topDownCam;
 
-    public CameraStyle currentStyle;
-    public enum CameraStyle
-    {
-        Basic,
-        Combat,
-        Topdown
+    [SerializeField] CameraStyle currentStyle;
+
+    public enum CameraStyle {
+        Basic   = 0,
+        Combat  = 1,
+        Topdown = 2,
     }
 
-    private void Start()
-    {
+
+    void Start() {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
-    private void Update()
-    {
-        // switch styles
-        if (Input.GetKeyDown(KeyCode.Alpha1)) SwitchCameraStyle(CameraStyle.Basic);
-        if (Input.GetKeyDown(KeyCode.Alpha2)) SwitchCameraStyle(CameraStyle.Combat);
-        if (Input.GetKeyDown(KeyCode.Alpha3)) SwitchCameraStyle(CameraStyle.Topdown);
+
+
+
+
+    void Update() {
+
+        #if UNITY_EDITOR
+            // switch styles
+            if (Input.GetKeyDown("1")) SwitchCameraStyle(CameraStyle.Basic);
+            if (Input.GetKeyDown("2")) SwitchCameraStyle(CameraStyle.Combat);
+            if (Input.GetKeyDown("3")) SwitchCameraStyle(CameraStyle.Topdown);
+        #endif
+
+
+        Vector3 camPos = transform.position;
 
         // rotate orientation
-        Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
+        Vector3 viewDir = player.position - new Vector3(camPos.x, player.position.y, camPos.z);
         orientation.forward = viewDir.normalized;
 
         // roate player object
-        if(currentStyle == CameraStyle.Basic || currentStyle == CameraStyle.Topdown)
-        {
-            float horizontalInput = Input.GetAxis("Horizontal");
-            float verticalInput = Input.GetAxis("Vertical");
+        if(currentStyle == CameraStyle.Basic || currentStyle == CameraStyle.Topdown) {
+
+            float verticalInput = PlayerController.movementInput.x;
+            float horizontalInput = PlayerController.movementInput.y;
             Vector3 inputDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-            if (inputDir != Vector3.zero)
-                playerObj.forward = Vector3.Slerp(playerObj.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
+            // if (inputDir != Vector3.zero)
+            //     playerObj.forward = Vector3.Slerp(playerObj.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
         }
 
-        else if(currentStyle == CameraStyle.Combat)
-        {
-            Vector3 dirToCombatLookAt = combatLookAt.position - new Vector3(transform.position.x, combatLookAt.position.y, transform.position.z);
+        else if(currentStyle == CameraStyle.Combat) {
+
+            Vector3 dirToCombatLookAt = combatLookAt.position - new Vector3(camPos.x, combatLookAt.position.y, camPos.z);
             orientation.forward = dirToCombatLookAt.normalized;
 
             playerObj.forward = dirToCombatLookAt.normalized;
         }
     }
 
-    private void SwitchCameraStyle(CameraStyle newStyle)
-    {
+
+
+
+
+
+
+    void SwitchCameraStyle(CameraStyle newStyle) {
+
         combatCam.SetActive(false);
         thirdPersonCam.SetActive(false);
         topDownCam.SetActive(false);
