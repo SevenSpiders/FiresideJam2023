@@ -14,11 +14,38 @@ public class Clock : MonoBehaviour
         if (SceneView.lastActiveSceneView.camera == null)
             return;
 
+        Vector3 center = transform.position;
+        float TAU = 6.28318548f;
+
         Camera cam = SceneView.lastActiveSceneView.camera;
         float dist = Vector3.Distance(transform.position, cam.transform.position);
 
-        Vector3 center = transform.position;
-        float TAU = 6.28318548f;
+        DateTime jamBegin = new DateTime(2023, 5, 5, 20, 0, 0, 0);
+        DateTime jamEnd = new DateTime(2023, 5, 14, 21, 0, 0, 0);
+
+        TimeSpan timeTillJamBegin = jamBegin.Subtract(DateTime.Now);
+        TimeSpan timeTillJamEnd = jamEnd.Subtract(DateTime.Now);
+
+        bool hasJamStarted = timeTillJamBegin.TotalSeconds <= 0;
+
+        Vector3 jamNotifierPos = center + transform.up * 1.5f + transform.right * -3f;
+
+        GUIStyle jamNotifierStyle = new GUIStyle();
+        jamNotifierStyle.normal.textColor = Color.black;
+        jamNotifierStyle.fontSize = Mathf.FloorToInt(100f / dist);
+
+        if (hasJamStarted)
+            Handles.Label(jamNotifierPos, "GameJam ENDET in: " +
+                                          "Tag(e): " + timeTillJamEnd.Days + "  " +
+                                          "Stunde(n): " + timeTillJamEnd.Hours + "  " +
+                                          "Minute(n): " + timeTillJamEnd.Minutes + "  " +
+                                          "Sekunde(n): " + timeTillJamEnd.Seconds + "  ", jamNotifierStyle);
+        else
+            Handles.Label(jamNotifierPos, "GameJam BEGINNT in: " +
+                                          "Tage(n): " + timeTillJamBegin.Days + "  " +
+                                          "Stunde(n): " + timeTillJamBegin.Hours + "  " +
+                                          "Minute(n): " + timeTillJamBegin.Minutes + "  " +
+                                          "Sekunde(n): " + timeTillJamBegin.Seconds + "  ", jamNotifierStyle);
 
         Color timeCol = Color.black;
         float timeSize = 80f;
@@ -75,6 +102,7 @@ public class Clock : MonoBehaviour
         pointerStyle.normal.textColor = hourPointerCol;
         pointerStyle.fontSize = Mathf.FloorToInt(hourSize / dist);
 
+
         Handles.color = hourPointerCol;
         for (int i = 0; i<12; i++)
         {
@@ -91,5 +119,6 @@ public class Clock : MonoBehaviour
         }
     }
 #endif
+
 }
 
