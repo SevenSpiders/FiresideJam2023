@@ -1,8 +1,6 @@
 
 using System;
 using UnityEngine;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 
 #if UNITY_EDITOR
 using UnityEditor;
