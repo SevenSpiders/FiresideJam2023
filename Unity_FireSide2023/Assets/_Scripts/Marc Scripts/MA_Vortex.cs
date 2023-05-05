@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MA_Vortex : MonoBehaviour
 {
-    public float pullForce = 10;
+    public float pullForce = 7;
     public float radius = 20;
     private void OnTriggerStay(Collider other)
     {
@@ -17,5 +17,10 @@ public class MA_Vortex : MonoBehaviour
         int inEye = dist < 1.5f ? 0 : 1;
         Vector3 finalForce = (dir * pullForce * mul * inEye) / Time.deltaTime;
         other.attachedRigidbody.AddForce(finalForce);
+    }
+
+    private void OnValidate()
+    {
+        transform.localScale = new(radius, radius, radius);
     }
 }
