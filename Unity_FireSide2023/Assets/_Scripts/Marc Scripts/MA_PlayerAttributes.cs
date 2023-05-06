@@ -69,7 +69,7 @@ public class MA_PlayerAttributes : MonoBehaviour
         health = health < maxHealth ? health + (1 * recovery * Time.deltaTime) : maxHealth;
     }
     public void Regress(){
-        health = health >= 0 ? health - (1 * regress * Time.deltaTime) : maxHealth;
+        health = health >= 0 ? health - (1 * regress * Time.deltaTime) : 0;
     }
     public void Heal(float amount) {
         health = health + Mathf.Abs(amount) <= maxHealth ? health + Mathf.Abs(amount) : maxHealth; 
