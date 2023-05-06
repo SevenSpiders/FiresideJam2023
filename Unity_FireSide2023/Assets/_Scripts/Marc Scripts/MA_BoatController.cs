@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MA_BoatController : MA_Boat
+public class MA_BoatController : MA_PhysicsObject
 {
 
     [Header("Movement Settings")]

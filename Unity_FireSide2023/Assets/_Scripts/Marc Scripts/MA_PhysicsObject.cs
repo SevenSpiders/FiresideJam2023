@@ -3,7 +3,7 @@ using UnityEditor;
 #endif
 
 using UnityEngine;
-public abstract class MA_Boat : MonoBehaviour
+public abstract class MA_PhysicsObject : MonoBehaviour
 {
     // Just create another script and make it a child of this class like  " public class Player_Controller : Character_Controller "
     // You can then modify all behaviour values and use CharacterLookAt, CharacterMove and CharacterJump to control the character
