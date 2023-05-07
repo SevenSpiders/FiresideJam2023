@@ -10,7 +10,7 @@ public class MA_BoatController : MA_PhysicsObject
     public float sprintSpeed = 12f;
     public float accelRate;
     public float deccelRate;
-
+    public float rotationRate;
     private float maxSpeed;
     private Vector3 lookAtVec;
     private Vector3 moveVec;
@@ -48,7 +48,8 @@ public class MA_BoatController : MA_PhysicsObject
 
         // Get the look at position for the player
         Vector3 targetPos = transform.position + (camForward * verInputRaw + camRight * horInputRaw);
-        lookAtVec = curInput > 0 ? (targetPos - transform.position).normalized : lookAtVec;
+        float t = (Mathf.Abs(2 - Vector3.Distance((targetPos - transform.position).normalized, transform.forward))+ .5f) * Time.deltaTime * rotationRate;
+        lookAtVec = curInput > 0 ? Vector3.Slerp(lookAtVec, (targetPos - transform.position).normalized, t): lookAtVec;
         CharacterLookAt(lookAtVec);
 
         // Get to move vector from input

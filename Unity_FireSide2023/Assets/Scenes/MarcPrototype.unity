@@ -173,6 +173,7 @@ MonoBehaviour:
   sprintSpeed: 12
   accelRate: 10
   deccelRate: 2.5
+  rotationRate: 1
 --- !u!4 &107690807
 Transform:
   m_ObjectHideFlags: 0
