@@ -8,7 +8,8 @@ namespace Pascal
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] Rigidbody rb;
-        [SerializeField] float moveSpeed;
+        [SerializeField] float moveSpeed = 100f;
+        [SerializeField] float turnSpeed = 10f;
         [SerializeField] float groundDrag = 5f;
 
         float horizontalInput;
@@ -24,8 +25,14 @@ namespace Pascal
             verticalInput = Input.GetAxis("Vertical");
         
 
-            movementDir = transform.forward * verticalInput + transform.right * horizontalInput;
+            movementDir = Vector3.forward * verticalInput + Vector3.right * horizontalInput;
+            if (movementDir.magnitude < 0.01f) return;
+
             rb.AddForce(movementDir.normalized*moveSpeed, ForceMode.Force);
+
+            Quaternion targetRotation = Quaternion.LookRotation(movementDir.normalized, Vector3.up);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
+
             SpeedControl();
         }
 
