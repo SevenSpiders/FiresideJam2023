@@ -13,7 +13,7 @@ public class MA_BoatController : MA_PhysicsObject
     public float rotationRate;
     private float maxSpeed;
     private Vector3 lookAtVec;
-    private Vector3 moveVec;
+    private Vector3 moveVec = Vector3.forward;
     
     [Header("Particle Settings")]
     // To Access from other classes
