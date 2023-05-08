@@ -23,8 +23,12 @@ public static class PlayerAttributes
     public static float coins = 0;
     public static float soulValueMultiplier = 2.5f;
     public static float souls = 0;
+    // Music Settings
+    public static float musicFadeTime = 8f;
+    public static float musicMaxVolume = .1f;
 
     public static bool isSafe = false;
+    public static bool isAttacked = false;
 
     public static void AddCoins(int amount = 1) {
         if (souls > 0) {
