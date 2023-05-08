@@ -29,7 +29,7 @@ public class MA_Follower : MonoBehaviour
         if (other.GetComponent<MA_PlayerAttributes>() == null)
             return;
 
-        other.GetComponent<MA_PlayerAttributes>().souls += value;
+        MA_PlayerAttributes.souls += value;
         collectEvent();
     }
 

@@ -8,22 +8,22 @@ using UnityEngine.UI;
 public class MA_PlayerAttributes : MonoBehaviour
 {
     public TextMeshProUGUI soulsUI;
-    public float souls;
+    public static float souls = 0;
 
     public TextMeshProUGUI healthUI;
-    public float health;
-    public float recovery = 25f;
-    public float regress = 5f;
-    public float maxHealth;
+    public static float health = 100;
+    public static float recovery = 25f;
+    public static float regress = 5f;
+    public static float maxHealth = 100;
 
     public TextMeshProUGUI coinsUI;
-    public float coins;
-    public float soulValueMultiplier = 2.5f;
+    public static float coins = 0;
+    public static float soulValueMultiplier = 2.5f;
 
     public Button sellButton;
     public TextMeshProUGUI sellButtonText;
 
-    public bool isSafe = false;
+    public static bool isSafe = false;
 
     private void Awake()
     {

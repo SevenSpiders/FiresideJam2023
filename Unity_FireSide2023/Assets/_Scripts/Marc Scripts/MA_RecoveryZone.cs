@@ -12,7 +12,7 @@ public class MA_RecoveryZone : MonoBehaviour
         if (other.GetComponent<MA_PlayerAttributes>() == null)
             return;
 
-        other.GetComponent<MA_PlayerAttributes>().isSafe = true;
+        MA_PlayerAttributes.isSafe = true;
     }
 
     private void OnTriggerExit(Collider other)
@@ -20,7 +20,7 @@ public class MA_RecoveryZone : MonoBehaviour
         if (other.GetComponent<MA_PlayerAttributes>() == null)
             return;
 
-        other.GetComponent<MA_PlayerAttributes>().isSafe = false;
+        MA_PlayerAttributes.isSafe = false;
     }
 
 

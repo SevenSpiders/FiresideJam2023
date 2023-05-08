@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8775274255998563706}
   - component: {fileID: 1851445734391505257}
-  - component: {fileID: 2637067866765831118}
+  - component: {fileID: -3658615179193660828}
   m_Layer: 0
   m_Name: Soul
   m_TagString: Untagged
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animSpeed: 1.8
   animHeight: 0.18
---- !u!114 &2637067866765831118
+--- !u!114 &-3658615179193660828
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,8 +140,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 554166470053159247}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c524e2eb4388004faab7f3dbeb57863, type: 3}
+  m_Script: {fileID: 11500000, guid: 6226d986f7a734c4f8ce36eae025240e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   value: 1
-  collectRadius: 1.63
+  collectRadius: 3
+  interactionKey: 102
+  exitKey: 27

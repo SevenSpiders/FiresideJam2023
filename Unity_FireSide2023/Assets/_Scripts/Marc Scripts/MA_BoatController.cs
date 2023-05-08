@@ -6,14 +6,22 @@ public class MA_BoatController : MA_PhysicsObject
 {
 
     [Header("Movement Settings")]
+<<<<<<< Updated upstream
     public float speed = 8f;
     public float sprintSpeed = 12f;
     public float accelRate;
     public float deccelRate;
 
+=======
+    public static float speed = 8f;
+    public static float sprintSpeed = 12f;
+    public static float accelRate = 10f;
+    public static float deccelRate = 1.5f;
+    public static float rotationRate = 1f;
+>>>>>>> Stashed changes
     private float maxSpeed;
-    private Vector3 lookAtVec;
-    private Vector3 moveVec;
+    private Vector3 lookAtVec = Vector3.forward;
+    private Vector3 moveVec = Vector3.forward;
     
     [Header("Particle Settings")]
     // To Access from other classes
@@ -24,8 +32,12 @@ public class MA_BoatController : MA_PhysicsObject
 
     void Update()
     {
-        if (!movementEnabled)
+        if (!movementEnabled) {
+            CharacterMove(Vector3.Lerp(Rb.velocity,Vector3.zero,Time.deltaTime * 10));
+            CharacterLookAt(lookAtVec);
+            moveVec = Vector3.zero;
             return;
+        }
 
         // Set the speed to sprint or walk speed (only when grounded so player keeps his speed after jump)
         if (IsGrounded)
