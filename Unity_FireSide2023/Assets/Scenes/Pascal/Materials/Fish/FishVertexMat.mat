@@ -60,7 +60,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Amplitude: 0.01
-    - _Frequency: -0.9759945
+    - _Frequency: -1.7188838
     - _QueueControl: 0
     - _QueueOffset: 0
     - _WaveLength: 50
