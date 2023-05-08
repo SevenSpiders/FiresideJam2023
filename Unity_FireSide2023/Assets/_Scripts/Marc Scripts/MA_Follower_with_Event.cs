@@ -82,7 +82,6 @@ public class MA_Follower_with_Event : MonoBehaviour
     }
 
     private void startEvent() {
-        Debug.Log("Event Started");
         MA_BoatController.movementEnabled = false;
     }
 
