@@ -6,19 +6,13 @@ public class MA_BoatController : MA_PhysicsObject
 {
 
     [Header("Movement Settings")]
-<<<<<<< Updated upstream
-    public float speed = 8f;
-    public float sprintSpeed = 12f;
-    public float accelRate;
-    public float deccelRate;
 
-=======
     public static float speed = 8f;
     public static float sprintSpeed = 12f;
     public static float accelRate = 10f;
     public static float deccelRate = 1.5f;
     public static float rotationRate = 1f;
->>>>>>> Stashed changes
+
     private float maxSpeed;
     private Vector3 lookAtVec = Vector3.forward;
     private Vector3 moveVec = Vector3.forward;
