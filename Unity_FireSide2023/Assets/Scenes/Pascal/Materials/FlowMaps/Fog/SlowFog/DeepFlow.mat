@@ -51,16 +51,18 @@ Material:
     - FlowMapTiling: 0.2
     - FlowSpeed: 0.01
     - HoleSpeed: 0
-    - Holes: 0
+    - Holes: 50
     - Speed: -0.5
     - Strength: 1
     - Tiling: 0.5
     - WaveDensity: 100
     - WaveRim: 0.08
     - WaveSpeed: 0.01
+    - _FlowStrength: 1
     - _HoleFalloff: 1
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _TextureTiling: 1
     - _WaveHeight: 0.5
     - lerp: 0
     m_Colors:
