@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MA_BoatController : MA_PhysicsObject
@@ -12,6 +13,9 @@ public class MA_BoatController : MA_PhysicsObject
     public static float accelRate = 10f;
     public static float deccelRate = 1.5f;
     public static float rotationRate = 1f;
+
+    public Light pointLight;
+    public Light spotLight;
 
     private float maxSpeed;
     private Vector3 lookAtVec = Vector3.forward;
@@ -26,6 +30,34 @@ public class MA_BoatController : MA_PhysicsObject
 
     void Update()
     {
+        // Enables the spotlight on left mousebutton to mouse position
+        if (spotLight == null)
+            return;
+
+        spotLight.intensity = Input.GetButton("Fire1") ?
+            Mathf.Lerp(spotLight.intensity, 200, Time.deltaTime * 10) :
+            Mathf.Lerp(spotLight.intensity, 0, Time.deltaTime * 10);
+
+        float distToPlayer = Vector3.Distance(transform.position, Camera.main.transform.position);
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(new(Input.mousePosition.x, Input.mousePosition.y, distToPlayer));
+
+        Vector3 direction = mouseWorldPos - transform.position;
+        direction.y = 0;
+        direction.Normalize();
+
+        spotLight.transform.forward = Input.GetButton("Fire1") && Vector3.Dot(transform.forward, direction) > 0 ?
+            Vector3.Lerp(spotLight.transform.forward, direction, Time.deltaTime * 10) :
+            Vector3.Lerp(spotLight.transform.forward, transform.forward, Time.deltaTime * 10);
+
+        //Dim point light with current health
+        if (pointLight == null)
+            return;
+
+        pointLight.intensity = Mathf.Lerp(0,100,MA_PlayerAttributes.health / MA_PlayerAttributes.maxHealth);
+        pointLight.range = Mathf.Lerp(0, 15, MA_PlayerAttributes.health / MA_PlayerAttributes.maxHealth);
+
+
+        // Disable movement 
         if (!movementEnabled) {
             CharacterMove(Vector3.Lerp(Rb.velocity,Vector3.zero,Time.deltaTime * 10));
             CharacterLookAt(lookAtVec);
@@ -33,9 +65,10 @@ public class MA_BoatController : MA_PhysicsObject
             return;
         }
 
+        
         // Set the speed to sprint or walk speed (only when grounded so player keeps his speed after jump)
         if (IsGrounded)
-            maxSpeed = Input.GetButton("Fire1") ? Mathf.Lerp(maxSpeed, sprintSpeed, Time.deltaTime * 5) : Mathf.Lerp(maxSpeed, speed, Time.deltaTime * 5);
+            maxSpeed = Input.GetButton("Jump") ? Mathf.Lerp(maxSpeed, sprintSpeed, Time.deltaTime * 5) : Mathf.Lerp(maxSpeed, speed, Time.deltaTime * 5);
 
         // Get the input magnitude from Raw Input
         float verInputRaw = Input.GetAxisRaw("Vertical");
@@ -61,6 +94,11 @@ public class MA_BoatController : MA_PhysicsObject
         // Get to move vector from input
         moveVec = curInput > 0 ? Vector3.Lerp(moveVec, curInput * maxSpeed * transform.forward, Time.deltaTime * accelRate) : Vector3.Lerp(moveVec,Vector3.zero,Time.deltaTime * deccelRate);
         CharacterMove(moveVec);
+
+
+
+
+
 
     }
 
