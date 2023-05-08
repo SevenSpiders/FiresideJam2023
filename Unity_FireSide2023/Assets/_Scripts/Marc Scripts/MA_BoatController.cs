@@ -6,13 +6,15 @@ public class MA_BoatController : MA_PhysicsObject
 {
 
     [Header("Movement Settings")]
-    public float speed = 8f;
-    public float sprintSpeed = 12f;
-    public float accelRate;
-    public float deccelRate;
-    public float rotationRate;
+
+    public static float speed = 8f;
+    public static float sprintSpeed = 12f;
+    public static float accelRate = 10f;
+    public static float deccelRate = 1.5f;
+    public static float rotationRate = 1f;
+
     private float maxSpeed;
-    private Vector3 lookAtVec;
+    private Vector3 lookAtVec = Vector3.forward;
     private Vector3 moveVec = Vector3.forward;
     
     [Header("Particle Settings")]
@@ -24,8 +26,12 @@ public class MA_BoatController : MA_PhysicsObject
 
     void Update()
     {
-        if (!movementEnabled)
+        if (!movementEnabled) {
+            CharacterMove(Vector3.Lerp(Rb.velocity,Vector3.zero,Time.deltaTime * 10));
+            CharacterLookAt(lookAtVec);
+            moveVec = Vector3.zero;
             return;
+        }
 
         // Set the speed to sprint or walk speed (only when grounded so player keeps his speed after jump)
         if (IsGrounded)
@@ -48,8 +54,8 @@ public class MA_BoatController : MA_PhysicsObject
 
         // Get the look at position for the player
         Vector3 targetPos = transform.position + (camForward * verInputRaw + camRight * horInputRaw);
-        float t = (Mathf.Abs(2 - Vector3.Distance((targetPos - transform.position).normalized, transform.forward))+ .5f) * Time.deltaTime * rotationRate;
-        lookAtVec = curInput > 0 ? Vector3.Slerp(lookAtVec, (targetPos - transform.position).normalized, t): lookAtVec;
+        float t = (Mathf.Abs(2 - Vector3.Distance((targetPos - transform.position).normalized, transform.forward)) + .5f) * Time.deltaTime * rotationRate;
+        lookAtVec = curInput > 0 ? Vector3.Slerp(lookAtVec, (targetPos - transform.position).normalized, t) : lookAtVec;
         CharacterLookAt(lookAtVec);
 
         // Get to move vector from input
