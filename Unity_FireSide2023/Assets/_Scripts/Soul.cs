@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MA_Follower_with_Event : MonoBehaviour
+public class Soul : MonoBehaviour
 {
     public int value = 1;
     public float collectRadius = 1;
@@ -60,14 +60,14 @@ public class MA_Follower_with_Event : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<MA_PlayerAttributes>() == null)
+        if (!other.CompareTag("Player"))
             return;
 
         StartCoroutine(StartMiniGame());
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<MA_PlayerAttributes>() == null)
+        if (!other.CompareTag("Player"))
             return;
 
         exitEvent();
@@ -76,20 +76,20 @@ public class MA_Follower_with_Event : MonoBehaviour
 
     private void collectEvent() {
         Destroy(this.gameObject);
-        MA_PlayerAttributes.souls += value;
-        MA_BoatController.movementEnabled = true;
+        PlayerAttributes.souls += value;
+        PlayerAttributes.movementEnabled = true;
 
     }
 
     private void startEvent() {
-        MA_BoatController.movementEnabled = false;
+        PlayerAttributes.movementEnabled = false;
     }
 
     private void exitEvent() {
             StopAllCoroutines();
             curName.text = "";
             inpName.text = "";
-            MA_BoatController.movementEnabled = true;
+        PlayerAttributes.movementEnabled = true;
     }
 
     private IEnumerator StartMiniGame(int typeCount = 1)

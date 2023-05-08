@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MA_WaveAnimation : MonoBehaviour
+public class WaveAnimation : MonoBehaviour
 {
     public float animSpeed = 1;
     public float animHeight = 1;

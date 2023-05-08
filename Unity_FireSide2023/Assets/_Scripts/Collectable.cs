@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MA_Follower : MonoBehaviour
+public class Collectable : MonoBehaviour
 {
     public int value = 1;
     public float collectRadius = 1;
@@ -26,15 +26,14 @@ public class MA_Follower : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<MA_PlayerAttributes>() == null)
+        if (other.tag != "Player")
             return;
-
-        MA_PlayerAttributes.souls += value;
         collectEvent();
     }
 
     private void collectEvent()
     {
+        // What Should it Do??
         Destroy(this.gameObject);
     }
 }

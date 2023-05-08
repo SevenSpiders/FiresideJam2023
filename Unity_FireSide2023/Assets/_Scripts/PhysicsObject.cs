@@ -3,7 +3,7 @@ using UnityEditor;
 #endif
 
 using UnityEngine;
-public abstract class Character_Controller : MonoBehaviour
+public abstract class PhysicsObject : MonoBehaviour
 {
     // Just create another script and make it a child of this class like  " public class Player_Controller : Character_Controller "
     // You can then modify all behaviour values and use CharacterLookAt, CharacterMove and CharacterJump to control the character
@@ -14,6 +14,8 @@ public abstract class Character_Controller : MonoBehaviour
     public Rigidbody Rb { get; private set; }
 
     [Header("Rigidbody Settings")]
+        public string layer;
+    private int layerMask;
     public float gravity = 10f;
     public float mass = 1f;
     public float drag = 0f;
@@ -21,12 +23,13 @@ public abstract class Character_Controller : MonoBehaviour
     // Capsule Collider
     public CapsuleCollider Col { get; private set; }
 
+
     [Header("Capsule Collider Settings")]
     public Vector3 center = Vector3.zero;
     public float radius = .5f;
-    public float height = 1f;
+    public float lenght = 1f;
 
-    [Header("Physics Behaviout Settings")]
+    [Header("Physics Behaviour Settings")]
     public float alignHeight = .5f;
     public float alignHeightPuffer = 1f;
     public float alignHeightOffset = -.5f;
@@ -34,7 +37,6 @@ public abstract class Character_Controller : MonoBehaviour
     public float alignHeightSpringDamper = 25f;
     public float alignRotationSpringStrenght = 50f;
     public float alignRotationSpringDamp = 2.5f;
-    public bool stickToWalls = false;
 
     // private forces in fixed update
     private Vector3 AdditionalForce;
@@ -52,11 +54,15 @@ public abstract class Character_Controller : MonoBehaviour
     private void Awake()
     {
         Rb = AddRigidBody(mass, drag, angDrag);
-        Col = AddCapsuleCollider(center, radius, height);
+        Col = AddCapsuleCollider(center, radius, lenght);
+        layerMask = ~LayerMask.GetMask(layer);
+
     }
 
     private void FixedUpdate()
     {
+        if (Rb == null || Col == null)
+            return;
         // gravity
         Rb.AddForce(gravity * Rb.mass * Vector3.down);
         // spring forces to upright rotation and height
@@ -102,7 +108,7 @@ public abstract class Character_Controller : MonoBehaviour
     }
     public void CharacterMove(Vector3 dir)
     {
-        Vector3 neededForce = (dir  - Rb.velocity) * (1/ Time.fixedDeltaTime);
+        Vector3 neededForce = (dir - Rb.velocity) * (1 / Time.fixedDeltaTime);
         neededForce.y = 0;
 
         AdditionalForce = neededForce;
@@ -137,9 +143,9 @@ public abstract class Character_Controller : MonoBehaviour
     {
         // Define the start and end Position of the downwards linecast for ground check
         Vector3 startPos = transform.position + Vector3.down * alignHeightOffset;
-        Vector3 endPos = transform.position + Vector3.down * (alignHeightOffset + alignHeight +alignHeightPuffer);
+        Vector3 endPos = transform.position + Vector3.down * (alignHeightOffset + alignHeight + alignHeightPuffer);
 
-        IsGrounded = Physics.Linecast(startPos, endPos, out RaycastHit hit);
+        IsGrounded = Physics.Linecast(startPos, endPos, out RaycastHit hit, layerMask,QueryTriggerInteraction.Ignore);
 
         if (IsGrounded && jumpForce.y == 0f)
         {
@@ -187,16 +193,16 @@ public abstract class Character_Controller : MonoBehaviour
         col.isTrigger = false;
         col.center = center;
         col.radius = radius;
-        col.height = height;
-        col.direction = 1;
+        col.height = height/3;
+        col.direction = 2;
 
         col.material = new PhysicMaterial
         {
-            dynamicFriction = stickToWalls ? 1 : 0,
-            staticFriction = stickToWalls ? 1 : 0,
+            dynamicFriction = 0,
+            staticFriction =0,
             bounciness = 0,
-            frictionCombine = stickToWalls ? PhysicMaterialCombine.Maximum : PhysicMaterialCombine.Minimum,
-            bounceCombine = stickToWalls ? PhysicMaterialCombine.Maximum : PhysicMaterialCombine.Minimum
+            frictionCombine = PhysicMaterialCombine.Minimum,
+            bounceCombine = PhysicMaterialCombine.Minimum
         };
         return col;
     }
@@ -221,7 +227,7 @@ public abstract class Character_Controller : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
-        DrawWireCapsule(transform.position + center, transform.rotation, radius, height, Color.green);
+        DrawWireCapsule(transform.position + center, transform.rotation * Quaternion.Euler(new(-90,0,0)), radius, lenght, Color.green);;
         Debug.DrawLine(transform.position + Vector3.down * alignHeightOffset, transform.position + Vector3.down * alignHeightOffset + Vector3.down * alignHeight, Color.red);
         Debug.DrawLine(transform.position + Vector3.down * (alignHeight + alignHeightOffset + alignHeightPuffer), transform.position + Vector3.down * alignHeightOffset + Vector3.down * alignHeight, Color.yellow);
     }

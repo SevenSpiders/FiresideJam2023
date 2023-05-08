@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MA_CameraFollow : MonoBehaviour
+public class CameraFollow : MonoBehaviour
 {
     public Transform follow;
     private Vector3 startPos;

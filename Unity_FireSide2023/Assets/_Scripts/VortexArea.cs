@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MA_Vortex : MonoBehaviour
+public class VortexArea : MonoBehaviour
 {
     public float pullForce = 7;
     public float radius = 20;
-    private void OnTriggerStay(Collider other)
-    {
+    private void OnTriggerStay(Collider other) {
         if (other == null)
             return;
 
@@ -19,8 +18,7 @@ public class MA_Vortex : MonoBehaviour
         other.attachedRigidbody.AddForce(finalForce);
     }
 
-    private void OnValidate()
-    {
+    private void OnValidate() {
         transform.localScale = new(radius, radius, radius);
     }
 }
