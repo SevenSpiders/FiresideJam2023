@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 8914798619343705230}
   - component: {fileID: 3989000586748724633}
   - component: {fileID: 4118520637341080871}
+  - component: {fileID: 2188165257364194266}
   m_Layer: 5
   m_Name: UI Canvas
   m_TagString: Untagged
@@ -229,6 +230,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2188165257364194266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3008738570124520427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3badd1c5478efaf4191cfd7e4e61fd95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soulsUI: {fileID: 7797873569101224061}
+  healthUI: {fileID: 2482313855864896259}
+  coinsUI: {fileID: 1896403033550733641}
 --- !u!1 &4363571103127569870
 GameObject:
   m_ObjectHideFlags: 0

@@ -59,7 +59,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615381}
   - {fileID: 8926484042661615385}
   - {fileID: 8926484042661615389}
-  - {fileID: 8926484042661615401}
+  - {fileID: 8926484042661615399}
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
@@ -82,13 +82,13 @@ MonoBehaviour:
   - name: Radius
     path: Radius
     tooltip: 
-    sheetType: m_Int
-    realType: Int32
+    sheetType: m_Float
+    realType: Single
     defaultValue:
       m_Type:
-        m_SerializableType: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 2
+      m_SerializableObject: 1
     min: -Infinity
     max: Infinity
     enumValues: []
@@ -2842,7 +2842,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots:
-  - {fileID: 8926484042661615402}
+  - {fileID: 8926484042661615400}
 --- !u!114 &8926484042661614966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2876,7 +2876,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots:
-  - {fileID: 8926484042661615402}
+  - {fileID: 8926484042661615400}
 --- !u!114 &8926484042661614967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5886,7 +5886,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
---- !u!114 &8926484042661615401
+--- !u!114 &8926484042661615399
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5906,7 +5906,7 @@ MonoBehaviour:
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:
-  - {fileID: 8926484042661615402}
+  - {fileID: 8926484042661615400}
   m_ExposedName: Radius
   m_Exposed: 1
   m_Order: 1
@@ -5926,14 +5926,14 @@ MonoBehaviour:
   m_Nodes:
   - m_Id: 0
     linkedSlots:
-    - outputSlot: {fileID: 8926484042661615402}
+    - outputSlot: {fileID: 8926484042661615400}
       inputSlot: {fileID: 8926484042661614965}
-    - outputSlot: {fileID: 8926484042661615402}
+    - outputSlot: {fileID: 8926484042661615400}
       inputSlot: {fileID: 8926484042661614966}
-    position: {x: 773, y: 1063}
+    position: {x: 770, y: 1063}
     expandedSlots: []
     expanded: 0
---- !u!114 &8926484042661615402
+--- !u!114 &8926484042661615400
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5942,7 +5942,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d246e354feb93041a837a9ef59437cb, type: 3}
+  m_Script: {fileID: 11500000, guid: f780aa281814f9842a7c076d436932e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
@@ -5951,19 +5951,19 @@ MonoBehaviour:
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  m_MasterSlot: {fileID: 8926484042661615402}
+  m_MasterSlot: {fileID: 8926484042661615400}
   m_MasterData:
-    m_Owner: {fileID: 8926484042661615401}
+    m_Owner: {fileID: 8926484042661615399}
     m_Value:
       m_Type:
-        m_SerializableType: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 2
+      m_SerializableObject: 1
     m_Space: 2147483647
   m_Property:
     name: o
     m_serializedType:
-      m_SerializableType: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+      m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
   m_Direction: 1
   m_LinkedSlots:
