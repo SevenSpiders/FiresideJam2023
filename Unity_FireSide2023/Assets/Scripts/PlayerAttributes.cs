@@ -38,15 +38,18 @@ public static class PlayerAttributes
     }
 
     public static void Recover() {
-        health = health < maxHealth ? health + (1 * recovery * Time.deltaTime) : maxHealth;
+        health = health < maxHealth ? health + (recovery * Time.deltaTime) : maxHealth;
     }
     public static void Regress() {
-        health = health >= 0 ? health - (1 * regress * Time.deltaTime) : 0;
+        health = health >= 0 ? health - (regress * Time.deltaTime) : 0;
     }
     public static void Heal(float amount) {
         health = health + Mathf.Abs(amount) <= maxHealth ? health + Mathf.Abs(amount) : maxHealth;
     }
     public static void Damage(float amount) {
         health = health - Mathf.Abs(amount) >= 0 ? health - Mathf.Abs(amount) : 0;
+    }
+    public static void DamageOverTime(float amount) {
+        health = health >= 0 ? health - (amount * Time.deltaTime) : 0;
     }
 }
