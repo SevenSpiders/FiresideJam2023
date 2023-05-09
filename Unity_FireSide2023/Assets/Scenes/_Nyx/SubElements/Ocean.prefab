@@ -952,7 +952,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkyTile
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1867411375730106781, guid: 90ba1269fbd336c4c90917b1951c3e83, type: 3}
+    - {fileID: 150618027404535258, guid: 90ba1269fbd336c4c90917b1951c3e83, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1545,7 +1547,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FogTile S
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 150618027404535258, guid: c05ca552041a8c740a167604d09af8d0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

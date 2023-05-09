@@ -1,11 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
+using UnityEngine.VFX;
 
 public class RecoveryZone : MonoBehaviour
 {
     public float healSpeed = 25f;
+    public float radius = 20f;
+    private SphereCollider col => GetComponent<SphereCollider>();
+    private VisualEffect effect => GetComponent<VisualEffect>();
+
+    private void OnValidate() {
+        col.radius = radius;
+        effect.SetFloat("Radius", radius);
+    }
 
     private void OnTriggerStay(Collider other)
     {

@@ -10,17 +10,15 @@ public class HUD : MonoBehaviour
     public TextMeshProUGUI soulsUI;
     public TextMeshProUGUI healthUI;
     public TextMeshProUGUI coinsUI;
-    public TextMeshProUGUI sellButtonText;
 
     private void Update()
     {
-        if ( soulsUI == null || healthUI == null || coinsUI == null || sellButtonText == null)
+        if ( soulsUI == null || healthUI == null || coinsUI == null )
             return;
 
         soulsUI.text = "Souls: "+(Mathf.RoundToInt(PlayerAttributes.souls).ToString());
         healthUI.text = "Health: " + Mathf.RoundToInt(PlayerAttributes.health).ToString() +" / " +  Mathf.RoundToInt(PlayerAttributes.maxHealth).ToString() +  " (Regression: "+ PlayerAttributes.regress.ToString() +" p/s)";
         coinsUI.text = "Coins: " + Mathf.RoundToInt(PlayerAttributes.coins).ToString();
-        sellButtonText.text = "Sell 1 soul for " + Mathf.RoundToInt(PlayerAttributes.soulValueMultiplier).ToString() + " Coins";
     }
 
 }
