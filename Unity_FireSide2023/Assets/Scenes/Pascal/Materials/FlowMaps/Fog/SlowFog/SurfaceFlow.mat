@@ -30,7 +30,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
@@ -68,16 +68,19 @@ Material:
     - Speed: 0.5
     - Strength: 1
     - Tiling: 1
-    - WaveDensity: 1
+    - WaveDensity: 100
     - WaveRim: 0.1
     - WaveSpeed: 0.01
+    - _FadeStrength: 2.94
     - _FlowStrength: 1
     - _HoleFalloff: 1.34
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Test: 0
     - _TextureTiling: 1
-    - _WaveHeight: 0
+    - _WaveHeight: 0.5
     - lerp: 0
     m_Colors:
     - RimColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FadeDirection: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

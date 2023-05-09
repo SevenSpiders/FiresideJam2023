@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6950885172368263101
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 7
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -20,17 +7,17 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: flowmap1
-  m_Shader: {fileID: -6465566751694194690, guid: abeff1a15d9aebc4fb4ba9b9ec1c33f4,
+  m_Name: DeepFlow_FadeY
+  m_Shader: {fileID: -6465566751694194690, guid: f5b583d8d90ba4a8bbdfc29c7c2f7c6e,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3002
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
@@ -42,7 +29,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture:
-        m_Texture: {fileID: 2800000, guid: ec181910f5c1541ce89920978d08fbfe, type: 3}
+        m_Texture: {fileID: 2800000, guid: 97252b7d97dd99e44ad8919411426c49, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -59,26 +46,41 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Depth: 0
-    - FlowMapTiling: 1
-    - FlowSpeed: 0.1
-    - HoleSpeed: 0.5
-    - Holes: 0
-    - WaveDensity: 10
-    - WaveRim: 0.5
-    - WaveSpeed: 0.1
-    - _FadeAngle: 0
-    - _FadeStrenth: 0
-    - _FlowStrength: 0
+    - Alpha: 1
+    - Depth: 2
+    - FlowMapTiling: 0.2
+    - FlowSpeed: 0.01
+    - HoleSpeed: 0
+    - Holes: 50
+    - Speed: -0.5
+    - Strength: 1
+    - Tiling: 0.5
+    - WaveDensity: 100
+    - WaveRim: 0.08
+    - WaveSpeed: 0.01
+    - _FadeStrength: 2
+    - _FlowStrength: 1
     - _HoleFalloff: 1
     - _QueueControl: 0
-    - _QueueOffset: 0
+    - _QueueOffset: 2
+    - _Test: 0
     - _TextureTiling: 1
-    - _WaveHeight: 2
-    - _test: 1
+    - _WaveHeight: 0.5
+    - lerp: 0
     m_Colors:
-    - RimColor: {r: 0, g: 0, b: 0, a: 0}
-    - _Fade: {r: 1.2, g: 0.47, b: 0, a: 0}
-    - _Manual_Offset: {r: 1, g: 1, b: 0, a: 0}
-    - _test: {r: 1, g: 1, b: 0, a: 0}
+    - RimColor: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
+    - _FadeDirection: {r: 0, g: 1.5, b: 0, a: 0}
   m_BuildTextureStacks: []
+--- !u!114 &7630885089146849651
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7

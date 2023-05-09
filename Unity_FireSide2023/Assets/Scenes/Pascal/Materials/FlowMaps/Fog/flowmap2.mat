@@ -61,7 +61,7 @@ Material:
     m_Floats:
     - Depth: 0
     - FlowMapTiling: 1
-    - FlowSpeed: 0.5
+    - FlowSpeed: 0.1
     - HoleSpeed: 0.5
     - Holes: 0
     - WaveDensity: 10
@@ -76,5 +76,7 @@ Material:
     - _test: 1
     m_Colors:
     - RimColor: {r: 0, g: 0, b: 0, a: 0}
+    - _Fade: {r: 2, g: 0, b: 0, a: 0}
     - _Manual_Offset: {r: 1, g: 1, b: 0, a: 0}
+    - _test: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
