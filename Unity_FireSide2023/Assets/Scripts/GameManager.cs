@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     {
         if (PlayerAttributes.health == 0)
         {
-            // BoatController.movementEnabled = false;
+            PlayerAttributes.movementEnabled = false;
             playerLosePanel.SetActive(true);
         }
     }
