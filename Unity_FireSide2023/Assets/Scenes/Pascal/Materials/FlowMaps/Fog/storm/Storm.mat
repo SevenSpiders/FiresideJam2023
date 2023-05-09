@@ -75,8 +75,9 @@ Material:
     - _HoleFalloff: 1.34
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Test: 0.01
     - _TextureTiling: 1
-    - _WaveHeight: 1
+    - _WaveHeight: 0
     - lerp: 0
     m_Colors:
     - RimColor: {r: 0, g: 0, b: 0, a: 1}
