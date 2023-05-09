@@ -23,9 +23,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (MA_PlayerAttributes.health == 0)
+        if (PlayerAttributes.health == 0)
         {
-            MA_BoatController.movementEnabled = false;
+            PlayerAttributes.movementEnabled = false;
             playerLosePanel.SetActive(true);
         }
     }
