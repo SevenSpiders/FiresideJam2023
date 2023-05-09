@@ -6,7 +6,6 @@ using UnityEngine;
 public class BoatController : PhysicsObject
 {
     [Header("Boat Controller Stuff")]
-    public Light pointLight;
     public Light spotLight;
 
     private float maxSpeed;
@@ -35,14 +34,6 @@ public class BoatController : PhysicsObject
         spotLight.transform.forward = Input.GetButton("Fire1") && Vector3.Dot(transform.forward, direction) > 0 ?
             Vector3.Lerp(spotLight.transform.forward, direction, Time.deltaTime * 10) :
             Vector3.Lerp(spotLight.transform.forward, transform.forward, Time.deltaTime * 10);
-
-        //Dim point light with current health
-        if (pointLight == null)
-            return;
-
-        pointLight.intensity = Mathf.Lerp(0,100,PlayerAttributes.health / PlayerAttributes.maxHealth);
-        pointLight.range = Mathf.Lerp(0, 15, PlayerAttributes.health / PlayerAttributes.maxHealth);
-
 
         // Disable movement 
         if (!PlayerAttributes.movementEnabled) {
