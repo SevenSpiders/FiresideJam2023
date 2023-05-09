@@ -620,21 +620,6 @@ PrefabInstance:
       propertyPath: follow
       value: 
       objectReference: {fileID: 2819398881551006404}
-    - target: {fileID: 4121889957730488065, guid: 9533643165592c14ea68b08f971ef923,
-        type: 3}
-      propertyPath: offset.y
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 4121889957730488065, guid: 9533643165592c14ea68b08f971ef923,
-        type: 3}
-      propertyPath: offset.z
-      value: -40
-      objectReference: {fileID: 0}
-    - target: {fileID: 4121889957730488065, guid: 9533643165592c14ea68b08f971ef923,
-        type: 3}
-      propertyPath: followSpeed
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4237168660423215802, guid: 9533643165592c14ea68b08f971ef923,
         type: 3}
       propertyPath: m_RootOrder
@@ -1785,7 +1770,7 @@ PrefabInstance:
     - target: {fileID: 3008738570124520427, guid: c31bf1173b748c540b0335db12391f68,
         type: 3}
       propertyPath: m_Name
-      value: UI Canvas
+      value: HUD
       objectReference: {fileID: 0}
     - target: {fileID: 4598140788621054781, guid: c31bf1173b748c540b0335db12391f68,
         type: 3}
@@ -2953,7 +2938,7 @@ PrefabInstance:
     - target: {fileID: 8697659768426446779, guid: 3720fc3f5cdbf6140bb4e3eb48747c2f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8697659768426446779, guid: 3720fc3f5cdbf6140bb4e3eb48747c2f,
         type: 3}
@@ -7455,7 +7440,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (Boat)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5146209371355688575, guid: c9d0bfa1aff92e04a9379240e2ddf8ab, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

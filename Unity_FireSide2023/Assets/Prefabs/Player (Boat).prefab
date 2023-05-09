@@ -1432,7 +1432,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7045899514518490464}
   - component: {fileID: 1878234519080677753}
-  - component: {fileID: 5146209371355688575}
   m_Layer: 3
   m_Name: Player (Boat)
   m_TagString: Player
@@ -1455,7 +1454,7 @@ Transform:
   - {fileID: 3580109724570659511}
   - {fileID: 7560712905720103997}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1878234519080677753
 MonoBehaviour:
@@ -1485,19 +1484,3 @@ MonoBehaviour:
   alignRotationSpringStrenght: 50
   alignRotationSpringDamp: 12.5
   spotLight: {fileID: 4890435635325043406}
---- !u!114 &5146209371355688575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9165125048289468628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3badd1c5478efaf4191cfd7e4e61fd95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soulsUI: {fileID: 0}
-  healthUI: {fileID: 0}
-  coinsUI: {fileID: 0}
-  sellButtonText: {fileID: 0}
