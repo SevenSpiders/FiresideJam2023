@@ -209,6 +209,7 @@ MonoBehaviour:
   coinsUI: {fileID: 2068744822}
   sellButton: {fileID: 1378601775}
   sellButtonText: {fileID: 435029800}
+  isInvulnerable: 0
 --- !u!1 &113392054
 GameObject:
   m_ObjectHideFlags: 0
@@ -4020,6 +4021,7 @@ GameObject:
   - component: {fileID: 2103094203}
   - component: {fileID: 2103094202}
   - component: {fileID: 2103094201}
+  - component: {fileID: 2103094205}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -4113,6 +4115,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2103094205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103094200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43985e06a2e7a04e956ab110bac494e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 25
 --- !u!1001 &2096463079934944134
 PrefabInstance:
   m_ObjectHideFlags: 0
