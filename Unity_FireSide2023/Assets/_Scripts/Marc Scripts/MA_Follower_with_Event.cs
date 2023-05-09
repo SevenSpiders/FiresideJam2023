@@ -74,57 +74,63 @@ public class MA_Follower_with_Event : MonoBehaviour
     }
 
 
-    private void collectEvent() {
+    private void collectEvent()
+    {
         Destroy(this.gameObject);
         MA_PlayerAttributes.souls += value;
         MA_BoatController.movementEnabled = true;
 
     }
 
-    private void startEvent() {
+    private void startEvent()
+    {
         MA_BoatController.movementEnabled = false;
     }
 
-    private void exitEvent() {
-            StopAllCoroutines();
-            curName.text = "";
-            inpName.text = "";
-            MA_BoatController.movementEnabled = true;
+    private void exitEvent()
+    {
+        StopAllCoroutines();
+        curName.text = "";
+        inpName.text = "";
+        MA_BoatController.movementEnabled = true;
     }
 
     private IEnumerator StartMiniGame(int typeCount = 1)
     {
-        startEvent();
-        
-        for (int i = 0; i < typeCount; i++)
+        if (MA_BoatController.movementEnabled)
         {
-            string randomName = AncientGreekNames[(int)Random.Range(0, 99)];
-            curName.text = randomName;
-            string curInput = "";
-            char lastPressedChar = '\0';
+            startEvent();
 
-            foreach (char c in randomName)
+            for (int i = 0; i < typeCount; i++)
             {
-                while (lastPressedChar != c)
+                string randomName = AncientGreekNames[(int)Random.Range(0, 99)];
+                curName.text = randomName;
+                string curInput = "";
+                char lastPressedChar = '\0';
+
+                foreach (char c in randomName)
                 {
-                    string keyPressed = Input.inputString;
+                    while (lastPressedChar != c)
+                    {
+                        string keyPressed = Input.inputString;
 
-                    if (!string.IsNullOrEmpty(keyPressed))
-                        lastPressedChar = keyPressed[keyPressed.Length - 1];
+                        if (!string.IsNullOrEmpty(keyPressed))
+                            lastPressedChar = keyPressed[keyPressed.Length - 1];
 
-                    if (Input.GetKeyDown(exitKey))
-                        exitEvent() ;
-               
-                    yield return null;
+                        if (Input.GetKeyDown(exitKey))
+                            exitEvent();
+
+                        yield return null;
+                    }
+
+                    curInput += c;
+                    inpName.text = curInput;
                 }
-
-                curInput += c;
-                inpName.text = curInput;
+                curName.text = "";
+                inpName.text = "";
             }
-            curName.text = "";
-            inpName.text = "";
+            collectEvent();
         }
-        collectEvent();
     }
 
 
