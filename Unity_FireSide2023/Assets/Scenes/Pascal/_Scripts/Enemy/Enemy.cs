@@ -7,19 +7,19 @@ namespace Pascal {
 
     public class Enemy : MonoBehaviour
     {
-        [SerializeField] float moveSpeed = 5f;
         [SerializeField] float attackRange = 1f;
         [SerializeField] int damage = 10;
-        [SerializeField] float leashLenght = 300f;  // how far can it travel away from initial position
+        [Tooltip("How far can it travel away from initial position")]
+        [SerializeField] float leashLenght = 300f; 
         
-        AudioManager audioManager;
+        [SerializeField] AudioManager audioManager;
+        [SerializeField] EnemyMovementController movementController;
 
         public enum State { Idle, Chasing, Returning }
-        public State state;
+        public State state = State.Idle;
 
         Transform target;
         EnemyAggro aggro;
-        ChasePlayer chase;
         Vector3 posInit;
 
         bool attackReady = true;
@@ -29,13 +29,13 @@ namespace Pascal {
         void Start() {
             posInit = transform.position;
             aggro = GetComponent<EnemyAggro>();
-            chase = GetComponent<ChasePlayer>();
-            audioManager = GetComponent<AudioManager>();
+
 
             aggro.a_Trigger += HandleStartAggro;
-            chase.a_Stop += HandleStopChase;
+            movementController.a_Stop += HandleStopChase;
             CharacterHealth.A_Death += HandleDeath;
         }
+
 
         void Update() {
             switch (state) {
@@ -70,7 +70,7 @@ namespace Pascal {
                 Attack();
             }
             if (Vector3.Distance(transform.position, posInit) > leashLenght) {
-                chase.StopChase();
+                movementController.StopChase();
             }
         }
 
@@ -96,7 +96,7 @@ namespace Pascal {
                 attackReady = false;
             }
 
-            // chase.Pause(attackCooldown);
+            // movementController.Pause(attackCooldown);
             Invoke(nameof(ResetAttack), attackCooldown);
         }
 
@@ -107,7 +107,7 @@ namespace Pascal {
 
         void HandleStartAggro(Transform target) {
             this.target = target;
-            chase.ChastTarget(target);
+            movementController.ChastTarget(target);
             state = State.Chasing;
             audioManager.Play("Aggro");
         }
@@ -115,7 +115,7 @@ namespace Pascal {
         void HandleStopChase() {
             this.target = null;
             state = State.Returning;
-            chase.MoveToPoint(posInit);
+            movementController.MoveToPoint(posInit);
         }
 
         void HandleDeath(string charName) {

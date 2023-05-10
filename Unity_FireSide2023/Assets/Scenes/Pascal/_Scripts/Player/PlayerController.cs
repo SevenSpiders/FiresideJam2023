@@ -15,6 +15,7 @@ namespace Pascal
         float horizontalInput;
         float verticalInput;
         Vector3 movementDir = Vector3.zero;
+        bool boostPressed;
 
         void Start() {
             rb.drag = groundDrag;
@@ -23,6 +24,7 @@ namespace Pascal
         void Update() {
             horizontalInput = Input.GetAxis("Horizontal");
             verticalInput = Input.GetAxis("Vertical");
+            boostPressed = Input.GetKey(KeyCode.Space);
         
 
             movementDir = Vector3.forward * verticalInput + Vector3.right * horizontalInput;
@@ -39,7 +41,8 @@ namespace Pascal
         void SpeedControl() {
             Vector3 velFlat = new Vector3(rb.velocity.x, 0, rb.velocity.z);
             if (velFlat.magnitude > moveSpeed) {
-                Vector3 vel = velFlat.normalized *moveSpeed;
+                float _speed = boostPressed ? moveSpeed * 2f : moveSpeed; 
+                Vector3 vel = velFlat.normalized *_speed;;
                 rb.velocity = new Vector3(vel.x, rb.velocity.y, vel.z);
             }
         }

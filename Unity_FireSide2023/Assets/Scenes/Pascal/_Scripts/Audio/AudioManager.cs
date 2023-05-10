@@ -31,7 +31,6 @@ namespace Pascal
 
         
         public void Play(string name) {
-            Debug.Log($"play {name}");
 
             foreach (AudioSound s in sounds) {
                 if (s.name != name) continue;

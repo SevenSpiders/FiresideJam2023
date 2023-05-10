@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Pascal {
     
 
-    public class ChasePlayer : MonoBehaviour {
+    public class  EnemyMovementController : MonoBehaviour {
 
         public System.Action a_Stop;
         public Transform target;
@@ -22,7 +22,6 @@ namespace Pascal {
         
 
         Vector3 velocity = Vector3.zero;
-        float runningAvg;
 
 
 
@@ -37,13 +36,17 @@ namespace Pascal {
                 
             
             if (target != null) targetPos = target.position;
-            transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, followDelay);
-
-            runningAvg = runningAvg*0.99f + velocity.magnitude*0.01f;
-            // wobbleMaterial.SetFloat("_Frequency", runningAvg*f_wobble);
 
             Vector3 targetDirection = targetPos - transform.position;
-            if (targetDirection.magnitude > 0.1f) {
+            float distance  = targetDirection.magnitude;
+            float t_delay = Mathf.Min(distance, 10f) * followDelay;
+
+            Vector3 newPosition = Vector3.SmoothDamp(rb.position, targetPos, ref velocity, t_delay);
+            rb.MovePosition(newPosition);
+
+            // Debug.Log($"dist: {distance} speed:{velocity.magnitude} delay: {t_delay}");
+
+            if (distance > 0.1f) {
                 Quaternion targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.VFX;
 
 
 namespace Pascal {
@@ -10,12 +11,20 @@ namespace Pascal {
         
         [SerializeField] int maxHealth = 100;
         [SerializeField] bool isPlayer;
-        int currentHealth;
+        [SerializeField] AudioManager audioManager;
+        [SerializeField] VisualEffect vfx;
 
+        public int currentHealth;
+
+
+        
 
         void Start() {
             currentHealth = maxHealth;
         }
+
+
+
 
         public void TakeDamage(int damageAmount)
         {
@@ -23,6 +32,8 @@ namespace Pascal {
             if (currentHealth <= 0)
                 Die();
             if (isPlayer) PlayerAttributes.health = currentHealth;
+            audioManager.Play("Hurt");
+            vfx.Play();
         }
 
         void Die()

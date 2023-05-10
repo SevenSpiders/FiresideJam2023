@@ -52,7 +52,7 @@ Material:
     - _Cull: 2
     - _DstBlend: 10
     - _FresnelStrength: 1
-    - _HorizontalFade: 1
+    - _HorizontalFade: 0.75
     - _Interior: 1
     - _Outline: 0.73
     - _QueueControl: 0

@@ -10,6 +10,7 @@ public abstract class PhysicsObject : MonoBehaviour
     // the class implements a function called OnGroundContact that is like OnCollisionEnter but only when the player hits any surface
     // You can use OnGroundContact to play a sound or particles and use the Vector3 contactPoint for 3d sounds or to place the particle effect there
 
+    public float f_clamp = 1f;
     // Rigidbody
     public Rigidbody Rb { get; private set; }
 
@@ -22,6 +23,7 @@ public abstract class PhysicsObject : MonoBehaviour
     public float angDrag = 0.05f;
     // Capsule Collider
     public CapsuleCollider Col { get; private set; }
+
 
 
     [Header("Capsule Collider Settings")]
@@ -65,14 +67,15 @@ public abstract class PhysicsObject : MonoBehaviour
             return;
         // gravity
         Rb.AddForce(gravity * Rb.mass * Vector3.down);
-        // spring forces to upright rotation and height
-        UpdateUprightRotation();
+        
+        UpdateUprightRotation(); // spring forces to upright rotation and height
         UpdateRightHeight();
-        // Additional Forces for look at and move functions
-        Rb.AddForce(AdditionalForce);
-        Rb.AddTorque(AdditionalTorque);
-        // Add Jump Force
-        Rb.AddForce(jumpForce);
+        
+        Rb.AddForce(AdditionalForce); // Additional Forces for look at and move functions
+        Rb.AddTorque(AdditionalTorque); // Additional Forces for look at and move functions
+        
+        Rb.AddForce(jumpForce); // Add Jump Force
+
         // transition jumpForce back to 0
         jumpForce = jumpForce.magnitude > 0 ? (Vector3.zero - jumpForce) * Time.fixedDeltaTime : Vector3.zero;
         // check for the first ground contact and trigger the
@@ -108,8 +111,10 @@ public abstract class PhysicsObject : MonoBehaviour
     }
     public void CharacterMove(Vector3 dir)
     {
-        Vector3 neededForce = (dir - Rb.velocity) * (1 / Time.fixedDeltaTime);
+        Vector3 clampedVel = Vector3.ClampMagnitude(Rb.velocity, f_clamp);
+        Vector3 neededForce = (dir - clampedVel) * (1 / Time.fixedDeltaTime);
         neededForce.y = 0;
+        Debug.LogWarning($"force: {neededForce}, dir: {dir}, vel: {Rb.velocity}");
 
         AdditionalForce = neededForce;
     }

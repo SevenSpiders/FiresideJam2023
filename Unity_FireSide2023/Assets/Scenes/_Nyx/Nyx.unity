@@ -1276,7 +1276,7 @@ GameObject:
   - component: {fileID: 373120130}
   - component: {fileID: 373120129}
   - component: {fileID: 373120127}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7377,49 +7377,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5109496639643711396}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &2819398881551006406
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 27894206}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
---- !u!114 &2819398881551006407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 27894206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbca9bf7add81444788c4cdc7142fbcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 2819398881551006406}
-  moveSpeed: 200
-  turnSpeed: 10
-  groundDrag: 1
 --- !u!1001 &4529739882224309674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7799,11 +7756,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5146209371355688575, guid: c9d0bfa1aff92e04a9379240e2ddf8ab,
-        type: 3}
-      propertyPath: drag
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 1878234519080677753, guid: c9d0bfa1aff92e04a9379240e2ddf8ab,
         type: 3}
       propertyPath: mass
@@ -7816,8 +7768,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1878234519080677753, guid: c9d0bfa1aff92e04a9379240e2ddf8ab,
         type: 3}
+      propertyPath: f_clamp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878234519080677753, guid: c9d0bfa1aff92e04a9379240e2ddf8ab,
+        type: 3}
       propertyPath: gravity
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878234519080677753, guid: c9d0bfa1aff92e04a9379240e2ddf8ab,
+        type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 5146209371355688575, guid: c9d0bfa1aff92e04a9379240e2ddf8ab,
+        type: 3}
+      propertyPath: drag
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7045899514518490464, guid: c9d0bfa1aff92e04a9379240e2ddf8ab,
         type: 3}
@@ -7883,15 +7850,7 @@ PrefabInstance:
     - {fileID: 5146209371355688575, guid: c9d0bfa1aff92e04a9379240e2ddf8ab, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9165125048289468628, guid: c9d0bfa1aff92e04a9379240e2ddf8ab,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2819398881551006407}
-    - targetCorrespondingSourceObject: {fileID: 9165125048289468628, guid: c9d0bfa1aff92e04a9379240e2ddf8ab,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2819398881551006406}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9d0bfa1aff92e04a9379240e2ddf8ab, type: 3}
 --- !u!1001 &6144991699151827724
 PrefabInstance:
