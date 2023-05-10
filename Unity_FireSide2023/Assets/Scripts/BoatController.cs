@@ -6,7 +6,6 @@ using UnityEngine;
 public class BoatController : PhysicsObject
 {
     [Header("Boat Controller Stuff")]
-    public Light spotLight;
     public GameObject projectile;
 
 
@@ -18,26 +17,7 @@ public class BoatController : PhysicsObject
 
     void Update()
     {
-        // Enables the spotlight on left mousebutton to mouse position
-        if (spotLight == null)
-            return;
 
-        spotLight.intensity = Input.GetButton("Fire1") ?
-            Mathf.Lerp(spotLight.intensity, 200, Time.deltaTime * 10) :
-            Mathf.Lerp(spotLight.intensity, 0, Time.deltaTime * 10);
-
-
-        Vector3 mouseWorldPos = Vector3.zero;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit,Mathf.Infinity,LayerMask.GetMask("Ground"),QueryTriggerInteraction.Ignore))
-            mouseWorldPos = hit.point;
-        Debug.DrawLine(transform.position, mouseWorldPos);
-        Vector3 direction = mouseWorldPos - transform.position;
-        direction.y = 0;
-        direction.Normalize();
-
-        spotLight.transform.forward = Input.GetButton("Fire1") && Vector3.Dot(transform.forward, direction) > 0 ?
-            Vector3.Lerp(spotLight.transform.forward, direction, Time.deltaTime * 10) :
-            Vector3.Lerp(spotLight.transform.forward, transform.forward, Time.deltaTime * 10);
 
         // Disable movement 
         if (!PlayerAttributes.movementEnabled) {
@@ -82,7 +62,12 @@ public class BoatController : PhysicsObject
         else
             PlayerAttributes.Regress();
 
-        // Shooting
+        /* Shooting
+
+        Vector3 mouseWorldPos = Vector3.zero;
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity, LayerMask.GetMask("Ground"), QueryTriggerInteraction.Ignore))
+            mouseWorldPos = hit.point;
+
         if (projectile == null || projectile.GetComponent<Projectile>() == null)
             return;
 
@@ -90,7 +75,7 @@ public class BoatController : PhysicsObject
             GameObject curProj = Instantiate(projectile);
             curProj.GetComponent<Projectile>().ShootProjectile(transform.position + Vector3.up, mouseWorldPos);
         }
-
+        */
 
 
     }

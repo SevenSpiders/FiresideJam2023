@@ -108,7 +108,6 @@ public abstract class PhysicsObject : MonoBehaviour
     {
         Vector3 neededForce = (dir - Rb.velocity) * (1 / Time.deltaTime);
         neededForce.y = 0;
-        Debug.LogWarning($"force: {neededForce}, dir: {dir}, vel: {Rb.velocity}");
 
         AdditionalForce = neededForce;
     }

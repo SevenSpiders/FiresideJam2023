@@ -32,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 5871091526795499008}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1851445734391505257
 MonoBehaviour:
@@ -62,8 +62,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   collectRadius: 3
-  interactionKey: 102
-  exitKey: 27
 --- !u!1 &9156162144099018774
 GameObject:
   m_ObjectHideFlags: 0
