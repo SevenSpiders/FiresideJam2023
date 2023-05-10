@@ -14,7 +14,7 @@ public abstract class PhysicsObject : MonoBehaviour
     public Rigidbody Rb { get; private set; }
 
     [Header("Rigidbody Settings")]
-        public string layer;
+    public string layer;
     private int layerMask;
     public float gravity = 10f;
     public float mass = 1f;
