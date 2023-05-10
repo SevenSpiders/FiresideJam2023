@@ -1469,9 +1469,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layer: Ignore Raycast
-  gravity: 20
+  gravity: 100
   mass: 1
-  drag: 0
+  drag: 5
   angDrag: 0.05
   center: {x: 0, y: 0, z: 0}
   radius: 1

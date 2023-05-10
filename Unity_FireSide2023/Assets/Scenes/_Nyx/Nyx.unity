@@ -150,7 +150,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: a89cd853c5953264b955499eb172bf39, type: 3}
 --- !u!1001 &57115406
@@ -778,7 +778,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: a89cd853c5953264b955499eb172bf39, type: 3}
 --- !u!1001 &344823964
@@ -7543,8 +7543,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1878234519080677753, guid: c9d0bfa1aff92e04a9379240e2ddf8ab,
         type: 3}
+      propertyPath: drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878234519080677753, guid: c9d0bfa1aff92e04a9379240e2ddf8ab,
+        type: 3}
+      propertyPath: mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878234519080677753, guid: c9d0bfa1aff92e04a9379240e2ddf8ab,
+        type: 3}
       propertyPath: layer
       value: Ignore Raycast
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878234519080677753, guid: c9d0bfa1aff92e04a9379240e2ddf8ab,
+        type: 3}
+      propertyPath: gravity
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7045899514518490464, guid: c9d0bfa1aff92e04a9379240e2ddf8ab,
         type: 3}
