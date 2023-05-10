@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pascal 
-{
     [System.Serializable]
     public class AudioSound
     {
@@ -21,4 +19,4 @@ namespace Pascal
         [HideInInspector] public AudioSource source;
 
     }
-}
+
