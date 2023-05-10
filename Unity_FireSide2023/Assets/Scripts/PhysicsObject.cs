@@ -56,7 +56,6 @@ public abstract class PhysicsObject : MonoBehaviour
         Rb = AddRigidBody(mass, drag, angDrag);
         Col = AddCapsuleCollider(center, radius, lenght);
         layerMask = ~LayerMask.GetMask(ignorelayer);
-
     }
 
     private void FixedUpdate()
@@ -71,10 +70,7 @@ public abstract class PhysicsObject : MonoBehaviour
         // Additional Forces for look at and move functions
         Rb.AddForce(AdditionalForce);
         Rb.AddTorque(AdditionalTorque);
-        // Add Jump Force
-        Rb.AddForce(jumpForce);
-        // transition jumpForce back to 0
-        jumpForce = jumpForce.magnitude > 0 ? (Vector3.zero - jumpForce) * Time.fixedDeltaTime : Vector3.zero;
+
         // check for the first ground contact and trigger the
         // OnGroundContact function with the contact position that
         // a child class can use to play sounds or trigger particle system
@@ -102,25 +98,16 @@ public abstract class PhysicsObject : MonoBehaviour
 
 
             // Apply the additional torque (this variable comes from the character controller parent)
-            Vector3 neededTorque = (rotAxis * -rotRadians) * (1 / Time.fixedDeltaTime);
+            Vector3 neededTorque = (rotAxis * -rotRadians) * (1 / Time.deltaTime);
             AdditionalTorque = neededTorque;
         }
     }
     public void CharacterMove(Vector3 dir)
     {
-        Vector3 neededForce = (dir - Rb.velocity) * (1 / Time.fixedDeltaTime);
+        Vector3 neededForce = (dir - Rb.velocity) * (1 / Time.deltaTime);
         neededForce.y = 0;
 
         AdditionalForce = neededForce;
-    }
-    public void CharacterJump(float height)
-    {
-        // Zero out the current velocity to have the same jump everytime
-        Rb.velocity = Vector3.zero;
-        // Calc the up force needed to perform the jump
-        float neededForce = height * (1 / Time.fixedDeltaTime);
-        // Set the jumpForce to the calulated value
-        jumpForce = Vector3.up * neededForce;
     }
 
     // Balancing movement functions

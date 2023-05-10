@@ -26,9 +26,11 @@ public class BoatController : PhysicsObject
             Mathf.Lerp(spotLight.intensity, 200, Time.deltaTime * 10) :
             Mathf.Lerp(spotLight.intensity, 0, Time.deltaTime * 10);
 
-        float distToPlayer = Vector3.Distance(transform.position, Camera.main.transform.position);
-        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(new(Input.mousePosition.x, Input.mousePosition.y, distToPlayer));
 
+        Vector3 mouseWorldPos = Vector3.zero;
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit,Mathf.Infinity,LayerMask.GetMask("Ground"),QueryTriggerInteraction.Ignore))
+            mouseWorldPos = hit.point;
+        Debug.DrawLine(transform.position, mouseWorldPos);
         Vector3 direction = mouseWorldPos - transform.position;
         direction.y = 0;
         direction.Normalize();
@@ -81,13 +83,15 @@ public class BoatController : PhysicsObject
             PlayerAttributes.Regress();
 
         // Shooting
-        if (projectile == null)
+        if (projectile == null || projectile.GetComponent<Projectile>() == null)
             return;
 
-        if (Input.GetButtonDown("Fire2"))
-            StartCoroutine(ShootProjectile(mouseWorldPos));
+        if (Input.GetButtonDown("Fire2")) {
+            GameObject curProj = Instantiate(projectile);
+            curProj.GetComponent<Projectile>().ShootProjectile(transform.position + Vector3.up, mouseWorldPos);
+        }
 
-        Debug.DrawLine(transform.position, mouseWorldPos);
+
 
     }
 
@@ -96,28 +100,6 @@ public class BoatController : PhysicsObject
         // add water splash sound and water splash particles
     }
 
-    private IEnumerator ShootProjectile(Vector3 worldPos,float speed = 1,float startHeight = 3f,float startUpForce = 5f,float timeOffset = .5f,float aimTime = 1f)
-    {
-        GameObject curProj = Instantiate(projectile);
-        curProj.transform.position = transform.position + Vector3.up * startHeight;
-        
-        if( curProj.GetComponent<Rigidbody>() == null)
-            StopAllCoroutines();
 
-        Rigidbody curRig = curProj.GetComponent<Rigidbody>();
-        curRig.AddForce(Vector3.up * startUpForce,ForceMode.Impulse);
-
-
-        yield return new WaitForSeconds(timeOffset);
-
-        float t = 0;
-        Vector3 aimDir = (worldPos - curProj.transform.position).normalized;
-
-        while (t < aimTime) {
-            yield return null;
-            curRig.AddForce((1/ Time.fixedDeltaTime) * speed * aimDir);
-        }
-
-    }
 
 }

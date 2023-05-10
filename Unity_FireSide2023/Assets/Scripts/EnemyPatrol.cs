@@ -33,6 +33,7 @@ public class EnemyPatrol : MonoBehaviour
         if (patrolPoints.Length == 0) 
             return;
         
+
         Vector3 targetPosition = startPos + patrolPoints[currentPatrolPointIndex];
 
         if (Vector3.Distance(transform.position, targetPosition) > patrolPointRadius) {

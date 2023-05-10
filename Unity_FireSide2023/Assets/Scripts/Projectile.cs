@@ -5,21 +5,44 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float lifetime = 5f;
+    private Rigidbody rb;
 
     private void Awake() {
-        StartCoroutine(DestroyProjectile());    
+        rb = GetComponent<Rigidbody>() == null ? null : GetComponent<Rigidbody>();
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<EnemyPatrol>() == null)
+        if (other.tag != "Enemy")
             return;
 
-        Destroy(other.gameObject);
+        HitEvent(other.gameObject);
     }
 
-    private IEnumerator DestroyProjectile() {
-        yield return new WaitForSeconds(lifetime);
+    public void ShootProjectile(Vector3 worldStartPos, Vector3 worldEndPos, float speed = .4f, float timeOffset = .1f, float aimTime = 3)
+    {
+        if (rb == null)
+            return;
+
+        StartCoroutine(EShootProjectile(worldStartPos, worldEndPos, speed, timeOffset, aimTime));
+    }
+
+    private IEnumerator EShootProjectile(Vector3 worldStartPos,Vector3 worldEndPos, float speed, float timeOffset, float aimTime)
+    {
+        transform.position = worldStartPos;
+        Rigidbody curRig = GetComponent<Rigidbody>();
+        yield return new WaitForSeconds(timeOffset);
+        float t = 0;
+        Vector3 aimDir = (worldEndPos - transform.position).normalized;
+
+        while (t < aimTime) {
+            t += Time.deltaTime;
+            curRig.AddForce(speed * aimDir,ForceMode.Impulse);
+            yield return null;
+        }
         Destroy(this.gameObject);
+    }
+
+    private void HitEvent(GameObject hitObject) {
+        Destroy(hitObject.transform.parent.gameObject);
     }
 }
