@@ -1246,7 +1246,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da24ce7ff5f0e424fb72df16bae4e2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layer: Ignore Raycast
   gravity: 100
   mass: 1
   drag: 5
@@ -1262,6 +1261,8 @@ MonoBehaviour:
   alignRotationSpringStrenght: 50
   alignRotationSpringDamp: 12.5
   spotLight: {fileID: 4890435635325043406}
+  projectile: {fileID: 7710150256653078536, guid: 000efeb6196339844ba8a2cbc76397b9,
+    type: 3}
 --- !u!1001 &4522136780897907890
 PrefabInstance:
   m_ObjectHideFlags: 0
