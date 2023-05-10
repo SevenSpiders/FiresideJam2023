@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
@@ -10,8 +12,13 @@ public class EnemyPatrol : MonoBehaviour
     public float patrolPointRadius = 1f;
     private bool isFollowingPlayer;
     private GameObject playerTarget;
+    private Vector3 startPos;
+    private int currentPatrolPointIndex = 0; 
 
 
+    private void Awake() {
+        startPos = transform.position;
+    }
 
     private void Update() {
 
@@ -23,14 +30,21 @@ public class EnemyPatrol : MonoBehaviour
 
     private void Patrol()
     {
-        foreach( Vector3 p in patrolPoints) {
-            while(Vector3.Distance(transform.position,transform.position + p) > patrolPointRadius) {
-                transform.position = Vector3.MoveTowards(transform.position, transform.position + p, patrolSpeed * Time.deltaTime);
-                transform.LookAt(transform.position + p);
-            }
-        }
+        if (patrolPoints.Length == 0) 
+            return;
+        
+        Vector3 targetPosition = startPos + patrolPoints[currentPatrolPointIndex];
 
+        if (Vector3.Distance(transform.position, targetPosition) > patrolPointRadius) {
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, patrolSpeed * Time.deltaTime);
+            transform.LookAt(targetPosition);
+        }
+        else
+            currentPatrolPointIndex = (currentPatrolPointIndex + 1) % patrolPoints.Length;
+        
     }
+
+
 
     private void FollowPlayer() {
         if (playerTarget == null)
@@ -57,7 +71,7 @@ public class EnemyPatrol : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         foreach (Vector3 p in patrolPoints)
-            Gizmos.DrawWireSphere(transform.position + p, patrolPointRadius);
+            Gizmos.DrawWireSphere(startPos + p, patrolPointRadius);
     }
 }
 
