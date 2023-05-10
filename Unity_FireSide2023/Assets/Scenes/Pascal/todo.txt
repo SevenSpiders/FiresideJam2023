@@ -1,9 +1,7 @@
 
-
-
-
-
-soul collection
-aoe
-
-
+[x] Rock Textures
+[x] ship particles
+[ ] Fish concept
+[ ] ocean manager
+[ ] island assets => plateau, pillars,
+[ ] ghost

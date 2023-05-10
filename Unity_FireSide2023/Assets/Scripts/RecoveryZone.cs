@@ -8,11 +8,9 @@ public class RecoveryZone : MonoBehaviour
     private SphereCollider col => GetComponent<SphereCollider>();
     private VisualEffect effect => GetComponent<VisualEffect>();
 
-    private void OnValidate()
-    {
+    private void OnValidate() {
         col.radius = radius;
-        if (effect != null)
-            effect.SetFloat("Radius", radius);
+        effect.SetFloat("Radius", radius);
     }
 
     private void OnTriggerStay(Collider other)
