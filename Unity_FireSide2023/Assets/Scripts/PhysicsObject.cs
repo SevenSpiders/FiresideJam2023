@@ -6,11 +6,10 @@ using UnityEngine;
 public abstract class PhysicsObject : MonoBehaviour
 {
     // Just create another script and make it a child of this class like  " public class Player_Controller : Character_Controller "
-    // You can then modify all behaviour values and use CharacterLookAt, CharacterMove and CharacterJump to control the character
+    // You can then modify all behaviour values and use CharacterLookAt, CharacterMove to control the character
     // the class implements a function called OnGroundContact that is like OnCollisionEnter but only when the player hits any surface
     // You can use OnGroundContact to play a sound or particles and use the Vector3 contactPoint for 3d sounds or to place the particle effect there
 
-    public float f_clamp = 1f;
     // Rigidbody
     public Rigidbody Rb { get; private set; }
 
