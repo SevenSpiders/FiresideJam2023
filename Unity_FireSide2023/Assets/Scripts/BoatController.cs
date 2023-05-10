@@ -37,7 +37,6 @@ public class BoatController : PhysicsObject
         maxSpeed = Input.GetButton("Jump") ? Mathf.Lerp(maxSpeed, PlayerAttributes.sprintSpeed + PlayerAttributes.boostSpeed, Time.deltaTime * 5) : Mathf.Lerp(maxSpeed, PlayerAttributes.speed + PlayerAttributes.boostSpeed, Time.deltaTime * 5);
         PlayerAttributes.boostCooldown = PlayerAttributes.boostCooldown > 0 ? PlayerAttributes.boostCooldown - Time.deltaTime : 0;
         PlayerAttributes.boostSpeed = PlayerAttributes.boostCooldown > 0 || PlayerAttributes.boostSpeed <= 0 ? PlayerAttributes.boostSpeed : PlayerAttributes.boostSpeed - (PlayerAttributes.accelRate * Time.deltaTime);
-        Debug.Log("Boost Speed: " + PlayerAttributes.boostSpeed + "    Boost CoolDown: " + PlayerAttributes.boostCooldown);
         
 
         // Get the input magnitude from Raw Input
