@@ -46,10 +46,13 @@ Material:
     - Paralax: 0.36
     - RimWidth: 0.027
     - Zoom: 0.856
+    - _FadeStrength: 4.26
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _test: 1
     m_Colors:
     - ObjectColor: {r: 0.61006284, g: 0.8165002, b: 1, a: 1}
+    - _FadeDirection: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8297333832719222854
 MonoBehaviour:

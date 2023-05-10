@@ -10,6 +10,7 @@ public abstract class PhysicsObject : MonoBehaviour
     // the class implements a function called OnGroundContact that is like OnCollisionEnter but only when the player hits any surface
     // You can use OnGroundContact to play a sound or particles and use the Vector3 contactPoint for 3d sounds or to place the particle effect there
 
+    public float f_clamp = 1f;
     // Rigidbody
     public Rigidbody Rb { get; private set; }
 
@@ -22,6 +23,7 @@ public abstract class PhysicsObject : MonoBehaviour
     public float angDrag = 0.05f;
     // Capsule Collider
     public CapsuleCollider Col { get; private set; }
+
 
 
     [Header("Capsule Collider Settings")]
@@ -64,8 +66,8 @@ public abstract class PhysicsObject : MonoBehaviour
             return;
         // gravity
         Rb.AddForce(gravity * Rb.mass * Vector3.down);
-        // spring forces to upright rotation and height
-        UpdateUprightRotation();
+        
+        UpdateUprightRotation(); // spring forces to upright rotation and height
         UpdateRightHeight();
         // Additional Forces for look at and move functions
         Rb.AddForce(AdditionalForce);
@@ -106,6 +108,7 @@ public abstract class PhysicsObject : MonoBehaviour
     {
         Vector3 neededForce = (dir - Rb.velocity) * (1 / Time.deltaTime);
         neededForce.y = 0;
+        Debug.LogWarning($"force: {neededForce}, dir: {dir}, vel: {Rb.velocity}");
 
         AdditionalForce = neededForce;
     }
