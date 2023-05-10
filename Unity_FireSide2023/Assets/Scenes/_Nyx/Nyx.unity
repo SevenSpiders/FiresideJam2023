@@ -6940,7 +6940,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7187008623151053385, guid: 8bcfeff955d1d7f4590ba59fc8060bab, type: 3}
+    - {fileID: 3483760651070110170, guid: 8bcfeff955d1d7f4590ba59fc8060bab, type: 3}
+    - {fileID: 2377290527235330017, guid: 8bcfeff955d1d7f4590ba59fc8060bab, type: 3}
+    - {fileID: 4274310604396325563, guid: 8bcfeff955d1d7f4590ba59fc8060bab, type: 3}
+    - {fileID: 6184963430974177731, guid: 8bcfeff955d1d7f4590ba59fc8060bab, type: 3}
+    - {fileID: 5804097477967455770, guid: 8bcfeff955d1d7f4590ba59fc8060bab, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bcfeff955d1d7f4590ba59fc8060bab, type: 3}
@@ -7691,7 +7697,11 @@ PrefabInstance:
       value: Isle of the Dead
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3551333368606926974, guid: 33f14da6359e7074c80a2b5193ee7f45, type: 3}
+    - {fileID: 2158371873075297630, guid: 33f14da6359e7074c80a2b5193ee7f45, type: 3}
+    - {fileID: 3720435723287425619, guid: 33f14da6359e7074c80a2b5193ee7f45, type: 3}
+    - {fileID: 9122942986582981459, guid: 33f14da6359e7074c80a2b5193ee7f45, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33f14da6359e7074c80a2b5193ee7f45, type: 3}
