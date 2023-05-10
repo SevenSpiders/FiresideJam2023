@@ -84,7 +84,7 @@ public class DamageArea : MonoBehaviour
 
         if (dist > 50)
             return;
-
+        Handles.color = Color.red;
         if( areaShape == Shape.Cube) {
             Handles.DrawWireCube(transform.position, Vector3.one * size);
         }

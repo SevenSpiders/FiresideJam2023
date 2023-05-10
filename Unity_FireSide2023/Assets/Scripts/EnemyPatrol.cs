@@ -6,57 +6,43 @@ public class EnemyPatrol : MonoBehaviour
 {
     [SerializeField] float patrolSpeed;
     private int currentPoint = 0;
-    [SerializeField] Transform[] patrolPoints;
-
+    [SerializeField] Vector3[] patrolPoints;
+    public float patrolPointRadius = 1f;
     private bool isFollowingPlayer;
-
     private GameObject playerTarget;
 
-    private void OnValidate()
-    {
-    }
 
-    private void Update()
-    {
+
+    private void Update() {
+
         if (!isFollowingPlayer)
-        {
             Patrol();
-        }
         else
-        {
-            if (playerTarget != null)
-                FollowPlayer();
-        }
+            FollowPlayer();    
     }
 
     private void Patrol()
     {
-        transform.position = Vector3.MoveTowards(transform.position, patrolPoints[currentPoint].position, patrolSpeed * Time.deltaTime);
-
-        // Check if the enemy has reached the current patrol point
-        if (transform.position == patrolPoints[currentPoint].position)
-        {
-            // Move to the next patrol point
-            currentPoint++;
-
-            // Reset the index to loop back to the first patrol point
-            if (currentPoint >= patrolPoints.Length)
-            {
-                currentPoint = 0;
+        foreach( Vector3 p in patrolPoints) {
+            while(Vector3.Distance(transform.position,transform.position + p) > patrolPointRadius) {
+                transform.position = Vector3.MoveTowards(transform.position, transform.position + p, patrolSpeed * Time.deltaTime);
+                transform.LookAt(transform.position + p);
             }
         }
+
     }
 
-    private void FollowPlayer()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, playerTarget.transform.position, patrolSpeed * Time.deltaTime);
+    private void FollowPlayer() {
+        if (playerTarget == null)
+            return;
 
+        transform.position = Vector3.MoveTowards(transform.position, playerTarget.transform.position, patrolSpeed * Time.deltaTime);
+        transform.LookAt(playerTarget.transform.position);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<BoatController>())
-        {
+        if (other.tag == "Player") {
             isFollowingPlayer = true;
             playerTarget = other.gameObject;
         }
@@ -64,10 +50,14 @@ public class EnemyPatrol : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.GetComponent<BoatController>())
-        {
+        if (other.tag == "Player")
             isFollowingPlayer = false;
-        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        foreach (Vector3 p in patrolPoints)
+            Gizmos.DrawWireSphere(transform.position + p, patrolPointRadius);
     }
 }
 

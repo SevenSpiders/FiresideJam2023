@@ -7,6 +7,8 @@ public class BoatController : PhysicsObject
 {
     [Header("Boat Controller Stuff")]
     public Light spotLight;
+    public GameObject projectile;
+
 
     private float maxSpeed;
     private Vector3 lookAtVec = Vector3.forward;
@@ -78,14 +80,44 @@ public class BoatController : PhysicsObject
         else
             PlayerAttributes.Regress();
 
+        // Shooting
+        if (projectile == null)
+            return;
 
+        if (Input.GetButtonDown("Fire2"))
+            StartCoroutine(ShootProjectile(mouseWorldPos));
 
+        Debug.DrawLine(transform.position, mouseWorldPos);
 
     }
 
     public override void OnGroundContact(Vector3 contactPoint)
     {
         // add water splash sound and water splash particles
+    }
+
+    private IEnumerator ShootProjectile(Vector3 worldPos,float speed = 1,float startHeight = 3f,float startUpForce = 5f,float timeOffset = .5f,float aimTime = 1f)
+    {
+        GameObject curProj = Instantiate(projectile);
+        curProj.transform.position = transform.position + Vector3.up * startHeight;
+        
+        if( curProj.GetComponent<Rigidbody>() == null)
+            StopAllCoroutines();
+
+        Rigidbody curRig = curProj.GetComponent<Rigidbody>();
+        curRig.AddForce(Vector3.up * startUpForce,ForceMode.Impulse);
+
+
+        yield return new WaitForSeconds(timeOffset);
+
+        float t = 0;
+        Vector3 aimDir = (worldPos - curProj.transform.position).normalized;
+
+        while (t < aimTime) {
+            yield return null;
+            curRig.AddForce((1/ Time.fixedDeltaTime) * speed * aimDir);
+        }
+
     }
 
 }

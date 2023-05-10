@@ -14,7 +14,7 @@ public abstract class PhysicsObject : MonoBehaviour
     public Rigidbody Rb { get; private set; }
 
     [Header("Rigidbody Settings")]
-    public string layer;
+    private string ignorelayer = "Ignore Raycast";
     private int layerMask;
     public float gravity = 10f;
     public float mass = 1f;
@@ -55,7 +55,7 @@ public abstract class PhysicsObject : MonoBehaviour
     {
         Rb = AddRigidBody(mass, drag, angDrag);
         Col = AddCapsuleCollider(center, radius, lenght);
-        layerMask = ~LayerMask.GetMask(layer);
+        layerMask = ~LayerMask.GetMask(ignorelayer);
 
     }
 
