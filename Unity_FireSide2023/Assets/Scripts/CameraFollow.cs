@@ -16,8 +16,8 @@ public class CameraFollow : MonoBehaviour
     }
     void Update()
     {
-        // transform.position = Vector3.Lerp(transform.position, follow.position + offset, Time.deltaTime * followSpeed);
-        // lerpedFollow = Vector3.Lerp(lerpedFollow, follow.position, Time.deltaTime * followSpeed);
-        // transform.LookAt(lerpedFollow);
+        transform.position = Vector3.Lerp(transform.position, follow.position + offset, Time.deltaTime * followSpeed);
+        lerpedFollow = Vector3.Lerp(lerpedFollow, follow.position, Time.deltaTime * followSpeed);
+        transform.LookAt(lerpedFollow);
     }
 }

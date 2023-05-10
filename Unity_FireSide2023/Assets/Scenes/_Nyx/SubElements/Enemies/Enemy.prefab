@@ -9,7 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 176079720787223721}
+  - component: {fileID: 219221408652457114}
   - component: {fileID: 6244124835172698328}
+  - component: {fileID: 954716166693305890}
+  - component: {fileID: 2130299983944443715}
+  - component: {fileID: 8663881467646620877}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -31,8 +35,25 @@ Transform:
   m_Children:
   - {fileID: 1998537225614014567}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &219221408652457114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5181336641724732058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3951665f002e75d4dbfe60f2d40ba616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  attackRange: 25
+  damage: 10
+  leashLenght: 300
+  state: 0
 --- !u!114 &6244124835172698328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,10 +67,72 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  isChasing: 0
+  isPaused: 0
   followDelay: 0.5
   rotationSpeed: 5
-  wobbleMaterial: {fileID: 2100000, guid: 6b65c1eaff443d24aadb1c571a90459f, type: 2}
-  f_wobble: -0.05
+  rb: {fileID: 0}
+--- !u!114 &954716166693305890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5181336641724732058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f85b3772fcc5bb74c8e6793a31ea6723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aggroRadius: 200
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  hasTarget: 0
+--- !u!114 &2130299983944443715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5181336641724732058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40dd37b0f8fa2c048834b55883ea455e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Attack
+    clip: {fileID: 8300000, guid: 7229ea83bc697b247951cda22db50492, type: 3}
+    volume: 0.5
+    looping: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: Aggro
+    clip: {fileID: 8300000, guid: 383b1ef1d3a071b4d99afadf37e08b71, type: 3}
+    volume: 0.5
+    looping: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: Death
+    clip: {fileID: 0}
+    volume: 0.5
+    looping: 0
+    pitch: 0
+    source: {fileID: 0}
+--- !u!114 &8663881467646620877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5181336641724732058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4faf560750762f64a9697cd0e62ac5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1001 &2032955741859700620
 PrefabInstance:
   m_ObjectHideFlags: 0
