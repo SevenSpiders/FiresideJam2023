@@ -3406,6 +3406,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6581919501645635847, guid: 9814c0433e5b03e419362a88d55408bc,
+        type: 3}
+      propertyPath: AtmosphereLoop
+      value: 
+      objectReference: {fileID: 8300000, guid: d0dd443baf435c44f90b50063c3cf7d7, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

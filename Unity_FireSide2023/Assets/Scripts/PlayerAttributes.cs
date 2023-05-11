@@ -27,7 +27,8 @@ public static class PlayerAttributes
     public static float souls = 0;
     // Music Settings
     public static float musicFadeTime = 8f;
-    public static float musicMaxVolume = .1f;
+    public static float musicMaxVolume = .01f;
+    public static float atmosphereVolume = .4f;
 
     public static bool isSafe = false;
     public static bool isAttacked = false;
