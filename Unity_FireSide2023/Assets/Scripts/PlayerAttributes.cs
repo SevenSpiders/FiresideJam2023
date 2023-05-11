@@ -9,11 +9,13 @@ public static class PlayerAttributes
     // Note that you cant see those for example movement values in the boat controller component cause they are stored here
 
     //Movement 
-    public static float speed = 8f;
-    public static float sprintSpeed = 12f;
+    public static float speed = 15f;
+    public static float sprintSpeed = 18f;
+    public static float boostSpeed = 0;
+    public static float boostCooldown = 0;
     public static float accelRate = 10f;
     public static float deccelRate = 1.5f;
-    public static float rotationRate = 1f;
+    public static float rotationRate = 2f;
     // Stats
     public static bool movementEnabled = true;
     public static float health = 100;
@@ -29,6 +31,8 @@ public static class PlayerAttributes
 
     public static bool isSafe = false;
     public static bool isAttacked = false;
+    public static GameObject curCurrent = null;
+
 
     public static void AddCoins(int amount = 1) {
         if (souls > 0) {

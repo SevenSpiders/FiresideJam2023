@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6849177337212597309}
+  - component: {fileID: -1825785076555407909}
   m_Layer: 0
   m_Name: SkyTile_9
   m_TagString: Untagged
@@ -29,17 +30,36 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 850647932144550904}
-  - {fileID: 6566882112217959370}
+  - {fileID: 4965881577601232651}
   - {fileID: 6151220020980222750}
   - {fileID: 4912579137467015070}
   - {fileID: 7041196296416003802}
-  - {fileID: 2397602708163395648}
+  - {fileID: 4507509994263258365}
   - {fileID: 4670833198414087052}
   - {fileID: 1388563749344242794}
   - {fileID: 6751798950818988608}
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1825785076555407909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5535515257193433560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 1
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1001 &904433936076654760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48,6 +68,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6849177337212597309}
     m_Modifications:
+    - target: {fileID: -4256255249703732377, guid: 90ba1269fbd336c4c90917b1951c3e83,
+        type: 3}
+      propertyPath: m_IgnoreFromBuild
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2290109551754454210, guid: 90ba1269fbd336c4c90917b1951c3e83,
         type: 3}
       propertyPath: m_RootOrder
@@ -127,6 +152,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6849177337212597309}
     m_Modifications:
+    - target: {fileID: -4256255249703732377, guid: 90ba1269fbd336c4c90917b1951c3e83,
+        type: 3}
+      propertyPath: m_IgnoreFromBuild
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2290109551754454210, guid: 90ba1269fbd336c4c90917b1951c3e83,
         type: 3}
       propertyPath: m_RootOrder
@@ -206,6 +236,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6849177337212597309}
     m_Modifications:
+    - target: {fileID: -4256255249703732377, guid: 90ba1269fbd336c4c90917b1951c3e83,
+        type: 3}
+      propertyPath: m_IgnoreFromBuild
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2290109551754454210, guid: 90ba1269fbd336c4c90917b1951c3e83,
         type: 3}
       propertyPath: m_RootOrder
@@ -271,7 +306,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90ba1269fbd336c4c90917b1951c3e83, type: 3}
---- !u!4 &2397602708163395648 stripped
+--- !u!4 &4507509994263258365 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2290109551754454210, guid: 90ba1269fbd336c4c90917b1951c3e83,
     type: 3}
@@ -285,6 +320,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6849177337212597309}
     m_Modifications:
+    - target: {fileID: -4256255249703732377, guid: 90ba1269fbd336c4c90917b1951c3e83,
+        type: 3}
+      propertyPath: m_IgnoreFromBuild
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2290109551754454210, guid: 90ba1269fbd336c4c90917b1951c3e83,
         type: 3}
       propertyPath: m_RootOrder
@@ -364,6 +404,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6849177337212597309}
     m_Modifications:
+    - target: {fileID: -4256255249703732377, guid: 90ba1269fbd336c4c90917b1951c3e83,
+        type: 3}
+      propertyPath: m_IgnoreFromBuild
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2290109551754454210, guid: 90ba1269fbd336c4c90917b1951c3e83,
         type: 3}
       propertyPath: m_RootOrder
@@ -443,6 +488,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6849177337212597309}
     m_Modifications:
+    - target: {fileID: -4256255249703732377, guid: 90ba1269fbd336c4c90917b1951c3e83,
+        type: 3}
+      propertyPath: m_IgnoreFromBuild
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2290109551754454210, guid: 90ba1269fbd336c4c90917b1951c3e83,
         type: 3}
       propertyPath: m_RootOrder
@@ -508,7 +558,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90ba1269fbd336c4c90917b1951c3e83, type: 3}
---- !u!4 &6566882112217959370 stripped
+--- !u!4 &4965881577601232651 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2290109551754454210, guid: 90ba1269fbd336c4c90917b1951c3e83,
     type: 3}
@@ -522,6 +572,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6849177337212597309}
     m_Modifications:
+    - target: {fileID: -4256255249703732377, guid: 90ba1269fbd336c4c90917b1951c3e83,
+        type: 3}
+      propertyPath: m_IgnoreFromBuild
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2290109551754454210, guid: 90ba1269fbd336c4c90917b1951c3e83,
         type: 3}
       propertyPath: m_RootOrder
@@ -601,6 +656,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6849177337212597309}
     m_Modifications:
+    - target: {fileID: -4256255249703732377, guid: 90ba1269fbd336c4c90917b1951c3e83,
+        type: 3}
+      propertyPath: m_IgnoreFromBuild
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2290109551754454210, guid: 90ba1269fbd336c4c90917b1951c3e83,
         type: 3}
       propertyPath: m_RootOrder
@@ -680,6 +740,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6849177337212597309}
     m_Modifications:
+    - target: {fileID: -4256255249703732377, guid: 90ba1269fbd336c4c90917b1951c3e83,
+        type: 3}
+      propertyPath: m_IgnoreFromBuild
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2290109551754454210, guid: 90ba1269fbd336c4c90917b1951c3e83,
         type: 3}
       propertyPath: m_RootOrder
