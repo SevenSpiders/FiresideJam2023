@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8656569523626513326}
   - component: {fileID: 8027327826604181342}
   - component: {fileID: 7404263079166363067}
-  - component: {fileID: 1336069607184073588}
+  - component: {fileID: -6358381216437061789}
   m_Layer: 0
   m_Name: Nav Mesh Surface
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8656569523626513326
 MeshFilter:
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 2f6c8c28a98422a458777cf6a9e05b96, type: 2}
   m_BuildHeightMesh: 0
---- !u!114 &1336069607184073588
+--- !u!114 &-6358381216437061789
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,3 +128,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652b8191c8cb1c9449056928257cf50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tick: 0.1
