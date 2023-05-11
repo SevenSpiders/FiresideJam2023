@@ -15,8 +15,6 @@ public class NavMeshUpdater : MonoBehaviour
         if (surf == null)
             return;
 
-        surf.BuildNavMesh();
-
         if (!update)
             return;
 
