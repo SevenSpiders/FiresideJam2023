@@ -29,15 +29,21 @@ public class EnemyNavigationPath : MonoBehaviour
     private void Awake()
     {
         agent = AddNavMeshAgent();
-        startPos = transform.position;
-        if (navPositions.Count != 0)
-            agent.destination = startPos + navPositions[0];
+        navPositions = GetNavPositions();
+
+        if (navPositions.Count == 0)
+            return;
+
+        agent.destination = startPos + navPositions[0];
     }
 
     private void Update()
     {
+        if (navPositions.Count == 0)
+            return;
+
         float dist = agent.remainingDistance;
-        bool invalid = agent.pathStatus == NavMeshPathStatus.PathInvalid || dist == Mathf.Infinity || navPositions.Count == 0;
+        bool invalid = agent.pathStatus == NavMeshPathStatus.PathInvalid || dist == Mathf.Infinity ;
         bool complete = agent.pathStatus == NavMeshPathStatus.PathComplete;
 
 
@@ -68,16 +74,30 @@ public class EnemyNavigationPath : MonoBehaviour
 
         if (Application.isPlaying)
             foreach (Vector3 p in navPositions) {
-                Gizmos.DrawWireSphere(startPos+p, .1f);
+                Gizmos.DrawWireSphere(transform.position + p, .1f);
             }
         else
-            foreach (Vector3 p in navPositions) {
-                Gizmos.DrawWireSphere(transform.position + p, .1f);
+            foreach (Vector3 p in GetNavPositions()) {
+                Gizmos.DrawWireSphere(p, .1f);
             }
     }
 #endif
 
 
+    private List<Vector3> GetNavPositions()
+    {
+        List<Vector3> allPositions = new();
+
+        foreach (Vector3 p in navPositions)
+        {
+            bool foundPos = NavMesh.SamplePosition(transform.TransformPoint(p), out NavMeshHit hit, 1f, NavMesh.AllAreas);
+            if (foundPos) {
+                Vector3 navPos = hit.position;
+                allPositions.Add(navPos);
+            }
+        }
+        return allPositions;
+    }
 
     private NavMeshAgent AddNavMeshAgent()
     {

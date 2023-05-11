@@ -1432,7 +1432,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7045899514518490464}
   - component: {fileID: 1878234519080677753}
-  - component: {fileID: -2569208976054248683}
   m_Layer: 3
   m_Name: Player (Boat)
   m_TagString: Player
@@ -1485,22 +1484,3 @@ MonoBehaviour:
   alignRotationSpringStrenght: 50
   alignRotationSpringDamp: 12.5
   moveWithMouse: 0
---- !u!114 &-2569208976054248683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9165125048289468628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 0
-  m_Area: 0
-  m_OverrideGenerateLinks: 0
-  m_GenerateLinks: 0
-  m_IgnoreFromBuild: 1
-  m_ApplyToChildren: 1
-  m_AffectedAgents: ffffffff
