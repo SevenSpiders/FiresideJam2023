@@ -26,11 +26,14 @@ public class EnemyNavigationCircular : MonoBehaviour
     public bool  autoBraking =true;
 
 
-    private List<Vector3> navPositions;
+    private List<Vector3> navPositions = new();
     private NavMeshAgent agent;
     private int curWayPoint = 0;
 
     private void Awake() {
+        if (!(navPositions.Count > 0))
+            return;
+
         navPositions = GetNavPositions();
         agent = AddNavMeshAgent();
         agent.destination = navPositions[0];
@@ -39,6 +42,9 @@ public class EnemyNavigationCircular : MonoBehaviour
 
     private void Update()
     {
+        if (!(navPositions.Count > 0))
+            return;
+
         float dist = agent.remainingDistance;
         bool invalid = agent.pathStatus == NavMeshPathStatus.PathInvalid || dist == Mathf.Infinity;
         bool complete = agent.pathStatus == NavMeshPathStatus.PathComplete;
