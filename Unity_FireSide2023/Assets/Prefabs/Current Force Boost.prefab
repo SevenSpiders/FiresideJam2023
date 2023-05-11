@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5188105186046806940}
   - component: {fileID: 3218448315623526670}
+  - component: {fileID: -6541321005430299687}
   m_Layer: 0
   m_Name: Current Force Boost
   m_TagString: Untagged
@@ -47,6 +48,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forceAmount: 15
   size: {x: 15, y: 5, z: 12}
+--- !u!114 &-6541321005430299687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067478361449782184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 1
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &2017002202794981639
 GameObject:
   m_ObjectHideFlags: 0
