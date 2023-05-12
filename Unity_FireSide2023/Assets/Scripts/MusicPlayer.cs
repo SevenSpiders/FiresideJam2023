@@ -6,16 +6,19 @@ public class MusicPlayer : MonoBehaviour
 {
     public AudioClip MainTheme;
     public AudioClip BattleTheme;
-
+    public AudioClip AtmosphereLoop;
+    public bool startWithMusic = false;
     private AudioSource mainThemeSource;
     private AudioSource battleThemeSource;
+    private AudioSource atmosphereSource;
+
 
     private bool mainThemePlaying = false;
 
 
     private void Awake()
     {
-        if (MainTheme == null || BattleTheme == null)
+        if (MainTheme == null || BattleTheme == null || AtmosphereLoop == null)
             return;
 
         AddAudioSources();
@@ -23,7 +26,7 @@ public class MusicPlayer : MonoBehaviour
 
     private void Update()
     {
-        if (MainTheme == null || BattleTheme == null)
+        if (MainTheme == null || BattleTheme == null || !startWithMusic)
             return;
 
 
@@ -62,6 +65,17 @@ public class MusicPlayer : MonoBehaviour
         battleThemeSource.volume = 0;
         battleThemeSource.loop = true;
         battleThemeSource.clip = BattleTheme;
+
+        GameObject AtmoLoopGO = new("Atmosphere");
+        AtmoLoopGO.transform.parent = transform;
+        atmosphereSource = AtmoLoopGO.AddComponent<AudioSource>();
+        atmosphereSource.Stop();
+        atmosphereSource.playOnAwake = false;
+        atmosphereSource.volume = PlayerAttributes.atmosphereVolume;
+        atmosphereSource.loop = true;
+        atmosphereSource.clip = AtmosphereLoop;
+        atmosphereSource.Play();
+
     }
 
     private IEnumerator FadeInOut(AudioSource fadeIn, AudioSource fadeOut)

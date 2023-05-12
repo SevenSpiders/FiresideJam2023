@@ -31,13 +31,15 @@ public class EnemyNavigationCircular : MonoBehaviour
     private int curWayPoint = 0;
 
     private void Awake() {
+
+
+        navPositions = GetNavPositions();
+
         if (!(navPositions.Count > 0))
             return;
 
-        navPositions = GetNavPositions();
         agent = AddNavMeshAgent();
         agent.destination = navPositions[0];
-
     }
 
     private void Update()
