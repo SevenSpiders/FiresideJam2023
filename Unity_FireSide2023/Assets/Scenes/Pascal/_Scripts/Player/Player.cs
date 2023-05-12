@@ -12,7 +12,10 @@ namespace Pascal {
         [SerializeField] AudioManager audioManager;
         [SerializeField] float healthDecayPerSecond = 0.5f;
         [SerializeField] Transform respawnPoint;
+        [SerializeField] float t_tick = 2f;
         bool isDead;
+
+        float t;
 
         void Start() {
             CharacterHealth.A_Death += HandleDeath;
@@ -29,7 +32,7 @@ namespace Pascal {
                     PlayerAttributes.souls += (int)value;
                     break;
                 case Collectable.Type.Fire:
-                    PlayerAttributes.health += value;
+                    PlayerAttributes.Heal(value);
                     break;
                 case Collectable.Type.Coin:
                     PlayerAttributes.coins += (int)value;
@@ -40,7 +43,13 @@ namespace Pascal {
         }
 
         void Update() {
-            PlayerAttributes.health -= healthDecayPerSecond* Time.deltaTime;
+            t += Time.deltaTime;
+            if (t > t_tick) {
+                PlayerAttributes.health -= healthDecayPerSecond*t_tick;
+                if (PlayerAttributes.health <= 0) 
+                    HandleDeath(this.name);
+                t = 0;
+            }
         }
 
 

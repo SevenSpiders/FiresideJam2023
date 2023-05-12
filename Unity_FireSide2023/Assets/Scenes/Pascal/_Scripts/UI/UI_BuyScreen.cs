@@ -19,10 +19,12 @@ namespace Pascal {
         [SerializeField] AudioManager audioManager;
 
         Color originalGoldColor;
+        Vector3 originalPosition;
 
         void Awake() {
             A_ClickItem += HandleOptionClick;
             originalGoldColor = goldCounter.color;
+            originalPosition = goldCounter.transform.position;
         }
 
 
@@ -73,8 +75,6 @@ namespace Pascal {
 
 
         public void ShakeText(Color _c) {
-
-            Vector3 originalPosition = goldCounter.transform.position;
 
             goldCounter.color = _c;
 

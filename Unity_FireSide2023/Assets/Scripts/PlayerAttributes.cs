@@ -26,7 +26,7 @@ public static class PlayerAttributes
     public static int goldPerSoul = 100;
     public static float soulValueMultiplier = 2.5f;
     public static int souls = 0;
-    public static int soulsMax = 1;
+    public static int soulsMax = 1000;
     // Music Settings
     public static float musicFadeTime = 8f;
     public static float musicMaxVolume = .01f;
@@ -35,6 +35,8 @@ public static class PlayerAttributes
     public static bool isSafe = false;
     public static bool isAttacked = false;
     public static GameObject curCurrent = null;
+
+    public static bool shieldActive = false;
 
 
     // Upgrades

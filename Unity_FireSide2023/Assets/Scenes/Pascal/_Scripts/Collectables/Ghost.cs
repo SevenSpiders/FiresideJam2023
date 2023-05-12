@@ -13,14 +13,16 @@ namespace Pascal
 
         
         [SerializeField] AudioManager audioManager;
-        [SerializeField] GameObject ghostModel;
+        [SerializeField] MeshRenderer ghostModel;
         [SerializeField] VisualEffect vfx;
+        [SerializeField] float t_cooldown = 100f;
 
 
         protected override void OnCollect(){
             audioManager.Play("Collect");
-            vfx.Play();
-            Invoke(nameof(Vanish), 1f);
+            if (vfx != null) vfx.Play();
+            ghostModel.enabled = false;
+            Invoke(nameof(Reset), t_cooldown);
         }
 
         void OnDrawGizmosSelected() {
@@ -28,8 +30,9 @@ namespace Pascal
             Gizmos.DrawWireSphere(transform.position, collectionRadius);
         }
 
-        void Vanish() {
-            Destroy(ghostModel);
+        void Reset() {
+            ghostModel.enabled = true;
+            hasBeenCollected = false;
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Pascal {
 
 
             PlayerAttributes.souls = 0;
-            PlayerAttributes.coins += souls * 100;
+            PlayerAttributes.coins += souls * 1;
 
             // scale vfx with souls
             vfx.Play();
@@ -38,7 +38,7 @@ namespace Pascal {
 
             t = 0;
 
-            PlayerAttributes.health += healPerSecond*t_tick;
+            // PlayerAttributes.Heal(healPerSecond*t_tick);
         }
 
         // void OnTriggerExit(Collider other) {

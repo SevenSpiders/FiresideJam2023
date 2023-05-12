@@ -17,14 +17,12 @@ public class HUD : MonoBehaviour
     public static System.Action A_HideGameOver;
 
 
-
+    [SerializeField] TMP_Text countSouls;
     public TextMeshProUGUI coinsUI;
 
 
-    [SerializeField] TMP_Text speedUI;
     [SerializeField] Image animationFill;
     [SerializeField] Image fireBar;
-    [SerializeField] List<Image> soulOrbs;
     [SerializeField] Pascal.UI_BuyScreen buyScreen;
     [SerializeField] GameObject gameOverScreen;
 
@@ -75,12 +73,7 @@ public class HUD : MonoBehaviour
 
 
     void UpdateSouls() {
-        int maxSouls = PlayerAttributes.soulsMax;
-        int souls = PlayerAttributes.souls;
-        for (int i=0; i< soulOrbs.Count; i++) {
-            soulOrbs[i].gameObject.SetActive(i< maxSouls );
-            soulOrbs[i].color = (i < souls) ? Color.white : Color.grey;
-        }
+        countSouls.text = PlayerAttributes.souls.ToString();
     }
 
 

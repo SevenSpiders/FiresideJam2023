@@ -12,10 +12,12 @@ namespace Pascal
         [SerializeField] float speedBoostBonus = 5f;
         [SerializeField] float turnSpeed = 10f;
         [SerializeField] float groundDrag = 5f;
+        [SerializeField] MeshRenderer sphere;
 
         float horizontalInput;
         float verticalInput;
         bool boostPressed;
+        bool mousePressed;
         Vector3 movementDir = Vector3.zero;
 
 
@@ -30,6 +32,11 @@ namespace Pascal
             horizontalInput = Input.GetAxis("Horizontal");
             verticalInput = Input.GetAxis("Vertical");
             boostPressed = Input.GetKey(KeyCode.Space);
+
+            // shield mechanic
+            mousePressed = Input.GetMouseButton(0);
+            sphere.enabled = mousePressed;
+            PlayerAttributes.shieldActive = mousePressed;
         
 
             movementDir = Vector3.forward * verticalInput + Vector3.right * horizontalInput;

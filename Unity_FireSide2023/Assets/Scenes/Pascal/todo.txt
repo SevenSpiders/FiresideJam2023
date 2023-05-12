@@ -5,7 +5,13 @@ code
     [x] blinking area 
     [x] hero hurt 
     [ ] gameloop
-        [/] ui buy sell 
+    [x] ui buy sell 
+    [ ] Ship model
+    [ ] compass
+    [ ] controls
+    [ ] near death animation
+    [ ] top down camera?
+
         open world challenge
     [ ] 3 dungeons
     [ ] fish follow
