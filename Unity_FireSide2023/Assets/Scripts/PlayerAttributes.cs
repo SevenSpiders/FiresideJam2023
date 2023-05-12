@@ -22,7 +22,8 @@ public static class PlayerAttributes
     public static float recovery = 25f;
     public static float regress = 5f;
     public static float maxHealth = 100;
-    public static float coins = 0;
+    public static int coins = 0;
+    public static int goldPerSoul = 100;
     public static float soulValueMultiplier = 2.5f;
     public static int souls = 0;
     public static int soulsMax = 1;

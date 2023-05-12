@@ -27,6 +27,8 @@ namespace Pascal {
             if (isImmune) return;
 
             PlayerAttributes.health = currentHealth;
+            float armor = PlayerAttributes.armorUpgrades * 0.1f;
+            damageAmount = (int) (damageAmount * Mathf.Max(1f- armor, 0));
             
             base.TakeDamage(damageAmount);
         }

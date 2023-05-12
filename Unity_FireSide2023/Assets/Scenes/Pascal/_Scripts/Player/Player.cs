@@ -32,7 +32,7 @@ namespace Pascal {
                     PlayerAttributes.health += value;
                     break;
                 case Collectable.Type.Coin:
-                    PlayerAttributes.coins += value;
+                    PlayerAttributes.coins += (int)value;
                     break;
                 default: break;
             }
@@ -56,7 +56,7 @@ namespace Pascal {
             );
 
             PlayerAttributes.souls = 0;
-            PlayerAttributes.coins /= 2f;
+            PlayerAttributes.coins /= 2;
         }
 
 

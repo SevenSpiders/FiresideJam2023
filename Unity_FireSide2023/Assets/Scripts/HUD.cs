@@ -4,6 +4,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 
 
@@ -21,10 +22,15 @@ public class HUD : MonoBehaviour
 
 
     [SerializeField] TMP_Text speedUI;
+    [SerializeField] Image animationFill;
     [SerializeField] Image fireBar;
     [SerializeField] List<Image> soulOrbs;
     [SerializeField] Pascal.UI_BuyScreen buyScreen;
     [SerializeField] GameObject gameOverScreen;
+
+
+    float hp = 1f; // health percentage
+
 
 
     void Awake() {
@@ -40,10 +46,32 @@ public class HUD : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape)) 
             CloseBuyScreen();
 
-        coinsUI.text = "Coins: " + Mathf.RoundToInt(PlayerAttributes.coins).ToString();
+        coinsUI.text = Mathf.RoundToInt(PlayerAttributes.coins).ToString();
         fireBar.fillAmount = PlayerAttributes.health / PlayerAttributes.maxHealth;
         UpdateSouls();
     }
+
+    void UpdateHealthBar() {
+        float newHP = PlayerAttributes.health / PlayerAttributes.maxHealth;
+        if (hp != newHP) StartCoroutine(AnimateFillAmountCoroutine(newHP));
+        hp = newHP;
+        fireBar.fillAmount = hp;
+    }
+
+    IEnumerator AnimateFillAmountCoroutine(float targetFillAmount) {
+
+        animationFill.fillAmount = hp;
+        float duration = 0.2f;
+        float changePerFrame = targetFillAmount / duration * Time.deltaTime;
+
+        while (animationFill.fillAmount < targetFillAmount) {
+            animationFill.fillAmount += changePerFrame;
+            yield return null;
+        }
+    }
+
+
+    
 
 
     void UpdateSouls() {

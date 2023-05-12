@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+using DG.Tweening;
 
 namespace Pascal {
 
@@ -17,10 +17,12 @@ namespace Pascal {
         [SerializeField] List<UI_BuyOption> options;
         [SerializeField] List<UpgradeItem> upgrades;
         [SerializeField] AudioManager audioManager;
-        
+
+        Color originalGoldColor;
 
         void Awake() {
             A_ClickItem += HandleOptionClick;
+            originalGoldColor = goldCounter.color;
         }
 
 
@@ -30,6 +32,7 @@ namespace Pascal {
             if (item.cost > PlayerAttributes.coins) {
                 Debug.LogWarning("not enough coins");
                 audioManager.Play("NoBuy");
+                ShakeText(Color.red);
                 return;
             }
 
@@ -58,13 +61,46 @@ namespace Pascal {
             }
 
             audioManager.Play("Buy");
+            ShakeText(originalGoldColor);
+            goldCounter.text = PlayerAttributes.coins.ToString();
             
         }
+
+        void OnEnable() {
+            UpdateItems();
+            goldCounter.text = PlayerAttributes.coins.ToString();
+        }
+
+
+        public void ShakeText(Color _c) {
+
+            Vector3 originalPosition = goldCounter.transform.position;
+
+            goldCounter.color = _c;
+
+            // Shake the text for a short duration
+            float shakeDuration = 0.25f;
+            float shakeStrength = 10f;
+            int shakeVibrato = 50;
+            goldCounter.transform.DOShakePosition(shakeDuration, shakeStrength, shakeVibrato);
+
+            // Return the text color and position to their original values
+            float returnDuration = 0.25f;
+            // goldCounter.DOColor(originalGoldColor, returnDuration);
+            goldCounter.transform.DOMove(originalPosition, returnDuration).SetDelay(returnDuration)
+                .OnComplete(
+                    () => {goldCounter.color = originalGoldColor;}
+                );
+        }
+
 
         [ContextMenu("update items")]
         void UpdateItems() {
             options.ForEach(o => o.UpdateItem());
         }
+
+
+        public void Close() => gameObject.SetActive(false);
     }
 
     

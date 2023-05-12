@@ -10,7 +10,7 @@ namespace Pascal {
     public class UpgradeItem : ScriptableObject
     {
         public string name;
-        public float cost;
+        public int cost;
         public Type type;
         public Sprite sprite;
 
