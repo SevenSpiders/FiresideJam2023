@@ -25,9 +25,40 @@ namespace Pascal {
 
 
         public void HandleOptionClick(UpgradeItem item) {
-            Debug.Log($"buy item? {item.name}");
-            // check if gold
-            // buy
+            Debug.Log($"buy item? {item.type}");
+
+            if (item.cost > PlayerAttributes.coins) {
+                Debug.LogWarning("not enough coins");
+                audioManager.Play("NoBuy");
+                return;
+            }
+
+            PlayerAttributes.coins -= item.cost;
+            switch (item.type) {
+
+                case UpgradeItem.Type.ArmorUpgrade:
+                    PlayerAttributes.armorUpgrades += 1;
+                    break;
+                
+                case UpgradeItem.Type.SpeedUpgrade:
+                    PlayerAttributes.speedUpgrades += 1;
+                    break;
+                
+                case UpgradeItem.Type.SoulUpgrade:
+                    PlayerAttributes.soulUpgrades += 1;
+                    break;
+                
+                case UpgradeItem.Type.FireUpgrade:
+                    PlayerAttributes.fireUpgrades += 1;
+                    break;
+                
+                default:
+                    Debug.LogWarning($"item type not implemented: {item.type}");
+                    break;
+            }
+
+            audioManager.Play("Buy");
+            
         }
 
         [ContextMenu("update items")]

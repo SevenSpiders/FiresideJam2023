@@ -264,7 +264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7901666653754044375}
   - component: {fileID: 337075395517600068}
-  - component: {fileID: 6044113180723194655}
+  - component: {fileID: 850531463720792801}
   m_Layer: 0
   m_Name: BuyScreen
   m_TagString: Untagged
@@ -316,8 +316,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d5def13bc736936429e2a7a1fe7896c1, type: 2}
   - {fileID: 11400000, guid: 5ef0218b3f41ad943ab57b627467a4aa, type: 2}
   - {fileID: 11400000, guid: 5301bcbd390c0b1489ab73071dfe7485, type: 2}
-  audioManager: {fileID: 6044113180723194655}
---- !u!114 &6044113180723194655
+  audioManager: {fileID: 850531463720792801}
+--- !u!114 &850531463720792801
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -329,7 +329,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40dd37b0f8fa2c048834b55883ea455e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: Buy
+    clip: {fileID: 8300000, guid: 383b1ef1d3a071b4d99afadf37e08b71, type: 3}
+    volume: 1
+    looping: 0
+    pitch: 1
+    source: {fileID: 0}
+  - name: NoBuy
+    clip: {fileID: 8300000, guid: 7229ea83bc697b247951cda22db50492, type: 3}
+    volume: 1
+    looping: 0
+    pitch: 1
+    source: {fileID: 0}
 --- !u!1 &7499079860418843429
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ code
     [x] blinking area 
     [x] hero hurt 
     [ ] gameloop
-        ui buy sell 
+        [/] ui buy sell 
         open world challenge
     [ ] 3 dungeons
     [ ] fish follow

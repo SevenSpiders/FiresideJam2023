@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;   
+using UnityEngine.EventSystems;
 
 
 namespace Pascal {
 
-    public class UI_BuyOption : MonoBehaviour
+    public class UI_BuyOption : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField] UpgradeItem item;
 
@@ -30,9 +31,12 @@ namespace Pascal {
 
         }
 
+        public void OnPointerClick(PointerEventData eventData) {
+            HandleClick();
+        }
+
 
         public void HandleClick() {
-            Debug.LogWarning("click");
             UI_BuyScreen.A_ClickItem?.Invoke(item);
         }
 

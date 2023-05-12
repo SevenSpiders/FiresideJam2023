@@ -32,7 +32,7 @@ namespace Pascal {
 
 
 
-        public void TakeDamage(int damageAmount)
+        public virtual void TakeDamage(int damageAmount)
         {
             if (isImmune) return;
 
@@ -61,7 +61,7 @@ namespace Pascal {
             if (isPlayer) hurtMat.SetFloat("_Hurt", 0);
         }
 
-        void Die()
+        protected virtual void Die()
         {
             Debug.Log("Player died!");
             A_Death?.Invoke(this.name);

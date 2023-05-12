@@ -36,6 +36,14 @@ public static class PlayerAttributes
     public static GameObject curCurrent = null;
 
 
+    // Upgrades
+    public static int speedUpgrades;
+    public static int armorUpgrades;
+    public static int fireUpgrades;
+    public static int soulUpgrades;
+
+
+
     public static void AddCoins(int amount = 1) {
         if (souls > 0) {
             coins += Mathf.RoundToInt(amount * soulValueMultiplier);

@@ -347,7 +347,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Hurt
-    clip: {fileID: 8300000, guid: 5b6bba7695a44b24394e3aed0d5582be, type: 3}
+    clip: {fileID: 8300000, guid: 7229ea83bc697b247951cda22db50492, type: 3}
+    volume: 0.5
+    looping: 0
+    pitch: 1
+    source: {fileID: 0}
+  - name: Hurt
+    clip: {fileID: 8300000, guid: 2dc5486f2d623d24d88f8b66b2f0c9a6, type: 3}
+    volume: 0.5
+    looping: 0
+    pitch: 1
+    source: {fileID: 0}
+  - name: Death
+    clip: {fileID: 8300000, guid: 580c84a9769206b41beece99fbc65e63, type: 3}
     volume: 0.5
     looping: 0
     pitch: 1
@@ -1530,6 +1542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioManager: {fileID: 7708386943046489294}
   healthDecayPerSecond: 0.5
+  respawnPoint: {fileID: 0}
 --- !u!114 &3644803867112255470
 MonoBehaviour:
   m_ObjectHideFlags: 0

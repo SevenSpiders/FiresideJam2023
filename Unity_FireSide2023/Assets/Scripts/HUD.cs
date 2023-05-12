@@ -24,6 +24,7 @@ public class HUD : MonoBehaviour
     [SerializeField] Image fireBar;
     [SerializeField] List<Image> soulOrbs;
     [SerializeField] Pascal.UI_BuyScreen buyScreen;
+    [SerializeField] GameObject gameOverScreen;
 
 
     void Awake() {
@@ -58,12 +59,8 @@ public class HUD : MonoBehaviour
 
     void OpenBuyScreen() => buyScreen.gameObject.SetActive(true);
     void CloseBuyScreen() => buyScreen.gameObject.SetActive(false);
-    void ShowGameOver() {
-        //
-    }
+    void ShowGameOver() => gameOverScreen.SetActive(true);
+    void HideGameOver() => gameOverScreen.SetActive(false);
 
-    void HideGameOver() {
-
-    }
 
 }
