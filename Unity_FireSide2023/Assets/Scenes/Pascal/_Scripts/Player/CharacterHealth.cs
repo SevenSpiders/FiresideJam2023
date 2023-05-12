@@ -13,16 +13,20 @@ namespace Pascal {
         [SerializeField] bool isPlayer;
         [SerializeField] AudioManager audioManager;
         [SerializeField] VisualEffect vfx;
+        [SerializeField] Material hurtMat;
+
+
+        float t_immune = 0.5f;
+        float t_blink = 0.2f;
         public bool isImmune;
 
         public int currentHealth;
         
-
-
         
 
         void Start() {
             currentHealth = maxHealth;
+            EndBlink();
         }
 
 
@@ -38,13 +42,24 @@ namespace Pascal {
             if (currentHealth <= 0)
                 Die();
             if (isPlayer) PlayerAttributes.health = currentHealth;
-            audioManager.Play("Hurt");
-            vfx.Play();
+            if (audioManager != null) audioManager.Play("Hurt");
+            if (hurtMat != null) hurtMat.SetFloat("_Hurt", 1f);
+            if (vfx != null) vfx.Play();
+
+
             isImmune = true;
-            Invoke(nameof(EndImmunity), 0.5f);
+            Invoke(nameof(EndImmunity), t_immune);
+            Invoke(nameof(EndBlink), t_blink);
         }
 
-        public void EndImmunity() => isImmune = false;
+        public void EndImmunity() {
+            isImmune = false;
+            
+        }
+
+        void EndBlink() {
+            if (isPlayer) hurtMat.SetFloat("_Hurt", 0);
+        }
 
         void Die()
         {

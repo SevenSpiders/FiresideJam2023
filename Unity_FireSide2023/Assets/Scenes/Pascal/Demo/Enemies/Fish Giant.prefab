@@ -71,6 +71,8 @@ MonoBehaviour:
   isPlayer: 0
   audioManager: {fileID: 0}
   vfx: {fileID: 0}
+  hurtMat: {fileID: 0}
+  isImmune: 0
   currentHealth: 0
 --- !u!114 &5703588524291298362
 MonoBehaviour:
@@ -84,12 +86,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627f352b32d89094896fc96bc646e485, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  isChasing: 0
-  isPaused: 1
-  followDelay: 1
-  rotationSpeed: 5
+  id: 0
   rb: {fileID: 8827997636510762491}
+  target: {fileID: 0}
+  followDelay: 1
+  movementSpeed: 10
+  rotationSpeed: 5
+  movementType: 1
 --- !u!54 &8827997636510762491
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -166,19 +169,19 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 383b1ef1d3a071b4d99afadf37e08b71, type: 3}
     volume: 0.5
     looping: 0
-    pitch: 0
+    pitch: 1
     source: {fileID: 0}
   - name: Hurt
     clip: {fileID: 8300000, guid: 5b6bba7695a44b24394e3aed0d5582be, type: 3}
     volume: 0.5
     looping: 0
-    pitch: 0
+    pitch: 1
     source: {fileID: 0}
   - name: Attack
     clip: {fileID: 8300000, guid: 5b6bba7695a44b24394e3aed0d5582be, type: 3}
     volume: 0.5
     looping: 0
-    pitch: 0
+    pitch: 1
     source: {fileID: 0}
 --- !u!1001 &8912294836997365581
 PrefabInstance:
@@ -267,7 +270,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c4b11ad50fbac9b469e49f44573393a5, type: 2}
+      objectReference: {fileID: 2100000, guid: 39f2df7027471d246b20e521f51613dd, type: 2}
     - target: {fileID: 919132149155446097, guid: c162e3de3536abd4c925e62eded4d87f,
         type: 3}
       propertyPath: m_Name

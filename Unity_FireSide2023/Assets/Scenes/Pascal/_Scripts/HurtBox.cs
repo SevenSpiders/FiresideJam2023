@@ -7,6 +7,8 @@ namespace Pascal {
 
     public class HurtBox : MonoBehaviour
     {
+        public System.Action<Collider> a_Trigger;
+
         [SerializeField] int damage;
 
         float t_tick = 0.5f;
@@ -37,6 +39,9 @@ namespace Pascal {
 
 
         protected virtual void DealDamage(Collider other) {
+            
+            a_Trigger?.Invoke(other);
+
             if (playerHealth == null) 
                 playerHealth = other.GetComponent<CharacterHealth>();
                 if (playerHealth == null) return;

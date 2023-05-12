@@ -508,7 +508,7 @@ VisualEffect:
       - m_Value:
           serializedVersion: 2
           key0: {r: 0, g: 19.634212, b: 26.867924, a: 1}
-          key1: {r: 0, g: 0.61356914, b: 0.8396226, a: 1}
+          key1: {r: 0, g: 8.7577505, b: 11.984314, a: 1}
           key2: {r: 0, g: 0.11203888, b: 0.4056604, a: 0.43137255}
           key3: {r: 0.37154368, g: 0.8671814, b: 1.9056604, a: 0.43137255}
           key4: {r: 0.035431575, g: 0.2915367, b: 0.7323868, a: 0}
@@ -516,7 +516,7 @@ VisualEffect:
           key6: {r: 0, g: 0, b: 0, a: 0}
           key7: {r: 0, g: 0, b: 0, a: 0}
           ctime0: 0
-          ctime1: 26214
+          ctime1: 27563
           ctime2: 65535
           ctime3: 44718
           ctime4: 47609
@@ -1546,6 +1546,7 @@ MonoBehaviour:
   isPlayer: 1
   audioManager: {fileID: 7708386943046489294}
   vfx: {fileID: 3281998095555264957}
+  hurtMat: {fileID: 2100000, guid: 8d3b96fde182d14409eb6a35e2c89281, type: 2}
   isImmune: 0
   currentHealth: 0
 --- !u!114 &104639082765509873
@@ -1611,7 +1612,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 4.47
+  m_Radius: 2.5
   m_Height: 8
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
@@ -1787,7 +1788,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3622e749c843090428e6518dc22efc86, type: 2}
+  - {fileID: 2100000, guid: 8d3b96fde182d14409eb6a35e2c89281, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

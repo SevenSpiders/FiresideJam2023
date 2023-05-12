@@ -23,6 +23,7 @@ namespace Pascal {
 
             Collider[] hits = Physics.OverlapSphere(transform.position, aggroRadius, targetLayer);
             if (hits.Length > 0) {
+                Debug.Log("hit?");
                 hasTarget = true;
                 target = hits[0].transform;
 

@@ -1,14 +1,16 @@
 
-[ ] first level
-    long corridor
+
+code
+    [x] fix spawner placement
+    [x] blinking area 
+    [ ] hero hurt 
 
 
-challenges
-    spline follower
-    circle spawner
-    aeo
+level ideas
+    get to closing door with speed orbs
+    closing walls => puzzles 
+    spiral fish
+    skull lasers
 
-    speed puzzle
-
-    big follower fish => forbidden areas
-    
+open world 
+    anchored follower

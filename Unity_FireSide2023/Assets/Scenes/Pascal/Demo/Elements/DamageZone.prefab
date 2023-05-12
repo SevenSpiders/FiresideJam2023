@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3605322087552398092}
   - component: {fileID: 7774343014907857107}
   - component: {fileID: 6954912186209954128}
-  - component: {fileID: 8974192834321248835}
+  - component: {fileID: 497892636397482316}
   m_Layer: 0
-  m_Name: TimedDamageZone
+  m_Name: DamageZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,7 +106,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8974192834321248835
+--- !u!114 &497892636397482316
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,14 +115,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2608485330432246315}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bb2318a81cc3c44eb1e0e6d14243151, type: 3}
+  m_Script: {fileID: 11500000, guid: 619812d8a01aba64b88ce077a4810871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 40
-  pauseTime: 2
-  activeTime: 2
-  offsetTime: 0
-  activeMat: {fileID: 2100000, guid: 2b42b8f1c207f1f4ca77402c0d9ab7c4, type: 2}
-  inactiveMat: {fileID: 2100000, guid: 633ca778bfcad224f8f2c3eafd6eeb71, type: 2}
-  blickMat: {fileID: 2100000, guid: c67db736b6a10a44aa5d500ad1d78169, type: 2}
-  isActive: 0
