@@ -24,7 +24,8 @@ public static class PlayerAttributes
     public static float maxHealth = 100;
     public static float coins = 0;
     public static float soulValueMultiplier = 2.5f;
-    public static float souls = 0;
+    public static int souls = 0;
+    public static int soulsMax = 1;
     // Music Settings
     public static float musicFadeTime = 8f;
     public static float musicMaxVolume = .01f;

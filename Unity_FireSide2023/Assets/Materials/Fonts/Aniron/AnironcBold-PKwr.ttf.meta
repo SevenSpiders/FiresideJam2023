@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 7b6e3d07fd6bc4a42b247dd5a962209f
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - AnironC
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 743c8bb2c036add4faf5360cf750ea9f, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

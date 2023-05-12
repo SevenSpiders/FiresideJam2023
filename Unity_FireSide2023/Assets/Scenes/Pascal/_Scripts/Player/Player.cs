@@ -26,7 +26,7 @@ namespace Pascal {
 
             switch (_type) {
                 case Collectable.Type.Soul:
-                    PlayerAttributes.souls += value;
+                    PlayerAttributes.souls += (int)value;
                     break;
                 case Collectable.Type.Fire:
                     PlayerAttributes.health += value;

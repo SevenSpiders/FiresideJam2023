@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 180885201847628269}
   - component: {fileID: 3360863152036953069}
   - component: {fileID: 3042920784581948953}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CollectedSouls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 3843630755820118500}
   - component: {fileID: 2642765360216484951}
   - component: {fileID: 7486879043789862470}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fire 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5375627033001127044}
   - component: {fileID: 7708386943046489294}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 3634761751104461637}
   - component: {fileID: 5710030139327563800}
   - component: {fileID: 7614678834110439053}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 612894887722170461}
   - component: {fileID: 7940004703818615893}
   - component: {fileID: 5552192301893158743}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fire 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -593,7 +593,7 @@ GameObject:
   - component: {fileID: 7661662209002778352}
   - component: {fileID: 7760491703023171401}
   - component: {fileID: 416064382670160360}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -697,7 +697,7 @@ GameObject:
   - component: {fileID: 7208651067838520190}
   - component: {fileID: 3281998095555264957}
   - component: {fileID: 4109323889616058043}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlayerHurt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -807,7 +807,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3887955666065870703}
   - component: {fileID: 2328738035723872261}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -862,7 +862,7 @@ GameObject:
   - component: {fileID: 8499766144740019048}
   - component: {fileID: 478117293979062278}
   - component: {fileID: 2798827809084272646}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Heal VFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1017,7 +1017,7 @@ GameObject:
   - component: {fileID: 5698744481059139236}
   - component: {fileID: 6516463732450385770}
   - component: {fileID: 4252541295282720111}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1187,7 +1187,7 @@ GameObject:
   - component: {fileID: 3810220356452161987}
   - component: {fileID: 1292151289400176370}
   - component: {fileID: 524046620833690582}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Meeple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1382,7 +1382,7 @@ GameObject:
   - component: {fileID: 7358353172531881672}
   - component: {fileID: 474661855749595506}
   - component: {fileID: 8255341178219569772}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1606,7 +1606,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -1738,7 +1738,7 @@ GameObject:
   - component: {fileID: 8024185842939816254}
   - component: {fileID: 5780937812353299085}
   - component: {fileID: 9100356733742734294}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1820,7 +1820,7 @@ GameObject:
   m_Component:
   - component: {fileID: 535412584655137400}
   - component: {fileID: 3147968481268504917}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ship1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
