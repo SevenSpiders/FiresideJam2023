@@ -4,10 +4,12 @@ using UnityEngine;
 
 namespace Pascal {
 
+    [SelectionBase]
     public class Player : MonoBehaviour
     {
         
         [SerializeField] AudioManager audioManager;
+        [SerializeField] float healthDecayPerSecond = 0.5f;
 
         void Start() {
             CharacterHealth.A_Death += HandleDeath;
@@ -35,6 +37,10 @@ namespace Pascal {
                 default: break;
             }
                 
+        }
+
+        void Update() {
+            PlayerAttributes.health -= healthDecayPerSecond* Time.deltaTime;
         }
     }
 }

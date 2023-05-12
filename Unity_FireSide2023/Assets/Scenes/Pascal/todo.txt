@@ -1,7 +1,14 @@
 
-[x] Rock Textures
-[x] ship particles
-[ ] Fish concept
-[ ] ocean manager
-[ ] island assets => plateau, pillars,
-[ ] ghost
+[ ] first level
+    long corridor
+
+
+challenges
+    spline follower
+    circle spawner
+    aeo
+
+    speed puzzle
+
+    big follower fish => forbidden areas
+    

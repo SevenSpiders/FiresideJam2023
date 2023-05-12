@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Pascal {
 
 
-
+    [SelectionBase]
     public class Enemy : MonoBehaviour
     {
         [SerializeField] float attackRange = 1f;
@@ -31,8 +31,8 @@ namespace Pascal {
             aggro = GetComponent<EnemyAggro>();
 
 
-            aggro.a_Trigger += HandleStartAggro;
-            movementController.a_Stop += HandleStopChase;
+            if (aggro != null) aggro.a_Trigger += HandleStartAggro;
+            if (movementController != null) movementController.a_Stop += HandleStopChase;
             CharacterHealth.A_Death += HandleDeath;
         }
 
@@ -102,7 +102,8 @@ namespace Pascal {
 
         void ResetAttack() => attackReady = true;
 
-
+        public void MoveToPoint(Vector3 pos) => movementController.MoveToPoint(pos);
+        
 
 
         void HandleStartAggro(Transform target) {

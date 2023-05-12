@@ -5,11 +5,21 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+    TODO:
+        Speed indicator?
+        fire/ healthbar bottom
+        soul counter
+        
+*/
+
 public class HUD : MonoBehaviour
 {
     public TextMeshProUGUI soulsUI;
     public TextMeshProUGUI healthUI;
     public TextMeshProUGUI coinsUI;
+    [SerializeField] TMP_Text speedUI;
+    [SerializeField] Image fireBar;
 
     private void Update()
     {
@@ -19,6 +29,8 @@ public class HUD : MonoBehaviour
         soulsUI.text = "Souls: "+(Mathf.RoundToInt(PlayerAttributes.souls).ToString());
         healthUI.text = "Health: " + Mathf.RoundToInt(PlayerAttributes.health).ToString() +" / " +  Mathf.RoundToInt(PlayerAttributes.maxHealth).ToString() +  " (Regression: "+ PlayerAttributes.regress.ToString() +" p/s)";
         coinsUI.text = "Coins: " + Mathf.RoundToInt(PlayerAttributes.coins).ToString();
+        speedUI.text = "Speed: "+ PlayerAttributes.boostSpeed;
+        fireBar.fillAmount = PlayerAttributes.health / PlayerAttributes.maxHealth;
     }
 
 }

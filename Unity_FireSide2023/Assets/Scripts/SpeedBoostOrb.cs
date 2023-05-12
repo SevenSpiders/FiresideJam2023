@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.VFX;
+
+
 
 public class SpeedBoostOrb : MonoBehaviour
 {
@@ -10,6 +13,9 @@ public class SpeedBoostOrb : MonoBehaviour
     public float effectRadius;
     public float coolDown;
     public bool deleteAfterUse = false;
+
+    [SerializeField] AudioManager audioManager;
+    [SerializeField] VisualEffect vfx;
 
     private SphereCollider col;
     private bool isCoolingDown = false;
@@ -42,16 +48,20 @@ public class SpeedBoostOrb : MonoBehaviour
 
     private IEnumerator StartBoost()
     {
+        audioManager.Play("Trigger");
+        vfx.Play();
         isCoolingDown = true;
 
         PlayerAttributes.boostCooldown = coolDown;
+        PlayerAttributes.boostSpeed += speedBoostAmount;
         float t = 0;
 
-        while ( t < 1f) {
+        while ( t < speedBoostTime) {
             t += Time.deltaTime;
-            PlayerAttributes.boostSpeed = Mathf.Lerp(PlayerAttributes.boostSpeed, speedBoostAmount, t);
             yield return null;
         }
+
+        PlayerAttributes.boostSpeed -= speedBoostAmount;
 
         if (deleteAfterUse)
             Destroy(this.gameObject);
@@ -59,7 +69,5 @@ public class SpeedBoostOrb : MonoBehaviour
         isCoolingDown = false;
 
     }
-
-
 
 }

@@ -22,7 +22,7 @@ public class AudioManager : MonoBehaviour
             s.source.clip = s.clip;
 
             s.source.volume = s.volume;
-            s.source.pitch = 1f;            //s.pitch;
+            s.source.pitch = s.pitch == 0 ? 1f : s.pitch;
             s.source.loop = s.looping;
             
         }

@@ -13,8 +13,10 @@ namespace Pascal {
         [SerializeField] bool isPlayer;
         [SerializeField] AudioManager audioManager;
         [SerializeField] VisualEffect vfx;
+        public bool isImmune;
 
         public int currentHealth;
+        
 
 
         
@@ -28,17 +30,24 @@ namespace Pascal {
 
         public void TakeDamage(int damageAmount)
         {
+            if (isImmune) return;
+
+
+            // Debug.Log($"{name} took damage {damageAmount}");
             currentHealth -= damageAmount;
             if (currentHealth <= 0)
                 Die();
             if (isPlayer) PlayerAttributes.health = currentHealth;
             audioManager.Play("Hurt");
             vfx.Play();
+            isImmune = true;
+            Invoke(nameof(EndImmunity), 0.5f);
         }
+
+        public void EndImmunity() => isImmune = false;
 
         void Die()
         {
-            // Game over logic goes here
             Debug.Log("Player died!");
             A_Death?.Invoke(this.name);
         }

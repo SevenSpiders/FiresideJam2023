@@ -17,7 +17,7 @@ namespace Pascal
 
 
         protected override void OnCollect(){
-            audioManager.Play("Collect");
+            audioManager.Play("Trigger");
             vfx.Play();
             Invoke(nameof(Vanish), 1f);
         }

@@ -10,23 +10,39 @@ namespace Pascal {
     public class  EnemyMovementController : MonoBehaviour {
 
         public System.Action a_Stop;
-        public Transform target;
-        public bool isChasing;
-        public bool isPaused = true;
+        public System.Action<int, Vector3> a_TargetReached;   // int: id, Vector3: target position
 
-        [SerializeField] float followDelay = 1f;
-        [SerializeField] float rotationSpeed = 5f;
+
+        public int id;
+
         [SerializeField] Rigidbody rb;
+        public Transform target;
+
+
+        public float followDelay = 1f;
+        public float movementSpeed = 10f;
+        public float rotationSpeed = 5f;
+
+
 
         Vector3 targetPos;
+        Vector3 velocity;
+        bool isPaused = true;
+        bool isChasing;
+        
+        public MovementType movementType = MovementType.Smooth;
+
+        public enum MovementType { 
+            Linear = 0,
+            Smooth = 1,
+        }
         
 
-        Vector3 velocity = Vector3.zero;
 
 
 
         void Awake() {
-
+            id = Random.Range(0, 1000000);
         }
 
 
@@ -37,11 +53,38 @@ namespace Pascal {
             
             if (target != null) targetPos = target.position;
 
+
+            // check if arrived
+            if (Vector3.Distance(transform.position, targetPos) < 0.5f) {
+                a_TargetReached?.Invoke(id, targetPos);
+                return;
+            }
+
+
+
+            Vector3 newPosition = Vector3.zero;
+
             Vector3 targetDirection = targetPos - transform.position;
             float distance  = targetDirection.magnitude;
             float t_delay = Mathf.Min(distance, 10f) * followDelay;
 
-            Vector3 newPosition = Vector3.SmoothDamp(rb.position, targetPos, ref velocity, t_delay);
+            // <explainer>
+            // Vector3 SmoothDamp(
+            //         Vector3 current, 
+            //         Vector3 target, 
+            //         ref Vector3 currentVelocity, 
+            //         float smoothTime, 
+            //         float maxSpeed = Mathf.Infinity, 
+            //         float deltaTime = Time.deltaTime); 
+                
+            if (movementType == MovementType.Smooth) {
+                newPosition = Vector3.SmoothDamp(rb.position, targetPos, ref velocity, t_delay, movementSpeed);
+            }
+
+            if (movementType == MovementType.Linear)
+                newPosition = transform.position + targetDirection.normalized*movementSpeed/100f;
+
+
             rb.MovePosition(newPosition);
 
             // Debug.Log($"dist: {distance} speed:{velocity.magnitude} delay: {t_delay}");
@@ -65,6 +108,7 @@ namespace Pascal {
         }
 
         public void MoveToPoint(Vector3 targetPos) {
+            Unpause();
             target = null;
             this.targetPos = targetPos;
         }
