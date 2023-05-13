@@ -56,7 +56,7 @@ MonoBehaviour:
   target: {fileID: 0}
   followDelay: 0.1
   movementSpeed: 0.4
-  rotationSpeed: 10
+  rotationSpeed: 5
   movementType: 0
 --- !u!114 &1283474831831328281
 MonoBehaviour:
@@ -92,6 +92,7 @@ MonoBehaviour:
   isPlayer: 0
   audioManager: {fileID: 0}
   vfx: {fileID: 0}
+  hurtMat: {fileID: 0}
   isImmune: 0
   currentHealth: 0
 --- !u!54 &8827997636510762491
@@ -138,7 +139,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 1.4
   m_Height: 6.1

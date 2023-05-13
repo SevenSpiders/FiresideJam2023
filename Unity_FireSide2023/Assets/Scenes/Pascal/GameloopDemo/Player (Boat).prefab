@@ -714,7 +714,6 @@ GameObject:
   - component: {fileID: 2096954642424888968}
   - component: {fileID: 5476681888478337937}
   - component: {fileID: 8994805120987358645}
-  - component: {fileID: 1746283175465178702}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -787,28 +786,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1746283175465178702
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3516459952608152925}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &4071395989854701873
 GameObject:
   m_ObjectHideFlags: 0
@@ -1615,7 +1592,6 @@ GameObject:
   - component: {fileID: 5226525205873436297}
   - component: {fileID: 8675574289452995996}
   - component: {fileID: 7718684655962863432}
-  - component: {fileID: 5618658282726224038}
   m_Layer: 0
   m_Name: Quad
   m_TagString: Untagged
@@ -1688,28 +1664,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5618658282726224038
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8100058621308500272}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &8382758414787065537
 GameObject:
   m_ObjectHideFlags: 0
@@ -2027,7 +1981,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 0
-  camera: {fileID: 0}
+  boostTokens: 0
+  t_boostRecover: 5
+  playerCam: {fileID: 0}
   audioManager: {fileID: 7708386943046489294}
   respawnPoint: {fileID: 0}
   healthDecayPerSecond: 2

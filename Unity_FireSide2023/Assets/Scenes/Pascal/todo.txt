@@ -1,46 +1,6 @@
+todo
 
 
-code
-    [x] fix spawner placement
-    [x] blinking area 
-    [x] hero hurt 
-    [ ] gameloop
-    [x] ui buy sell 
-    [ ] Ship model
-    [ ] compass
-    [ ] controls
-    [ ] near death animation
-    [ ] top down camera?
-
-        open world challenge
-    [ ] 3 dungeons
-    [ ] fish follow
-    [ ] key hole
-
-
-structure
-    open world => ticking time
-    collect souls when fire runs out you sink + lose all souls
-    unlock/ buy keys to the temples
-
-
-
-problems
-    water is boring
-        > pillars, structures
-        > streams
-        > compass
-
-
-
-
-
-level ideas
-    ball pushing puzzles
-    get to closing door with speed orbs
-    closing walls => puzzles 
-    spiral fish
-    skull lasers
-
-open world 
-    anchored follower
+[ ] area damage navigate
+[ ] windorbs
+[ ] souls

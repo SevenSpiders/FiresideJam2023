@@ -5,10 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/Marc/MarcPrototype.unity
-    guid: 918cda53bfe5b164db67188bf5284753
+    path: Assets/Scenes/Pascal/Demo/_Nyx_GameloopDemo.unity
+    guid: 9a59fce8e34691c41832599ac2cde1d5
   m_configObjects: {}

@@ -16,7 +16,7 @@ namespace Pascal {
         // [SerializeField] float _speed;
         // [SerializeField] float 
 
-        [SerializeField] Camera camera;
+        [SerializeField] Camera playerCam;
         [SerializeField] AudioManager audioManager;
         [SerializeField] Transform respawnPoint;
 
@@ -45,6 +45,7 @@ namespace Pascal {
         // ------------- START -------------
 
         void Start() {
+            PlayerAttributes.health = _health;
             PlayerAttributes.maxHealth = _health;
             PlayerAttributes.boostTokens = boostTokens;
             PlayerAttributes.boostTokensMax = boostTokens;
@@ -150,7 +151,7 @@ namespace Pascal {
             Debug.LogWarning($"you died");
             
 
-            camera.DOFieldOfView(30, t_deathAnimation).SetEase(Ease.OutCubic);
+            playerCam.DOFieldOfView(30, t_deathAnimation).SetEase(Ease.OutCubic);
 
             PlayerAttributes.isDead = true;
             Vector3 sunkenPos = Vector3.down * 30f;
@@ -176,7 +177,7 @@ namespace Pascal {
             meshObj.transform.localPosition = meshPosInit;
             PlayerAttributes.health = PlayerAttributes.maxHealth;
             PlayerAttributes.isDead = false;
-            camera.fieldOfView = 60f;
+            playerCam.fieldOfView = 60f;
         }
         
     }

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pascal;
+
 
 public static class PlayerAttributes
 {
@@ -27,12 +29,13 @@ public static class PlayerAttributes
     public static float health = 100;
     static float _maxHealth = 50;
     public static float maxHealth {
-        get => _maxHealth + fireUpgrades*10f;
+        get => _maxHealth + fireLevel*10f;
         set => _maxHealth = value;
     }
     public static void Heal(float amount) {
         health = health + Mathf.Abs(amount) <= maxHealth ? health + Mathf.Abs(amount) : maxHealth;
     }
+    public static float armor => armorLevel * 0.1f;
     public static bool isDead = false;
 
 
@@ -54,12 +57,22 @@ public static class PlayerAttributes
 
 
     // UPGRADES
-    public static int speedUpgrades;
-    public static int armorUpgrades;
-    public static int fireUpgrades;
-    public static int soulUpgrades;
+    public static int maxLevel = 3;
+    public static int speedLevel;
+    public static int armorLevel;
+    public static int fireLevel;
+    public static int soulLevel;
+    public static int dashLevel;
 
 
+    public static int GetUpgradeLevel(UpgradeItem.Type type) {
+        switch (type) {
+            case UpgradeItem.Type.FireUpgrade: return fireLevel;
+            case UpgradeItem.Type.SpeedUpgrade: return speedLevel;
+            case UpgradeItem.Type.DashUpgrade: return dashLevel;
+            default: return 0;
+        }
+    }
 
 
 

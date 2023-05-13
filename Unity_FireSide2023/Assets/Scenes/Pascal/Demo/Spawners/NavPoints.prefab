@@ -49,14 +49,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numEnemies: 10
+  movementSpeed: 10
+  movementType: 0
   enemyPrefabs:
   - {fileID: 5703588524291298362, guid: 5331edb242c1cd04a9dfbe1d5149e3e9, type: 3}
-  clockWise: 0
   navPoints:
   - {fileID: 6395427009180500357}
   - {fileID: 1434451123034381702}
   - {fileID: 3331750465654695613}
   - {fileID: 6225055856942049747}
+  clockWise: 0
+  loop: 1
 --- !u!1 &6328687708428993038
 GameObject:
   m_ObjectHideFlags: 0
