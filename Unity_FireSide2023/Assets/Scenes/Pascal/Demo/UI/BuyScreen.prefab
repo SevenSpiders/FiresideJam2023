@@ -468,13 +468,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Buy
-    clip: {fileID: 8300000, guid: 383b1ef1d3a071b4d99afadf37e08b71, type: 3}
+    clip: {fileID: 8300000, guid: dfe34a3d6b98bf1499f63aef7f3ab5c8, type: 3}
     volume: 1
     looping: 0
     pitch: 1
     source: {fileID: 0}
   - name: NoBuy
-    clip: {fileID: 8300000, guid: 7229ea83bc697b247951cda22db50492, type: 3}
+    clip: {fileID: 8300000, guid: 449295678a819ed4d94e208ad550a220, type: 3}
     volume: 1
     looping: 0
     pitch: 1

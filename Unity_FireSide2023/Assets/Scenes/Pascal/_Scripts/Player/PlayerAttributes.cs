@@ -4,29 +4,119 @@ using UnityEngine;
 
 public static class PlayerAttributes
 {
-    // These values are the starting values in playmode
-    // When we have a saving system then this values need to be overwritten from a json class or from unitys PlayerPref Class
-    // Note that you cant see those for example movement values in the boat controller component cause they are stored here
+    
+
 
     //Movement 
-    public static float speed = 15f;
-    public static float sprintSpeed = 18f;
+    static float _speed = 15f;
+    public static float speed {
+        get => _speed;
+        set =>_speed = value;
+    }
     public static float boostSpeed = 0;
+    static int _boostTokens = 3;
+    public static int boostTokens {
+        get => _boostTokens;
+        set => _boostTokens = Mathf.Min(value, boostTokensMax);
+    }
+    public static int boostTokensMax = 3;
+
+
+
+    // HEALTH
+    public static float health = 100;
+    static float _maxHealth = 50;
+    public static float maxHealth {
+        get => _maxHealth + fireUpgrades*10f;
+        set => _maxHealth = value;
+    }
+    public static void Heal(float amount) {
+        health = health + Mathf.Abs(amount) <= maxHealth ? health + Mathf.Abs(amount) : maxHealth;
+    }
+    public static bool isDead = false;
+
+
+
+    // SOULS
+    public static int souls = 0;
+    public static int soulLoss = 0;
+    public static int soulsMax = 10000;
+
+
+    // GOLD
+    public static int coins = 0;
+    public static int coinLoss = 0;
+    public static float coinsPerSoul = 1f;
+
+    public static bool shieldActive = false;
+    public static bool isInSafeZone = false;
+
+
+
+    // UPGRADES
+    public static int speedUpgrades;
+    public static int armorUpgrades;
+    public static int fireUpgrades;
+    public static int soulUpgrades;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // DPERECATED
+    public static float sprintSpeed = 18f;
+    
     public static float boostCooldown = 0;
     public static float accelRate = 10f;
     public static float deccelRate = 1.5f;
     public static float rotationRate = 2f;
     // Stats
     public static bool movementEnabled = true;
-    public static float health = 100;
+    
     public static float recovery = 25f;
     public static float regress = 5f;
-    public static float maxHealth = 100;
-    public static int coins = 0;
-    public static int goldPerSoul = 100;
+    
+    
     public static float soulValueMultiplier = 2.5f;
-    public static int souls = 0;
-    public static int soulsMax = 1000;
+    
     // Music Settings
     public static float musicFadeTime = 8f;
     public static float musicMaxVolume = .01f;
@@ -36,14 +126,10 @@ public static class PlayerAttributes
     public static bool isAttacked = false;
     public static GameObject curCurrent = null;
 
-    public static bool shieldActive = false;
+    
 
 
-    // Upgrades
-    public static int speedUpgrades;
-    public static int armorUpgrades;
-    public static int fireUpgrades;
-    public static int soulUpgrades;
+    
 
 
 
@@ -60,9 +146,7 @@ public static class PlayerAttributes
     public static void Regress() {
         health = health >= 0 ? health - (regress * Time.deltaTime) : 0;
     }
-    public static void Heal(float amount) {
-        health = health + Mathf.Abs(amount) <= maxHealth ? health + Mathf.Abs(amount) : maxHealth;
-    }
+    
     public static void Damage(float amount) {
         health = health - Mathf.Abs(amount) >= 0 ? health - Mathf.Abs(amount) : 0;
     }

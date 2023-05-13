@@ -9,10 +9,7 @@ namespace Pascal {
     {
         
         [SerializeField] VisualEffect vfx;
-
-        float t;
-        float t_tick = 0.5f;
-        float healPerSecond = 50f;
+        [SerializeField] AudioManager audioManager;
 
 
         void OnTriggerEnter(Collider other) { 
@@ -21,30 +18,22 @@ namespace Pascal {
 
             if (souls == 0) return;
 
-
+            // sell
+            float coins = (float) PlayerAttributes.souls * PlayerAttributes.coinsPerSoul;
+            PlayerAttributes.coins += (int) coins;
             PlayerAttributes.souls = 0;
-            PlayerAttributes.coins += souls * 1;
 
             // scale vfx with souls
             vfx.Play();
-            t = 0;
+            audioManager.Play("Coins");
         }
 
         void OnTriggerStay(Collider other) {
             if (!other.CompareTag("Player")) return;
 
-            t += Time.deltaTime;
-            if (t < t_tick) return;
-
-            t = 0;
-
-            // PlayerAttributes.Heal(healPerSecond*t_tick);
+           
         }
 
-        // void OnTriggerExit(Collider other) {
-            
-        //     if (!other.CompareTag("Player")) return;
-            
-        // }
+        
     }
 }

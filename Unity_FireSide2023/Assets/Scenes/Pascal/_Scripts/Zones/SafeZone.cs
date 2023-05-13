@@ -11,24 +11,18 @@ namespace Pascal {
         
         [SerializeField] float healPerSecond = 50f;
 
-        float t;
-        float t_tick = 0.5f;
-
 
         void OnTriggerEnter(Collider other) { 
             if (!other.CompareTag("Player")) return;
-            t = 0;
+
+
         }
 
         void OnTriggerStay(Collider other) {
             if (!other.CompareTag("Player")) return;
 
-            t += Time.deltaTime;
-            if (t < t_tick) return;
-
-            t = 0;
-
-            PlayerAttributes.Heal(healPerSecond*t_tick);
+            PlayerAttributes.boostTokens = PlayerAttributes.boostTokensMax;
+            PlayerAttributes.Heal(healPerSecond*Time.deltaTime);
             
         }
 
