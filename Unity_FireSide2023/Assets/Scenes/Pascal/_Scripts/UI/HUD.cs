@@ -73,14 +73,14 @@ public class HUD : MonoBehaviour
 
         healthText.text = $"{(int)PlayerAttributes.health}/ {(int)PlayerAttributes.maxHealth}"; 
         float newHP = PlayerAttributes.health / PlayerAttributes.maxHealth;
-        if (hp != newHP) StartCoroutine(AnimateFillAmountCoroutine(newHP));
+        if (hp != newHP) StartCoroutine(AnimateFillAmountCoroutine(hp, newHP));
+        fireBar.fillAmount = newHP;
         hp = newHP;
-        fireBar.fillAmount = hp;
     }
 
-    IEnumerator AnimateFillAmountCoroutine(float targetFillAmount) {
+    IEnumerator AnimateFillAmountCoroutine(float from, float targetFillAmount) {
 
-        animationFill.fillAmount = hp;
+        animationFill.fillAmount = from;
         float duration = 0.2f;
         float changePerFrame = targetFillAmount / duration * Time.deltaTime;
 

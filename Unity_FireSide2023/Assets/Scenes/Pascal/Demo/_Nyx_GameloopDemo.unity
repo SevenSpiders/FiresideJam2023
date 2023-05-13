@@ -6026,7 +6026,7 @@ PrefabInstance:
     - target: {fileID: 2273303848694063758, guid: e8f07a87eec0f4d49b0ffa86b5714898,
         type: 3}
       propertyPath: boostTokens
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2273303848694063758, guid: e8f07a87eec0f4d49b0ffa86b5714898,
         type: 3}

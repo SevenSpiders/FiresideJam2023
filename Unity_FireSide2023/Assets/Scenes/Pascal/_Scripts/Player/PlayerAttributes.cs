@@ -16,12 +16,17 @@ public static class PlayerAttributes
         set =>_speed = value;
     }
     public static float boostSpeed = 0;
-    static int _boostTokens = 3;
+    static int _boostTokens = 0;
     public static int boostTokens {
         get => _boostTokens;
         set => _boostTokens = Mathf.Min(value, boostTokensMax);
     }
-    public static int boostTokensMax = 3;
+
+    static int _boostTokensMax = 3;
+    public static int boostTokensMax {
+        get =>  _boostTokensMax + dashLevel;
+        set => _boostTokensMax = value;
+    }
 
 
 

@@ -14,6 +14,8 @@ namespace Pascal {
         public string explanation;
         public int baseCost;
         public Sprite sprite;
+        public int maxLevel = 5;
+
         public int cost => CalculateCost(PlayerAttributes.GetUpgradeLevel(type));
 
         int CalculateCost(int level) {
