@@ -22,13 +22,15 @@ namespace Pascal
 
 
         float speedBoost = 1f;
-        float moveSpeed => moveSpeedInit * Mathf.Max(speedBoost, 1f+PlayerAttributes.boostSpeed);
+        float moveSpeed => moveSpeedInit * Mathf.Max(speedBoost, 1f + PlayerAttributes.boostSpeed);
 
-        void Start() {
+        void Start()
+        {
             rb.drag = groundDrag;
         }
-        
-        void Update() {
+
+        void Update()
+        {
             horizontalInput = Input.GetAxis("Horizontal");
             verticalInput = Input.GetAxis("Vertical");
             boostPressed = Input.GetKey(KeyCode.Space);
@@ -37,7 +39,7 @@ namespace Pascal
             mousePressed = Input.GetMouseButton(0);
             sphere.enabled = mousePressed;
             PlayerAttributes.shieldActive = mousePressed;
-        
+
 
             movementDir = Vector3.forward * verticalInput + Vector3.right * horizontalInput;
             if (movementDir.magnitude < 0.01f) return;
@@ -51,10 +53,12 @@ namespace Pascal
             SpeedControl();
         }
 
-        void SpeedControl() {
+        void SpeedControl()
+        {
             Vector3 velFlat = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-            if (velFlat.magnitude > moveSpeed) {
-                Vector3 vel = velFlat.normalized *moveSpeed;
+            if (velFlat.magnitude > moveSpeed)
+            {
+                Vector3 vel = velFlat.normalized * moveSpeed;
                 rb.velocity = new Vector3(vel.x, rb.velocity.y, vel.z);
             }
         }

@@ -1,17 +1,14 @@
-#if UNITY_EDITOR
 using Cinemachine.Utility;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
-using UnityEditor.SceneManagement;
-#endif
 
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class DamageArea : MonoBehaviour
 {
-    public enum Shape { Sphere,Cube}
+    public enum Shape { Sphere, Cube }
 
     [Header("Define Area")]
     public Shape areaShape = Shape.Cube;
@@ -25,20 +22,23 @@ public class DamageArea : MonoBehaviour
 
     private void Awake()
     {
-        if (areaShape == Shape.Cube) {
+        if (areaShape == Shape.Cube)
+        {
             BoxCollider col = this.AddComponent<BoxCollider>();
             col.isTrigger = true;
             col.size = Vector3.one * size;
         }
 
-        if (areaShape == Shape.Sphere) {
+        if (areaShape == Shape.Sphere)
+        {
             SphereCollider col = this.AddComponent<SphereCollider>();
             col.isTrigger = true;
             col.radius = size;
         }
     }
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter(Collider other)
+    {
         if (!other.CompareTag("Player") || !useCountdown)
             return;
 
@@ -46,7 +46,8 @@ public class DamageArea : MonoBehaviour
     }
 
 
-    private void OnTriggerExit(Collider other) {
+    private void OnTriggerExit(Collider other)
+    {
         if (!other.CompareTag("Player") || !useCountdown)
             return;
 
@@ -60,12 +61,14 @@ public class DamageArea : MonoBehaviour
         PlayerAttributes.DamageOverTime(damage);
     }
 
-    private IEnumerator DamageWithCountdown() {
+    private IEnumerator DamageWithCountdown()
+    {
 
         PlayerAttributes.Damage(damage);
         float t = 0;
-        
-        while(t < countdown) {
+
+        while (t < countdown)
+        {
             t += Time.deltaTime;
             yield return null;
         }
@@ -74,8 +77,10 @@ public class DamageArea : MonoBehaviour
     }
 
 
+
 #if UNITY_EDITOR
-    private void OnDrawGizmos() {
+    private void OnDrawGizmos()
+    {
         if (SceneView.lastActiveSceneView.camera == null)
             return;
 
@@ -85,12 +90,14 @@ public class DamageArea : MonoBehaviour
         if (dist > 50)
             return;
 
-        if( areaShape == Shape.Cube) {
+        if (areaShape == Shape.Cube)
+        {
             Handles.DrawWireCube(transform.position, Vector3.one * size);
         }
 
-        if (areaShape == Shape.Sphere) {
-            Handles.DrawWireDisc(transform.position,Vector3.up,size);
+        if (areaShape == Shape.Sphere)
+        {
+            Handles.DrawWireDisc(transform.position, Vector3.up, size);
             Handles.DrawWireDisc(transform.position, Vector3.forward, size);
             Handles.DrawWireDisc(transform.position, Vector3.right, size);
         }

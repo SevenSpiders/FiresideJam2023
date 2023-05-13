@@ -5,16 +5,18 @@ using UnityEngine;
 
 
 
-namespace Pascal {
+namespace Pascal
+{
     [CreateAssetMenu(fileName = "UpgradeItem", menuName = "Upgrade Item", order = 1)]
     public class UpgradeItem : ScriptableObject
     {
-        public string name;
+        public string itemName;
         public int cost;
         public Type type;
         public Sprite sprite;
 
-        public enum Type {
+        public enum Type
+        {
             ArmorUpgrade = 0,
             FireUpgrade = 1,
             SoulUpgrade = 2,

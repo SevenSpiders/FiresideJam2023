@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using TreeEditor;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -43,7 +42,7 @@ public class EnemyNavigationPath : MonoBehaviour
             return;
 
         float dist = agent.remainingDistance;
-        bool invalid = agent.pathStatus == NavMeshPathStatus.PathInvalid || dist == Mathf.Infinity ;
+        bool invalid = agent.pathStatus == NavMeshPathStatus.PathInvalid || dist == Mathf.Infinity;
         bool complete = agent.pathStatus == NavMeshPathStatus.PathComplete;
 
 
@@ -73,11 +72,13 @@ public class EnemyNavigationPath : MonoBehaviour
         Gizmos.color = Color.yellow;
 
         if (Application.isPlaying)
-            foreach (Vector3 p in navPositions) {
+            foreach (Vector3 p in navPositions)
+            {
                 Gizmos.DrawWireSphere(transform.position + p, .1f);
             }
         else
-            foreach (Vector3 p in GetNavPositions()) {
+            foreach (Vector3 p in GetNavPositions())
+            {
                 Gizmos.DrawWireSphere(p, .1f);
             }
     }
@@ -91,7 +92,8 @@ public class EnemyNavigationPath : MonoBehaviour
         foreach (Vector3 p in navPositions)
         {
             bool foundPos = NavMesh.SamplePosition(transform.TransformPoint(p), out NavMeshHit hit, 1f, NavMesh.AllAreas);
-            if (foundPos) {
+            if (foundPos)
+            {
                 Vector3 navPos = hit.position;
                 allPositions.Add(navPos);
             }
