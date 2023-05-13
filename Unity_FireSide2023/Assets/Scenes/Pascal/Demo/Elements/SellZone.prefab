@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6663518377707889863}
   - component: {fileID: 8814726871874892923}
   - component: {fileID: 4811008627686769868}
+  - component: {fileID: 4564691369257177399}
   m_Layer: 0
   m_Name: SellZone
   m_TagString: Untagged
@@ -37,7 +38,7 @@ Transform:
   - {fileID: 6424291358507050852}
   - {fileID: 4033340440814869036}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4012990384562628190
 MeshFilter:
@@ -123,6 +124,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vfx: {fileID: 1215926494628021233}
+  audioManager: {fileID: 4564691369257177399}
+--- !u!114 &4564691369257177399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210556354479861003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40dd37b0f8fa2c048834b55883ea455e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Coins
+    clip: {fileID: 8300000, guid: cfa2587753d319f4ab3c578a6c68acd5, type: 3}
+    volume: 0.5
+    looping: 0
+    pitch: 1
+    source: {fileID: 0}
 --- !u!1 &1417551687487511346
 GameObject:
   m_ObjectHideFlags: 0

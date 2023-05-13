@@ -41,6 +41,7 @@ namespace Pascal {
         protected virtual void DealDamage(Collider other) {
             
             a_Trigger?.Invoke(other);
+            if (PlayerAttributes.isDead) return;
 
             if (playerHealth == null) 
                 playerHealth = other.GetComponent<CharacterHealth>();

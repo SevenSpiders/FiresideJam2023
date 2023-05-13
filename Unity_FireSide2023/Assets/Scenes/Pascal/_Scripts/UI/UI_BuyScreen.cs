@@ -42,19 +42,19 @@ namespace Pascal {
             switch (item.type) {
 
                 case UpgradeItem.Type.ArmorUpgrade:
-                    PlayerAttributes.armorUpgrades += 1;
+                    PlayerAttributes.armorLevel += 1;
                     break;
                 
                 case UpgradeItem.Type.SpeedUpgrade:
-                    PlayerAttributes.speedUpgrades += 1;
+                    PlayerAttributes.speedLevel += 1;
                     break;
                 
-                case UpgradeItem.Type.SoulUpgrade:
-                    PlayerAttributes.soulUpgrades += 1;
+                case UpgradeItem.Type.DashUpgrade:
+                    PlayerAttributes.dashLevel += 1;
                     break;
                 
                 case UpgradeItem.Type.FireUpgrade:
-                    PlayerAttributes.fireUpgrades += 1;
+                    PlayerAttributes.fireLevel += 1;
                     break;
                 
                 default:

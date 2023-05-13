@@ -13,6 +13,7 @@ namespace Pascal {
         [SerializeField] UpgradeItem item;
 
         [SerializeField] TMP_Text title;
+        [SerializeField] TMP_Text explanation;
         [SerializeField] TMP_Text cost;
         [SerializeField] Image img;
 
@@ -25,7 +26,8 @@ namespace Pascal {
         public void UpdateItem() {
             if (item == null) return;
             
-            title.text = item.name;
+            title.text = item.title;
+            explanation.text = item.explanation;
             cost.text = item.cost.ToString();
             img.sprite = item.sprite;
 
@@ -38,6 +40,7 @@ namespace Pascal {
 
         public void HandleClick() {
             UI_BuyScreen.A_ClickItem?.Invoke(item);
+            UpdateItem();
         }
 
     }
