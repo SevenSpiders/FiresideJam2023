@@ -686,7 +686,7 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
   - name: Death
-    clip: {fileID: 8300000, guid: 580c84a9769206b41beece99fbc65e63, type: 3}
+    clip: {fileID: 8300000, guid: 5fb07b14885ca9c49a8090f76b236cfd, type: 3}
     volume: 0.5
     looping: 0
     pitch: 1
@@ -2041,9 +2041,6 @@ MonoBehaviour:
   hurtMat: {fileID: 2100000, guid: 210853861fe42d540ab7f394e13a2f76, type: 2}
   isImmune: 0
   currentHealth: 0
-  audioManager: {fileID: 7708386943046489294}
-  vfx: {fileID: 3281998095555264957}
-  hurtMat: {fileID: 2100000, guid: 8d3b96fde182d14409eb6a35e2c89281, type: 2}
 --- !u!114 &104639082765509873
 MonoBehaviour:
   m_ObjectHideFlags: 0
