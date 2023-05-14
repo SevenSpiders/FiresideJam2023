@@ -16,6 +16,14 @@ public class HUD : MonoBehaviour
     public static System.Action A_ShowGameOver;
     public static System.Action A_HideGameOver;
 
+    public static System.Action A_ShowHUD;
+    public static System.Action A_HideHUD;
+    public static System.Action A_ShowDialog;
+    public static System.Action A_HideDialog;
+    public static System.Action<string> A_Dialog;
+    public static System.Action<string> A_Prompt;
+
+
 
     // Other Menus:
     [SerializeField] GameObject gameOverScreen;
@@ -26,7 +34,7 @@ public class HUD : MonoBehaviour
 
 
 
-
+    [SerializeField] TMP_Text promptText;
 
 
     [SerializeField] TMP_Text countSouls;
@@ -59,6 +67,13 @@ public class HUD : MonoBehaviour
         A_HideBuyScreen += CloseBuyScreen;
         A_ShowGameOver += ShowGameOver;
         A_HideGameOver += HideGameOver;
+        A_ShowHUD += ShowHUD;
+        A_HideHUD += HideHUD;
+        A_Prompt += Prompt;
+        A_Dialog += Dialog;
+        A_ShowDialog += ShowDialog;
+        A_HideDialog += HideDialog;
+        
 
         PlayerAttributes.A_CoinChange += HandleCoinChange;
         PlayerAttributes.A_SoulChange += HandleSoulChange;
@@ -180,6 +195,24 @@ public class HUD : MonoBehaviour
 
     void HandleCoinChange(int from,int to) {
         ShakeText(countCoins.transform);
+    }
+
+    void ShowHUD() {
+        hudScreen.SetActive(true);
+    }
+
+    void HideHUD() {
+        hudScreen.SetActive(false);
+    }
+
+    void Prompt(string text) {
+        promptText.text = text;
+    }
+
+
+    void Dialog(string text) {
+        ShowDialog();
+        dialogScreen.DisplayText(text);
     }
 
 

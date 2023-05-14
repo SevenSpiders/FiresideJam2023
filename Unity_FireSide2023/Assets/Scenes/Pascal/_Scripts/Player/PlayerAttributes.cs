@@ -38,6 +38,7 @@ public static class PlayerAttributes
     public static float health {
         get => _health;
         set {
+            if (isImmune) return;
             value = Mathf.Min(value, maxHealth);
             A_HealthChange?.Invoke(_health, value);
             _health = value;
@@ -54,6 +55,7 @@ public static class PlayerAttributes
     }
     public static float armor => armorLevel * 0.1f;
     public static bool isDead = false;
+    public static bool isImmune;
 
 
 

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Armor
   m_EditorClassIdentifier: 
   type: 0
-  title: 
-  explanation: 
-  level: 0
+  title: Shield
+  explanation: Gain +1 Shield (Left Mouse Click)
   baseCost: 1
-  sprite: {fileID: 21300000, guid: 2ad385dc56731bc4499d0e792b7559ed, type: 3}
+  sprite: {fileID: 21300000, guid: 48ee7c5b9e9501c408bbe01a51ac9be6, type: 3}
+  maxLevel: 5

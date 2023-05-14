@@ -12,6 +12,7 @@ namespace Pascal
         [SerializeField] Image portraitB;
         [SerializeField] TMP_Text dialog;
 
+
         float typingSpeed = 0.01f;
 
         public void DisplayText(string text) {

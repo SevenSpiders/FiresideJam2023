@@ -98,7 +98,7 @@ namespace Pascal {
 
             // DECAY
             else {
-                if (t > t_tick && !PlayerAttributes.isDead) {
+                if (t > t_tick && !PlayerAttributes.isDead && !PlayerAttributes.isImmune) {
                     PlayerAttributes.health -= healthDecayPerSecond*t_tick;
                     audioManager.Play("Decay");
                     if (PlayerAttributes.health <= 0) 

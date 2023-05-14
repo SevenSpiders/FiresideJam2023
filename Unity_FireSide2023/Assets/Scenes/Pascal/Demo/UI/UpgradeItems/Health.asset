@@ -15,6 +15,6 @@ MonoBehaviour:
   type: 1
   title: Health
   explanation: Gain +10 Health
-  level: 0
   baseCost: 1
-  sprite: {fileID: 21300000, guid: dc1ec1cdb8fcaac4f8a8fb086417f379, type: 3}
+  sprite: {fileID: 21300000, guid: f6e373e9512c75243a6bdd57ba494a92, type: 3}
+  maxLevel: 5

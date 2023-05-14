@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 4
   title: Wind Dash
-  explanation: Gain +1 Wind Dash
+  explanation: Gain +1 Wind Dash (press Space bar)
   baseCost: 1
-  sprite: {fileID: 21300000, guid: 0e1b0be8554fa12499648bb163ca8b34, type: 3}
+  sprite: {fileID: 21300000, guid: 19a85bfcabc311641ba11ace19412808, type: 3}
+  maxLevel: 5
