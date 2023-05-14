@@ -1,6 +1,33 @@
+
+
+
+
 todo
 
+    [x] tweak ship model > high poly, no flame
+    ghost explosion
+    hurt effect 
+    sell images
+    tutorial
+    dialog
+    title screen + assets
+    island boxes
 
-[ ] area damage navigate
-[ ] windorbs
-[ ] souls
+
+
+    // music 
+    find better sfx
+    music atmosphere
+
+    [x] heal back up sound
+    [x] number camera shake when coin or souls
+
+
+
+big things
+    UI 
+    tutorial 
+    world
+    sound
+    
+

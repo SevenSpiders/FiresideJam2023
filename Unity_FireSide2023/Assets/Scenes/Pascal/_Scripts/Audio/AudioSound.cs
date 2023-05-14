@@ -16,6 +16,11 @@ using UnityEngine;
         [HideInInspector] public bool looping;
         public float pitch = 1f;
 
+        public void Reset() {
+            source.volume = volume;
+            source.pitch = pitch;
+        }
+
         [HideInInspector] public AudioSource source;
 
     }

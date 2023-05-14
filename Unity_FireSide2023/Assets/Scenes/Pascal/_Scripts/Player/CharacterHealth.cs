@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.VFX;
 
 
 namespace Pascal {
@@ -12,7 +11,6 @@ namespace Pascal {
         [SerializeField] int maxHealth = 100;
         [SerializeField] bool isPlayer;
         [SerializeField] AudioManager audioManager;
-        [SerializeField] VisualEffect vfx;
         [SerializeField] Material hurtMat;
 
 
@@ -44,7 +42,6 @@ namespace Pascal {
             if (isPlayer) PlayerAttributes.health = currentHealth;
             if (audioManager != null) audioManager.Play("Hurt");
             if (hurtMat != null) hurtMat.SetFloat("_Hurt", 1f);
-            if (vfx != null) vfx.Play();
 
 
             isImmune = true;

@@ -7,9 +7,12 @@ using Pascal;
 public static class PlayerAttributes
 {
     
-
+    public static System.Action<int, int>    A_CoinChange; // from to
+    public static System.Action<int, int>    A_SoulChange;  // from to
+    public static System.Action<float, float> A_HealthChange;
 
     //Movement 
+    public static bool inputsDisabled; // for intro
     static float _speed = 15f;
     public static float speed {
         get => _speed;
@@ -31,12 +34,21 @@ public static class PlayerAttributes
 
 
     // HEALTH
-    public static float health = 100;
+    static float _health = 30;
+    public static float health {
+        get => _health;
+        set {
+            value = Mathf.Min(value, maxHealth);
+            A_HealthChange?.Invoke(_health, value);
+            _health = value;
+        }
+    }
     static float _maxHealth = 50;
     public static float maxHealth {
         get => _maxHealth + fireLevel*10f;
         set => _maxHealth = value;
     }
+    public static float HP => health/ maxHealth;
     public static void Heal(float amount) {
         health = health + Mathf.Abs(amount) <= maxHealth ? health + Mathf.Abs(amount) : maxHealth;
     }
@@ -46,13 +58,27 @@ public static class PlayerAttributes
 
 
     // SOULS
-    public static int souls = 0;
+    static int _souls = 0;
+    public static int souls {
+        get => _souls;
+        set {
+            A_SoulChange?.Invoke(_souls, value);
+            _souls = value;
+        }
+    }
     public static int soulLoss = 0;
     public static int soulsMax = 10000;
 
 
     // GOLD
-    public static int coins = 0;
+    static int _coins = 0;
+    public static int coins {
+        get => _coins;
+        set {
+            A_CoinChange?.Invoke(_coins, value);
+            _coins = value;
+        }
+    }
     public static int coinLoss = 0;
     public static float coinsPerSoul = 1f;
 

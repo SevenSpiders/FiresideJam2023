@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 
 // Generic Audio Manager
@@ -46,6 +47,24 @@ public class AudioManager : MonoBehaviour
                 s.source.pitch = parameters.pitch;
                 s.source.Play();
             }
+    }
+
+    public void Stop(string name, bool fade = false) {
+        float fadeDuration = 0.3f;
+
+        foreach (AudioSound s in sounds) 
+            if (s.name == name) { 
+                if (!fade) 
+                    s.source.Stop();
+                else 
+                    s.source.DOFade(0f, fadeDuration).OnComplete(
+                        () => {
+                            s.source.volume = s.volume;
+                            s.source.Stop();
+                        }
+                    );
+            }
+            
     }
 
 }

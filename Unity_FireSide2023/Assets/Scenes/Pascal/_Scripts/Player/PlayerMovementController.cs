@@ -41,7 +41,7 @@ namespace Pascal
         void Update() {
 
             if (PlayerAttributes.isDead) return;
-
+            if (PlayerAttributes.inputsDisabled) return;
             
 
             horizontalInput = Input.GetAxis("Horizontal");

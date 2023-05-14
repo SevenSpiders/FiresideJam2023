@@ -21,6 +21,10 @@ public class HUD : MonoBehaviour
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] GameObject hudScreen;
     [SerializeField] Pascal.UI_BuyScreen buyScreen;
+    [SerializeField] Pascal.UI_Dialog dialogScreen;
+
+
+
 
 
 
@@ -34,10 +38,15 @@ public class HUD : MonoBehaviour
     [SerializeField] Image animationFill;
     [SerializeField] List<Pascal.UI_Icon> boostTokens;
 
+    [SerializeField] AudioManager audioManager;
 
 
     float hp = 1f; // health percentage
-
+    Tween blinkTween;
+    Color fireColor1;
+    bool isLowHealth;
+    public Color fireColor2;
+    public float t_blink;
 
 
 
@@ -50,10 +59,16 @@ public class HUD : MonoBehaviour
         A_HideBuyScreen += CloseBuyScreen;
         A_ShowGameOver += ShowGameOver;
         A_HideGameOver += HideGameOver;
+
+        PlayerAttributes.A_CoinChange += HandleCoinChange;
+        PlayerAttributes.A_SoulChange += HandleSoulChange;
+
+        fireColor1 = fireBar.color;
     }
 
     void Start() {
         UpdateBoostTokens();
+
     }
 
 
@@ -73,10 +88,29 @@ public class HUD : MonoBehaviour
 
         healthText.text = $"{(int)PlayerAttributes.health}/ {(int)PlayerAttributes.maxHealth}"; 
         float newHP = PlayerAttributes.health / PlayerAttributes.maxHealth;
-        if (hp != newHP) StartCoroutine(AnimateFillAmountCoroutine(hp, newHP));
+        // if (hp != newHP) StartCoroutine(AnimateFillAmountCoroutine(hp, newHP));
+        if (hp != newHP) animationFill.DOFillAmount(newHP, 0.2f);
         fireBar.fillAmount = newHP;
         hp = newHP;
+
+
+        // Low Health
+        float lowHP = 0.5f;
+        if (newHP < lowHP && !isLowHealth) {
+            isLowHealth = true;
+            StartBlinking();
+            audioManager.Play("LowHealth");
+        } 
+        
+        
+        else if (newHP > lowHP && isLowHealth) {
+            isLowHealth = false;
+            StopBlinking();
+            audioManager.Stop("LowHealth", fade: true);
+        }
     }
+
+
 
     IEnumerator AnimateFillAmountCoroutine(float from, float targetFillAmount) {
 
@@ -91,6 +125,20 @@ public class HUD : MonoBehaviour
     }
 
 
+
+    void StartBlinking() {
+        StopBlinking();
+        blinkTween = fireBar.DOColor(fireColor2, t_blink).SetLoops(-1, LoopType.Yoyo);
+    }
+
+    void StopBlinking() {
+        if (blinkTween != null && blinkTween.IsActive()) {
+            blinkTween.Kill();
+            blinkTween = null;
+            
+            fireBar.color = fireColor1;
+        }
+    }
     
 
 
@@ -116,6 +164,38 @@ public class HUD : MonoBehaviour
         gameOverScreen.SetActive(false);
         hudScreen.SetActive(true);
     }
+
+    void ShowDialog() {
+        dialogScreen.gameObject.SetActive(true);
+    }
+
+    void HideDialog() {
+        dialogScreen.gameObject.SetActive(false);
+    }
+
+
+    void HandleSoulChange(int from, int to) {
+        ShakeText(countSouls.transform);
+    }
+
+    void HandleCoinChange(int from,int to) {
+        ShakeText(countCoins.transform);
+    }
+
+
+    public void ShakeText(Transform tf) {
+
+        float shakeDuration = 0.25f;
+        float shakeStrength = 10f;
+        int shakeVibrato = 50;
+        tf.DOShakePosition(shakeDuration, shakeStrength, shakeVibrato);
+
+        // float returnDuration = 0.25f;
+        // tf.DOMove(originalPosition, returnDuration).SetDelay(returnDuration)
+        //     .OnComplete(
+        //         () => {goldCounter.color = originalGoldColor;}
+        //     );
+        }
 
 
 }

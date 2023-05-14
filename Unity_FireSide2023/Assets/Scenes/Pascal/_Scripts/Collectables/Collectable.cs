@@ -13,6 +13,7 @@ namespace Pascal {
 
         public enum Type {
             Soul = 0,
+            HeroicSoul = 100,
             Coin = 1,
             Fire =2,
         }

@@ -10,12 +10,13 @@ namespace Pascal {
     {
         
         [SerializeField] float healPerSecond = 50f;
+        [SerializeField] AudioManager audioManager;
 
 
         void OnTriggerEnter(Collider other) { 
             if (!other.CompareTag("Player")) return;
 
-
+            if(PlayerAttributes.HP < 0.99f) audioManager.Play("Heal");
         }
 
         void OnTriggerStay(Collider other) {
@@ -23,7 +24,7 @@ namespace Pascal {
 
             PlayerAttributes.boostTokens = PlayerAttributes.boostTokensMax;
             PlayerAttributes.Heal(healPerSecond*Time.deltaTime);
-            
+            if (PlayerAttributes.HP > 0.99f) audioManager.Stop("Heal", fade: true);
         }
 
     }
