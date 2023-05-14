@@ -19,7 +19,7 @@ namespace Pascal {
         public int cost => CalculateCost(PlayerAttributes.GetUpgradeLevel(type));
 
         int CalculateCost(int level) {
-            List<int> numbers = new() {1, 2, 4, 10};
+            List<int> numbers = new() {1, 2, 4, 6, 8, 10};
             int idx = Mathf.Min(numbers.Count-1, level);
             return baseCost * numbers[idx];
         }
@@ -31,6 +31,7 @@ namespace Pascal {
             SoulUpgrade = 2,
             SpeedUpgrade = 3,
             DashUpgrade = 4,
+            ShieldUpgrade = 5,
         }
     }
 }

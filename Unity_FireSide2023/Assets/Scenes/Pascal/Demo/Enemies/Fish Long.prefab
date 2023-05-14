@@ -91,7 +91,6 @@ MonoBehaviour:
   maxHealth: 100
   isPlayer: 0
   audioManager: {fileID: 0}
-  vfx: {fileID: 0}
   hurtMat: {fileID: 0}
   isImmune: 0
   currentHealth: 0
@@ -274,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619812d8a01aba64b88ce077a4810871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 40
+  damage: 5
 --- !u!1001 &8912294836997365581
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -57,6 +57,10 @@ namespace Pascal {
                     PlayerAttributes.fireLevel += 1;
                     break;
                 
+                case UpgradeItem.Type.ShieldUpgrade:
+                    PlayerAttributes.shieldLevel += 1;
+                    break;
+                
                 default:
                     Debug.LogWarning($"item type not implemented: {item.type}");
                     break;

@@ -15,7 +15,7 @@ public static class PlayerAttributes
     public static bool inputsDisabled; // for intro
     static float _speed = 15f;
     public static float speed {
-        get => _speed;
+        get => _speed + speedLevel*10f;
         set =>_speed = value;
     }
     public static float boostSpeed = 0;
@@ -38,7 +38,7 @@ public static class PlayerAttributes
     public static float health {
         get => _health;
         set {
-            if (isImmune) return;
+            if (isImmune && value < _health) return;
             value = Mathf.Min(value, maxHealth);
             A_HealthChange?.Invoke(_health, value);
             _health = value;
@@ -84,6 +84,13 @@ public static class PlayerAttributes
     public static int coinLoss = 0;
     public static float coinsPerSoul = 1f;
 
+
+    // Shield
+    public static int shieldTokens = 0;
+    public static int shieldTokensMax => shieldLevel;
+
+
+
     public static bool shieldActive = false;
     public static bool isInSafeZone = false;
 
@@ -96,13 +103,14 @@ public static class PlayerAttributes
     public static int fireLevel;
     public static int soulLevel;
     public static int dashLevel;
-
+    public static int shieldLevel;
 
     public static int GetUpgradeLevel(UpgradeItem.Type type) {
         switch (type) {
             case UpgradeItem.Type.FireUpgrade: return fireLevel;
             case UpgradeItem.Type.SpeedUpgrade: return speedLevel;
             case UpgradeItem.Type.DashUpgrade: return dashLevel;
+            case UpgradeItem.Type.ShieldUpgrade: return shieldLevel;
             default: return 0;
         }
     }

@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 1
-  damage: 40
+  damage: 5
   leashLenght: 300
   audioManager: {fileID: 7894577199118069811}
   movementController: {fileID: 5703588524291298362}
@@ -71,7 +71,7 @@ MonoBehaviour:
   maxHealth: 100
   isPlayer: 0
   audioManager: {fileID: 0}
-  vfx: {fileID: 0}
+  hurtMat: {fileID: 0}
   isImmune: 0
   currentHealth: 0
 --- !u!114 &5703588524291298362
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619812d8a01aba64b88ce077a4810871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 40
+  damage: 5
 --- !u!135 &3624096577632539986
 SphereCollider:
   m_ObjectHideFlags: 0

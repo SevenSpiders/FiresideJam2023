@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 
 namespace Pascal {
 
-    public class UI_BuyOption : MonoBehaviour, IPointerClickHandler
+    public class UI_BuyOption : MonoBehaviour//, IPointerClickHandler
     {
         [SerializeField] UpgradeItem item;
 
@@ -33,12 +33,13 @@ namespace Pascal {
 
         }
 
-        public void OnPointerClick(PointerEventData eventData) {
-            HandleClick();
-        }
+        // public void OnPointerClick(PointerEventData eventData) {
+        //     HandleClick();
+        // }
 
 
         public void HandleClick() {
+            Debug.Log("click");
             UI_BuyScreen.A_ClickItem?.Invoke(item);
             UpdateItem();
         }

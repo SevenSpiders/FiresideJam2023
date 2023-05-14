@@ -44,7 +44,7 @@ namespace Pascal {
             if (PlayerAttributes.isDead) return;
 
             if (playerHealth == null) 
-                playerHealth = other.GetComponent<CharacterHealth>();
+                playerHealth = other.GetComponent<PlayerHealth>();
                 if (playerHealth == null) return;
             
             playerHealth.TakeDamage(damage);

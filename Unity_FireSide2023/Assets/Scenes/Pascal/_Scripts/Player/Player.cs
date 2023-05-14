@@ -12,6 +12,7 @@ namespace Pascal {
         [Header("Start attributes")]
         [SerializeField] float _health;
         [SerializeField] int boostTokens;
+        [SerializeField] int shieldTokens;
         [SerializeField] float t_boostRecover = 5f;
         // [SerializeField] float _speed;
         // [SerializeField] float 
@@ -45,10 +46,12 @@ namespace Pascal {
         // ------------- START -------------
 
         void Start() {
-            PlayerAttributes.health = _health;
             PlayerAttributes.maxHealth = _health;
+            PlayerAttributes.health = _health;
             PlayerAttributes.boostTokens = boostTokens;
             PlayerAttributes.boostTokensMax = boostTokens;
+            PlayerAttributes.shieldTokens = shieldTokens;
+            PlayerAttributes.shieldLevel = shieldTokens;
 
             CharacterHealth.A_Death += HandleDeath;
             Collectable.A_Collect += HandleCollect;

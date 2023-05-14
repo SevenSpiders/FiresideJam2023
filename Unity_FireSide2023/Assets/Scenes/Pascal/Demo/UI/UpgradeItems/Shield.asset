@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e27f9ca1b62fb14285304c0ec60c842, type: 3}
-  m_Name: Armor
+  m_Name: Shield
   m_EditorClassIdentifier: 
-  type: 0
+  type: 5
   title: Shield
   explanation: Gain +1 Shield (Left Mouse Click)
   baseCost: 1

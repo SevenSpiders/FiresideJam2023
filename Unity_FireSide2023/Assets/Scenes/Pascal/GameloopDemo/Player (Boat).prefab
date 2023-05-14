@@ -703,6 +703,12 @@ MonoBehaviour:
     looping: 0
     pitch: 1
     source: {fileID: 0}
+  - name: Shield
+    clip: {fileID: 8300000, guid: 0b7d20c54ca77894ba4134a0534e2500, type: 3}
+    volume: 0.5
+    looping: 0
+    pitch: 1
+    source: {fileID: 0}
 --- !u!1 &3516459952608152925
 GameObject:
   m_ObjectHideFlags: 0
@@ -2016,6 +2022,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 0
   boostTokens: 0
+  shieldTokens: 0
   t_boostRecover: 5
   playerCam: {fileID: 0}
   audioManager: {fileID: 7708386943046489294}

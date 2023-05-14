@@ -25,9 +25,33 @@ todo
 
 
 big things
-    UI 
-    tutorial 
-    world
-    sound
+    UI              90 min
+        [ ] background
+        [ ] gold icon
+        [ ] dash icon
+        [ ] buy button
+        [ ] Charon, hero 
+        [ ] title
+        [ ] healthbar
+
+
+    tutorial        45
+
+
+    flow
+    hurt sound
+    health Debug
+    hitboxes
+    big fish placement
+    ui tweaks
+    jet stream mat
+    shield mechanic
     
+
+
+
+    world           120
+    shield mechanic
+    sound           30
+
 

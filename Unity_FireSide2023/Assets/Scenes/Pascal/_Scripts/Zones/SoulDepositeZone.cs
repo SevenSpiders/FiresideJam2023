@@ -16,6 +16,7 @@ namespace Pascal {
         [SerializeField] Transform targetPoint;
         [SerializeField] Transform ghostPrefab;
         [SerializeField] TMP_Text collectionText;
+        [SerializeField] TMP_Text promptText;
 
         int totSoulsCollected;
 
@@ -44,6 +45,7 @@ namespace Pascal {
             PlayerAttributes.souls = 0;
             totSoulsCollected += souls;
             UpdateCollectionText();
+            promptText.enabled = false;
 
             // scale vfx with souls
             audioManager.Play("Coins");

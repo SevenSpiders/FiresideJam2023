@@ -29,6 +29,7 @@ namespace Pascal
 
 
         float t;
+        float t_shield = 2f;
         bool isOnBoostCooldown;
 
 
@@ -49,10 +50,10 @@ namespace Pascal
             
             UpdateBoost();
 
+
+            UpdateShield();
             // shield mechanic
-            mousePressed = Input.GetMouseButton(0);
-            sphere.enabled = mousePressed;
-            PlayerAttributes.shieldActive = mousePressed;
+            
         
 
             movementDir = Vector3.forward * verticalInput + Vector3.right * horizontalInput;
@@ -76,6 +77,28 @@ namespace Pascal
         }
 
 
+        void UpdateShield() {
+            if (Input.GetMouseButtonDown(0)) TryShield();
+        }
+
+        void TryShield() {
+            if (PlayerAttributes.shieldActive) return;
+            if (PlayerAttributes.shieldTokens <= 0) return;
+            if (PlayerAttributes.isInSafeZone) return; // because of the shop
+
+            PlayerAttributes.shieldTokens -= 1;
+
+            PlayerAttributes.shieldActive = true;
+            sphere.enabled = true;
+            audioManager.Play("Shield");
+            Invoke(nameof(EndShield), t_shield);
+        }
+
+        void EndShield() {
+            sphere.enabled = false;
+            audioManager.Stop("Shield", fade: true);
+            PlayerAttributes.shieldActive = false;
+        }
         
 
         void UpdateBoost() {

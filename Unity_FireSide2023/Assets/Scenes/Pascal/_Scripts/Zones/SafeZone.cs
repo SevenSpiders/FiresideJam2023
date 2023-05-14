@@ -9,7 +9,7 @@ namespace Pascal {
     public class SafeZone : MonoBehaviour
     {
         
-        [SerializeField] float healPerSecond = 50f;
+        [SerializeField] float healPerSecond = 0.2f;
         [SerializeField] AudioManager audioManager;
 
 
@@ -23,7 +23,10 @@ namespace Pascal {
             if (!other.CompareTag("Player")) return;
 
             PlayerAttributes.boostTokens = PlayerAttributes.boostTokensMax;
-            PlayerAttributes.Heal(healPerSecond*Time.deltaTime);
+            PlayerAttributes.shieldTokens = PlayerAttributes.shieldTokensMax;
+
+            float _heal = healPerSecond * PlayerAttributes.maxHealth;
+            PlayerAttributes.Heal(_heal*Time.deltaTime);
             if (PlayerAttributes.HP > 0.99f) audioManager.Stop("Heal", fade: true);
         }
 
