@@ -13,15 +13,17 @@ namespace Pascal
 
         public override void TakeDamage(int damageAmount)
         {
+
             if (isImmune) return;
 
-            PlayerAttributes.health = currentHealth;
             float armor = PlayerAttributes.armor * 0.1f;
             if (PlayerAttributes.shieldActive) armor += 0.9f;
 
-            damageAmount = (int)(damageAmount * Mathf.Max(1f - armor, 0));
+            int _dmg = (int)(damageAmount * Mathf.Max(1f - armor, 0));
 
-            base.TakeDamage(damageAmount);
+            Debug.Log($"take damage: {damageAmount} {_dmg}, health {PlayerAttributes.health} / {PlayerAttributes.maxHealth}");
+
+            base.TakeDamage(_dmg);
         }
 
         protected override void Die()

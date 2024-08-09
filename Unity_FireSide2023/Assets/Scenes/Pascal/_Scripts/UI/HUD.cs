@@ -39,6 +39,7 @@ public class HUD : MonoBehaviour
 
     [SerializeField] TMP_Text countSouls;
     [SerializeField] TMP_Text countCoins;
+    [SerializeField] TMP_Text countShields;
 
 
     [SerializeField] Image fireBar;
@@ -97,7 +98,13 @@ public class HUD : MonoBehaviour
         UpdateHealthBar();
         UpdateSouls();
         UpdateBoostTokens();
+        UpdateShields();
     }
+
+    void UpdateShields() {
+        countShields.text = "Shields: "+ PlayerAttributes.shieldTokens.ToString();
+    }
+
 
     void UpdateHealthBar() {
 

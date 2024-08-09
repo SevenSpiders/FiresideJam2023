@@ -15,7 +15,7 @@ public static class PlayerAttributes
     public static bool inputsDisabled; // for intro
     static float _speed = 15f;
     public static float speed {
-        get => _speed + speedLevel*10f;
+        get => _speed + speedLevel*5f;
         set =>_speed = value;
     }
     public static float boostSpeed = 0;

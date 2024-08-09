@@ -9,11 +9,12 @@ namespace Pascal
     {
         [SerializeField] TMP_Text healthStat;
         [SerializeField] TMP_Text speedStat;
-        // [SerializeField] TMP_Text armorStat;
+        [SerializeField] TMP_Text shieldStat;
 
         void Update() {
             healthStat.text = "Health: " + PlayerAttributes.maxHealth.ToString();
             speedStat.text = "Speed: " + PlayerAttributes.speed.ToString();
+            shieldStat.text = "Shields: " + PlayerAttributes.shieldLevel.ToString();
         }
     }
     

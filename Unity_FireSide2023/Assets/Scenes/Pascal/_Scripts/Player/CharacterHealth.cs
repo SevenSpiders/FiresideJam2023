@@ -8,8 +8,6 @@ namespace Pascal {
         public static System.Action<string> A_Death;    // string: characterName
 
         
-        [SerializeField] int maxHealth = 100;
-        [SerializeField] bool isPlayer;
         [SerializeField] AudioManager audioManager;
         [SerializeField] Material hurtMat;
 
@@ -18,12 +16,10 @@ namespace Pascal {
         float t_blink = 0.2f;
         public bool isImmune;
 
-        public int currentHealth;
         
         
 
         void Start() {
-            currentHealth = maxHealth;
             EndBlink();
         }
 
@@ -36,10 +32,9 @@ namespace Pascal {
 
 
             // Debug.Log($"{name} took damage {damageAmount}");
-            currentHealth -= damageAmount;
-            if (currentHealth <= 0)
-                Die();
-            if (isPlayer) PlayerAttributes.health = currentHealth;
+            
+            PlayerAttributes.health -= damageAmount;
+            if (PlayerAttributes.health <= 0) Die();
             if (audioManager != null) audioManager.Play("Hurt");
             if (hurtMat != null) hurtMat.SetFloat("_Hurt", 1f);
 
@@ -55,7 +50,7 @@ namespace Pascal {
         }
 
         void EndBlink() {
-            if (isPlayer) hurtMat.SetFloat("_Hurt", 0);
+            if(hurtMat != null) hurtMat.SetFloat("_Hurt", 0);
         }
 
         protected virtual void Die()

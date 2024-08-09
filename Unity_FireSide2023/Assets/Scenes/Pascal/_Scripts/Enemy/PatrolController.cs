@@ -36,7 +36,7 @@ namespace Pascal
                 enemies.Add(_e);
                 _e.a_TargetReached += HandleNavPointReached;
                 _e.MoveToPoint(navPoints[i]);
-                Debug.Log(_e);
+                // Debug.Log(_e);
             }
             // UpdatePositions();
         }

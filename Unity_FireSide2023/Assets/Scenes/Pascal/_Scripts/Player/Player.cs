@@ -75,6 +75,10 @@ namespace Pascal {
                 case Collectable.Type.Coin:
                     PlayerAttributes.coins += (int)value;
                     break;
+                case Collectable.Type.HeroicSoul:
+                    PlayerAttributes.souls += (int)value;
+                    PlayerAttributes.coins += (int)value;
+                    break;
                 default: break;
             }
                 
@@ -101,7 +105,8 @@ namespace Pascal {
 
             // DECAY
             else {
-                if (t > t_tick && !PlayerAttributes.isDead && !PlayerAttributes.isImmune) {
+                if (t > t_tick && !PlayerAttributes.isDead && !PlayerAttributes.isImmune && !PlayerAttributes.shieldActive) {
+
                     PlayerAttributes.health -= healthDecayPerSecond*t_tick;
                     audioManager.Play("Decay");
                     if (PlayerAttributes.health <= 0) 
@@ -164,9 +169,11 @@ namespace Pascal {
                 .SetEase(Ease.OutCubic)
                 .OnComplete( ()=> {Respawn();} );
 
-            PlayerAttributes.soulLoss = PlayerAttributes.souls;
-            PlayerAttributes.souls = 0;
-            int coinLoss = PlayerAttributes.coins /= 2;
+            int soulLoss = PlayerAttributes.souls / 2;
+            PlayerAttributes.soulLoss = soulLoss;
+            PlayerAttributes.souls -= soulLoss;
+
+            int coinLoss = PlayerAttributes.coins / 2;
             PlayerAttributes.coinLoss = coinLoss;
             PlayerAttributes.coins -= coinLoss;
 

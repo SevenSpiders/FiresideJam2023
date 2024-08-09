@@ -13,13 +13,13 @@ namespace Pascal
 
         
         [SerializeField] AudioManager audioManager;
-        [SerializeField] VisualEffect vfx;
-
+        [SerializeField] ParticleSystem vfx;
 
         protected override void OnCollect(){
             audioManager.Play("Collect");
             if (vfx != null) vfx.Play();
             Invoke(nameof(Vanish), 1f);
+            audioManager.Play("Trigger");
         }
 
         void OnDrawGizmosSelected() {
